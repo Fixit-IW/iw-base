@@ -35,6 +35,7 @@
             <li><a href="/logout">Logout</a></li>
             <li><a href="/buscar">Buscar</a></li>
             <li><a href="/publicar">Publicar anuncio</a></li>
+            <li><a href="/profile">Perfil</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

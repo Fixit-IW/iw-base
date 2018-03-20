@@ -39,4 +39,8 @@ public class RootController {
 	public String upload() {
 		return "upload";
 	}
+	@GetMapping("/profile")
+	public String profile() {
+		return "Profile";
+	}
 }
