@@ -5,40 +5,54 @@
 	uri="http://www.springframework.org/security/tags"%>
 
 <%@ include file="../jspf/header.jspf"%>
+<section class="probootstrap-cover ">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-10 col-md-offset-2">
 
-<div class="starter-template">
-	<h1>Admin</h1>
-	<p class="lead">Información muy confidencial</p>
+				<h1>Admin</h1>
+				<p class="lead">Información muy confidencial</p>
 
-	<hr/>
+				<hr />
 
-	<form action="/admin/addUser" method="post">
-		<label for="login">login<input name="login"/></label>
-		<label for="password">password<input type="password" name="password"/></label>
-		<label for="isAdmin">is admin?<input type="checkbox" name="isAdmin"></label>
-		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            
-            <div class="form-actions">
-                <button type="submit" class="btn">Create user</button>
-            </div>
-	</form>
-	
-	<hr/>
-	
-	<table>
-	<thead>
-	<tr><th>id<th>login<th>roles</tr>
-	</thead>
-	<tbody>
-	<c:forEach items="${users}" var="u">
-		<tr>
-		<td>${u.id}<td>${u.login}<td>${u.roles}
-		</tr>	
-	</c:forEach>
-	</tbody>
-	</table>
+				<form action="/admin/addUser" method="post">
+					<label for="login">login<input name="login" /></label> <label
+						for="password">password<input type="password"
+						name="password" /></label> <label for="isAdmin">is admin?<input
+						type="checkbox" name="isAdmin"></label> <input type="hidden"
+						name="${_csrf.parameterName}" value="${_csrf.token}" />
 
-	<%@ include file="../jspf/authinfo.jspf"%>		
+					<div class="form-actions">
+						<button type="submit" class="btn">Create user</button>
+					</div>
+				</form>
+
+				<hr />
+
+				<table>
+					<thead>
+						<tr>
+							<th>id
+							<th>login
+							<th>roles
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${users}" var="u">
+							<tr>
+								<td>${u.id}
+								<td>${u.login}
+								<td>${u.roles}
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		</div>
+</section>
+
+<%@ include file="../jspf/authinfo.jspf"%>
 </div>
 
 <%@ include file="../jspf/footer.jspf"%>

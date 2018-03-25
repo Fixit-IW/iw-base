@@ -5,27 +5,35 @@
 	uri="http://www.springframework.org/security/tags"%>
 
 <%@ include file="../jspf/header.jspf"%>
+<section class="probootstrap-cover ">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-10 col-md-offset-2">
 
-<div class="starter-template">
-	<h1>Registro</h1>
+				<h1>Registro</h1>
+				<form action="/login" method="post" class>
+					<div class="form-group">
+						<fieldset>
+							<legend>Please Login</legend>
+							<label for="username">Username</label> <input type="text"
+								id="username" name="username" placeholder="Username" /> <label
+								for="password">Password</label> <input type="password"
+								id="password" name="password" placeholder="Password" /> <input
+								type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
 
-    <form action="/login" method="post">               
-        <fieldset>
-            <legend>Please Login</legend>
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username"/>        
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password"/>
-            
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            
-            <div class="form-actions">
-                <button type="submit" class="btn">Log in</button>
-            </div>
-        </fieldset>
-    </form>
+							<div class="form-actions">
+								<button type="submit" class="btn btn-success">Log in</button>
+							</div>
+						</fieldset>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
 
-	<%@ include file="../jspf/authinfo.jspf"%>		
+<%@ include file="../jspf/authinfo.jspf"%>
 </div>
 
 <%@ include file="../jspf/footer.jspf"%>
