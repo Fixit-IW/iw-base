@@ -40,7 +40,12 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg  probootstrap_navbar"
+	<!-- <div class="preloader-wrapper">
+		<div class="preloader">
+			<img src="${s}/img/preloader.gif" alt="NILA">
+		</div>
+	</div> -->
+	<nav class="navbar navbar-expand-lg probootstrap_navbar"
 		id="probootstrap-navbar">
 		<div class="container">
 			<a class="navbar-brand" href="/#">Fixit</a>
@@ -52,16 +57,23 @@
 			<div class="collapse navbar-collapse" id="probootstrap-menu">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item active"><a class="nav-link" href="/#">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
-					<li class="nav-item"><a class="nav-link" href="/admin">Admin</a></li>
-					<li class="nav-item"><a class="nav-link" href="/upload">Upload</a></li>
-					<li class="nav-item"><a class="nav-link" href="/loagout">Logout</a></li>
+					<sec:authorize access="isAnonymous()">
+						<li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+					</sec:authorize>
+
+					<sec:authorize access="isAuthenticated()">
+						<sec:authorize access="hasRole('ADMIN')">
+							<li class="nav-item"><a class="nav-link" href="/admin">Admin</a></li>
+							<li class="nav-item"><a class="nav-link" href="/upload">Upload</a></li>
+						</sec:authorize>
+						<li class="nav-item"><a class="nav-link" href="/profile">Perfil</a></li>
+						<li class="nav-item"><a class="nav-link" href="/publicar">Publicar
+								anuncio</a></li>
+						<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+					</sec:authorize>
+
 					<li class="nav-item"><a class="nav-link" href="/buscar">Buscar</a></li>
-					<li class="nav-item"><a class="nav-link" href="/publicar">Publicar
-							anuncio</a></li>
-					<li class="nav-item"><a class="nav-link" href="/profile">Perfil</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-<body>

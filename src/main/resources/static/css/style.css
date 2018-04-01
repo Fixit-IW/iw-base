@@ -99,7 +99,7 @@ a {
   font-size: 30px; }
 
 .probootstrap_navbar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;

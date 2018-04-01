@@ -16,14 +16,24 @@
 				<hr />
 
 				<form action="/admin/addUser" method="post">
-					<label for="login">login<input name="login" /></label> <label
-						for="password">password<input type="password"
-						name="password" /></label> <label for="isAdmin">is admin?<input
-						type="checkbox" name="isAdmin"></label> <input type="hidden"
-						name="${_csrf.parameterName}" value="${_csrf.token}" />
+					<div class="form-group">
+						<label for="login">login </label> <input class="form-control"
+							name="login" />
+					</div>
 
+					<div class="form-group">
+						<label for="password">password <input class="form-control"
+							type="password" name="password" />
+						</label>
+					</div>
+					<div class="form-check">
+						<label class="form-check-label" for="isAdmin">Is admin?</label> 
+						<input type="checkbox" class="form-check-input" name="isAdmin" > <input
+							type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
+					</div>
 					<div class="form-actions">
-						<button type="submit" class="btn">Create user</button>
+						<button type="submit" class="btn btn-primary">Create user</button>
 					</div>
 				</form>
 
@@ -49,7 +59,7 @@
 				</table>
 			</div>
 		</div>
-		</div>
+	</div>
 </section>
 
 <%@ include file="../jspf/authinfo.jspf"%>

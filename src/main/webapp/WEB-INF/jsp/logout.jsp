@@ -6,14 +6,21 @@
 
 <%@ include file="../jspf/header.jspf"%>
 
-<div class="starter-template">
-	<h1>Logout</h1>
-	<p class="lead">¿Estás seguro que deseas salir?</p>
+<section class="probootstrap-cover">
+	<div class="container">
+		<div class="row justify-content-center">
+			<form action="/logout" method="post">
+				<legend>Log out</legend>
+				<div class="form-group">
+					<label class="lead form-check-label">¿Estás seguro que
+						deseas salir?</label> <input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+				</div>
+				<button type="submit" class="btn btn-danger">Salir</button>
 
-	<form action="/logout" method="post">
-	    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>	
-		<button type="submit">Salir</button>
-	</form>		
-</div>
+			</form>
+		</div>
+	</div>
+</section>
 
 <%@ include file="../jspf/footer.jspf"%>
