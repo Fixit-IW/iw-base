@@ -5,7 +5,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 
 <%@ include file="../jspf/header.jspf"%>
-
+<section class="probootstrap-cover">
 <div class="starter-template">
 	<h1>Upload</h1>
 	<p class="lead">Prueba de subida de ficheros</p>
@@ -29,5 +29,5 @@
 	<img class="photo" src="admin/photo/4">
 	<img class="photo" src="admin/photo/5">
 </div>
-
+</section>
 <%@ include file="../jspf/footer.jspf"%>
