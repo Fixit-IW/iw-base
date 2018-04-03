@@ -20,8 +20,12 @@ public class RootController {
 
 	@GetMapping({"/", "/index"})
 	public String root(Model model, Principal principal) {
-		log.info(principal.getName() + " de tipo " + principal.getClass());		
+		if (principal == null) {
+			log.info("Ha entrado uno nuevo!");
+		} else {
+			log.info(principal.getName() + " de tipo " + principal.getClass());		
 		// org.springframework.security.core.userdetails.User
+		}
 		return "home";
 	}
 	
@@ -41,6 +45,6 @@ public class RootController {
 	}
 	@GetMapping("/profile")
 	public String profile() {
-		return "profile";
+		return "Profile";
 	}
 }

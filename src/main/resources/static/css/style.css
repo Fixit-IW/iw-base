@@ -21,6 +21,9 @@ body {
 
 input, textarea, p {
   font-weight: 300; }
+ section {
+ 	 padding: 7em 0;
+ }
 
 ::-moz-selection {
   background: #000;
