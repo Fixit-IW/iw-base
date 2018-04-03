@@ -17,8 +17,8 @@
 
 				<form action="/admin/addUser" method="post">
 					<div class="form-group">
-						<label for="login">login </label> <input class="form-control"
-							name="login" />
+						<label for="nickName">User name </label> <input class="form-control"
+							name="nickName" />
 					</div>
 
 					<div class="form-group">
@@ -26,6 +26,30 @@
 							type="password" name="password" />
 						</label>
 					</div>
+					<div class="form-group">
+						<label for="firstName">First name </label> <input class="form-control"
+							name="firstName" />
+					</div>
+					<div class="form-group">
+						<label for="lastName">Last name </label> <input class="form-control"
+							name="lastName" />
+					</div>
+					<div class="form-group">
+						<label for="DNI">DNI </label> <input class="form-control" 
+							type="number" name="DNI" />
+					</div>
+					
+					<div class="form-group">
+						<label for="birthDate">Birth date </label> <input class="form-control"
+							type="date" name="birthDate" />
+					</div>
+					<div class="input-group date" data-provide="datepicker">
+					    <input type="text" class="form-control">
+						    <div class="input-group-addon">
+						        <span class="glyphicon glyphicon-th"></span>
+						    </div>
+					</div>
+					
 					<div class="form-check">
 						<label class="form-check-label" for="isAdmin">Is admin?</label> <input
 							type="checkbox" class="form-check-input" name="isAdmin">
@@ -51,7 +75,7 @@
 						<c:forEach items="${users}" var="u">
 							<tr>
 								<td>${u.id}
-								<td>${u.login}
+								<td>${u.nickName}
 								<td>${u.roles}
 							</tr>
 						</c:forEach>
