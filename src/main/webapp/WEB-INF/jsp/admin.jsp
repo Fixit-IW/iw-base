@@ -92,12 +92,12 @@
 				<div class="col-md-4 col-sm-6">
 					<div class="probootstrap-card probootstrap-listing">
 						<div class="probootstrap-card-media">
-							<img src="admin/photo/${u.login}" class="img-fluid"> <a
+							<img src="admin/photo/${u.nickName}" class="img-fluid"> <a
 								href="#" class="probootstrap-love"><i class="icon-heart"></i></a>
 						</div>
 						<div class="probootstrap-card-text">
 							<h2 class="probootstrap-card-heading">
-								<a href="#">${u.login }</a>
+								<a href="#">${u.nickName }</a>
 							</h2>
 							<div class="probootstrap-listing-location">
 								<span>${u.id}</span>
