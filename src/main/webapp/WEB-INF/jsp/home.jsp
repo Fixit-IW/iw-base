@@ -15,10 +15,11 @@
 
 	<div class="container" style="height:100%;">
 		<div class="row justify-content-center">
-			<div class="col-md-10 col-md-offset-2">
+			<div class="col-md-10 col-md-offset-5">
 				<div class="probootstrap-home-search probootstrap-animate">
 					<form action="" method="post">
 						<h2 class="text-center">Search your next dream home here</h2>
+						
 						<div class="probootstrap-field-group">
 							<div class="probootstrap-fields">
 								<div class="search-field">

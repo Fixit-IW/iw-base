@@ -76,7 +76,10 @@ public class RootController {
 	}
 	
 	@GetMapping("/profile")
-
+<<<<<<< HEAD
+	public String profile() {
+		return "profile";
+=======
 	public String profile( HttpSession session, Principal principal) {
 		if (session.getAttribute("u") == null) {
 			User u = (User)entityManager.createNamedQuery("userByLogin")
@@ -84,7 +87,7 @@ public class RootController {
 			session.setAttribute("u", u);
 		}
 		return "Profile";
-
+>>>>>>> 89d461f1d2c32f18784d314a1d742e012db46069
 	}
 	
 }

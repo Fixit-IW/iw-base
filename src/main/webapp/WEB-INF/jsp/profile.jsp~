@@ -29,7 +29,15 @@
 					Missouri, USA. Have a passion for designing detailed, creative and
 					modern websites & graphics.</p>
 			</div>
-
+<<<<<<< HEAD:src/main/webapp/WEB-INF/jsp/profile.jsp
+			<ul class="basic-info">
+		       	<li><h3>BASIC INFO</h3></li>
+				<li><label>Name</label><span>John Doe</span></li>
+				<li><label>Birthdate</label><span>December 5, 1990</span></li>
+				<li><label>Address</label><span>Kansas City, Missouri</span></li>
+				<li><label>Phone</label><span>+000 000 000 000</span></li>
+				<li><label>Website</label><span>www.website.com</span></li>
+=======
 			<ul class="list-group">
 				<li class="list-group-item"><h3>BASIC INFO</h3></li>
 				<li class="list-group-item"><label>Name</label><span>${u.nickName}</span></li>
@@ -37,7 +45,7 @@
 				<li class="list-group-item"><label>Address</label><span>Kansas City, Missouri</span></li>
 				<li class="list-group-item"><label>Zipcode</label><span>${u.dni}</span></li>
 				<li class="list-group-item"><label>Website</label><span>www.website.com</span></li>
-
+>>>>>>> 89d461f1d2c32f18784d314a1d742e012db46069:src/main/webapp/WEB-INF/jsp/Profile.jsp
 			</ul>
 		</div>
 		<div id="resume">

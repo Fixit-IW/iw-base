@@ -1,13 +1,17 @@
 package es.ucm.fdi.iw.model;
 
 
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
-
+@NamedQueries({
+	@NamedQuery(name="userByLogin",
+			query="select u from User u where u.nickName = :loginParam")
+})
 @Entity
 public class User {
 	private long id;
