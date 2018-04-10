@@ -69,6 +69,7 @@ public class RootController {
 	}
 	@GetMapping("/profile")
 	public String profile() {
-		return "Profile";
+		return "profile";
 	}
+	
 }

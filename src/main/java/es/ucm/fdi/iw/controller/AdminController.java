@@ -7,8 +7,11 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
@@ -59,24 +62,13 @@ public class AdminController {
 		return "admin";	
 	}
 
-	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
-	@Transactional
-	public String addUser(
-			@RequestParam String nickName, 
-			@RequestParam String password, 
-			@RequestParam(required=false) String isAdmin, Model m) {
-		User u = new User();
-		u.setNickName(nickName);
-		u.setPassword(passwordEncoder.encode(password));
-		u.setRoles("on".equals(isAdmin) ? "ADMIN,USER" : "USER");
-		entityManager.persist(u);
-		
-		entityManager.flush();
-		m.addAttribute("users", entityManager
-				.createQuery("select u from User u").getResultList());
-		
-		return "admin";
+	private void dumpRequest(HttpServletRequest request) {
+		for (Map.Entry<String, String[]> e : request.getParameterMap().entrySet()) {
+			log.info("\t" + e.getKey() + ": " + Arrays.toString(e.getValue()));
+		}
 	}
+	
+
 	
 	/**
 	 * Returns a users' photo

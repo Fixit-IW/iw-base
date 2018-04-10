@@ -30,7 +30,7 @@
 					modern websites & graphics.</p>
 			</div>
 			<ul class="basic-info">
-				<li><h3>BASIC INFO</h3></li>
+		       	<li><h3>BASIC INFO</h3></li>
 				<li><label>Name</label><span>John Doe</span></li>
 				<li><label>Birthdate</label><span>December 5, 1990</span></li>
 				<li><label>Address</label><span>Kansas City, Missouri</span></li>

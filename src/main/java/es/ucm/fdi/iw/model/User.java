@@ -17,8 +17,9 @@ public class User {
 	private byte enabled;
 	private String realFirstName;
 	private String realLastName;
-	private int dni;
-	private int zipCode;
+	private String dni;
+	private String zipCode;
+	private String birthDate;
 	
 	@Id
 	@GeneratedValue
@@ -78,27 +79,27 @@ public class User {
 	public void setRealLastName(String rln) {
 		this.realLastName = rln;
 	}
-	public int getDni() {
+	public String getDni() {
 		return dni;
 	}
 	@Column(unique=true)
-	public void setDni(int nDni) {
+	public void setDni(String nDni) {
 		this.dni = nDni;
 	}
 	
-	/*public Date getBirthDate() {
+	public String getBirthDate() {
 		return birthDate;
 	}
 	
-	public void setBirthDate(Date nBirthDate) {
+	public void setBirthDate(String nBirthDate) {
 		this.birthDate = nBirthDate;
-	}*/
+	}
 	
-	public int getZipCode() {
+	public String getZipCode() {
 		return zipCode;
 	}
 	
-	public void setZipCode(int nzp) {
+	public void setZipCode(String nzp) {
 		this.zipCode = nzp;
 	}
 }

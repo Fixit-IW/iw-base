@@ -10,12 +10,12 @@
 		<div class="row justify-content-center">
 			<div class="col-md-10 col-md-offset-2">
 
-				<h1>Admin</h1>
+				<h1>Sign Up</h1>
 				<p class="lead">Información muy confidencial</p>
 
 				<hr />
 
-				<form action="/admin/addUser" method="post">
+				<form action="/register/addUser" method="post">
 					<div class="form-group">
 						<label for="nickName">User name </label> <input class="form-control"
 							name="nickName" />
@@ -52,59 +52,12 @@
 
 				<hr />
 
-				<table>
-					<thead>
-						<tr>
-							<th>id
-							<th>login
-							<th>roles
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${users}" var="u">
-							<tr>
-								<td>${u.id}
-								<td>${u.nickName}
-								<td>${u.roles}
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+				
 			</div>
 		</div>
 	</div>
 </section>
-<section class=" probootstrap-section-half">
-	<div class="container">
-		<div class="row">
-			<c:forEach items="${users}" var="u">
-				<div class="col-md-4 col-sm-6">
-					<div class="probootstrap-card probootstrap-listing">
-						<div class="probootstrap-card-media">
-							<img src="admin/photo/${u.nickName}" class="img-fluid"> <a
-								href="#" class="probootstrap-love"><i class="icon-heart"></i></a>
-						</div>
-						<div class="probootstrap-card-text">
-							<h2 class="probootstrap-card-heading">
-								<a href="#">${u.nickName }</a>
-							</h2>
-							<div class="probootstrap-listing-location">
-								<span>${u.id}</span>
-							</div>
-							<div class="probootstrap-listing-category for-sale">
-								<span>${u.roles}</span>
-							</div>
-							<div class="probootstrap-listing-price">
-								<strong>$1,121,000</strong>
-								<p>/ month</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</c:forEach>
-		</div>
-	</div>
-</section>
+
 
 <%@ include file="../jspf/authinfo.jspf"%>
 </div>

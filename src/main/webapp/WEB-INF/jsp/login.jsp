@@ -23,7 +23,8 @@
 						<div class="form-group">
 							<label for="password">Password</label>
 							<input type="password" class="form-control"
-								id="password" name="password" placeholder="Password" /> <input
+								id="password" name="password" placeholder="Password" /> 
+							<input
 								type="hidden" name="${_csrf.parameterName}"
 								value="${_csrf.token}" />
 						</div>
