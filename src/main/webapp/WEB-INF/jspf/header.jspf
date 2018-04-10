@@ -11,12 +11,13 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Fixit &mdash; Damos una segunda oportunidad a tus
 	aparatos tecnológicos</title>
+	<link rel="icon" type="image/png"  href = "${s}/img/sapo.png" >
+	
 <meta name="description" content="Fixit we fix your tech">
 <meta name="keywords" content="fix phone tech pc mac">
 
 
-<link
-	href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700"
+<link	href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700"
 	rel="stylesheet">
 
 <link rel="stylesheet" href="${s}/css/bootstrap/bootstrap.css">
@@ -31,8 +32,6 @@
 	href="${s}/fonts/fontawesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="${s}/css/bootstrap-datepicker.css">
 <link rel="stylesheet" href="${s}/css/select2.css">
-
-
 <link rel="stylesheet" href="${s}/css/helpers.css">
 <link rel="stylesheet" href="${s}/css/style.css">
 <link rel="stylesheet" href="${s}/css/custom.css">

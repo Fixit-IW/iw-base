@@ -3,6 +3,7 @@ package es.ucm.fdi.iw.controller;
 import java.security.Principal;
 
 import javax.persistence.EntityManager;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,11 +33,17 @@ public class RootController {
     }
 
 	@GetMapping({"/", "/index"})
-	public String root(Model model, Principal principal) {
+	public String root(Model model,HttpSession session, Principal principal) {
 		if (principal == null) {
 			log.info("Ha entrado uno nuevo!");
+			
 		} else {
 			log.info(principal.getName() + " de tipo " + principal.getClass());		
+			if (session.getAttribute("u") == null) {
+				User u = (User)entityManager.createNamedQuery("userByLogin")
+					.setParameter("loginParam", principal.getName()).getSingleResult();
+				session.setAttribute("u", u);
+			}
 		// org.springframework.security.core.userdetails.User
 		}
 		return "home";
@@ -67,8 +74,14 @@ public class RootController {
 	public String upload() {
 		return "upload";
 	}
+	
 	@GetMapping("/profile")
-	public String profile() {
+	public String profile( HttpSession session, Principal principal) {
+		if (session.getAttribute("u") == null) {
+			User u = (User)entityManager.createNamedQuery("userByLogin")
+				.setParameter("loginParam", principal.getName()).getSingleResult();
+			session.setAttribute("u", u);
+		}
 		return "Profile";
 	}
 }

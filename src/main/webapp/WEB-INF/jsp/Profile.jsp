@@ -21,7 +21,7 @@
 				<div class="profile-photo">
 					<img src="images/profile-picture.png" width="127" height="154" />
 				</div>
-				<h1>JOHN DOE</h1>
+				<h1><sec:authentication property="principal.username" /> </h1>
 				<h3>
 					<i>Web Designer/Video Editor</i>
 				</h3>
@@ -29,13 +29,13 @@
 					Missouri, USA. Have a passion for designing detailed, creative and
 					modern websites & graphics.</p>
 			</div>
-			<ul class="basic-info">
-				<li><h3>BASIC INFO</h3></li>
-				<li><label>Name</label><span>John Doe</span></li>
-				<li><label>Birthdate</label><span>December 5, 1990</span></li>
-				<li><label>Address</label><span>Kansas City, Missouri</span></li>
-				<li><label>Phone</label><span>+000 000 000 000</span></li>
-				<li><label>Website</label><span>www.website.com</span></li>
+			<ul class="list-group">
+				<li class="list-group-item"><h3>BASIC INFO</h3></li>
+				<li class="list-group-item"><label>Name</label><span>${u.nickName}</span></li>
+				<li class="list-group-item"><label>Birthdate</label><span>${u.dni}</span></li>
+				<li class="list-group-item"><label>Address</label><span>Kansas City, Missouri</span></li>
+				<li class="list-group-item"><label>Zipcode</label><span>${u.dni}</span></li>
+				<li class="list-group-item"><label>Website</label><span>www.website.com</span></li>
 			</ul>
 		</div>
 		<div id="resume">
