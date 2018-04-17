@@ -12,6 +12,8 @@ import javax.persistence.NamedQuery;
 	@NamedQuery(name="userByLogin",
 			query="select u from User u where u.nickName = :loginParam")
 })
+
+
 @Entity
 public class User {
 	private long id;

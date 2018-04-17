@@ -1,37 +1,26 @@
 package es.ucm.fdi.iw.controller;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 import es.ucm.fdi.iw.LocalData;
+import es.ucm.fdi.iw.model.DeviceType;
+import es.ucm.fdi.iw.model.Offer;
 import es.ucm.fdi.iw.model.User;
 
 @Controller	
@@ -98,6 +87,29 @@ public class RegisterController {
 				.createQuery("select u from User u").getResultList());
 		
 		return "login";
+	}
+	
+	@RequestMapping(value = "/o", method = RequestMethod.POST)
+	@Transactional
+	public String addOferta() {
+		Offer o = new Offer();
+		o.setDate("asda");
+		o.setDescription("hola se me ha roto la pantalla");
+		o.setDeviceType(DeviceType.MOBILE);
+		o.setEnabled((byte) 1);;
+		o.setNPhotos();
+		o.setTitle("hola soy angel");
+		o.setZipCode("212");
+		
+		
+		//u.setRoles("on".equals(isAdmin) ? "ADMIN,USER" : "USER");
+		//entityManager.persist(o);
+		
+		/*entityManager.flush();
+		m.addAttribute("users", entityManager
+				.createQuery("select u from User u").getResultList());*/
+		
+		return "offer";
 	}
 	
 	
