@@ -83,7 +83,7 @@ public class RootController {
 				.setParameter("loginParam", principal.getName()).getSingleResult();
 			session.setAttribute("u", u);
 		}
-		return "Profile";
+		return "profile";
 
 	}
 	
