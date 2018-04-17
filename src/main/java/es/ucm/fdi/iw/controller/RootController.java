@@ -76,7 +76,6 @@ public class RootController {
 	}
 	
 	@GetMapping("/profile")
-
 	public String profile( HttpSession session, Principal principal) {
 		if (session.getAttribute("u") == null) {
 			User u = (User)entityManager.createNamedQuery("userByLogin")
