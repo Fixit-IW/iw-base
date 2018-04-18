@@ -1388,16 +1388,16 @@ pre {
     outline: none; }
   .form-control::-webkit-input-placeholder {
     color: #868e96;
-    opacity: 1; }
+    opacity: 0.5; }
   .form-control:-ms-input-placeholder {
     color: #868e96;
-    opacity: 1; }
+    opacity: 0.5; }
   .form-control::-ms-input-placeholder {
     color: #868e96;
-    opacity: 1; }
+    opacity: 0.5; }
   .form-control::placeholder {
     color: #868e96;
-    opacity: 1; }
+    opacity: 0.5; }
   .form-control:disabled, .form-control[readonly] {
     background-color: #e9ecef;
     opacity: 1; }
@@ -1508,9 +1508,9 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 
 .form-check-input {
   position: absolute;
-  margin-top: 0.25rem;
-  margin-left: -1.25rem; }
-  .form-check-input:only-child {
+  margin-top: 0.53rem;
+} 
+ .form-check-input:only-child {
     position: static; }
 
 .form-check-inline {

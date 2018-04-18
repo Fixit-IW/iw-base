@@ -66,6 +66,7 @@ public class RegisterController {
 			@RequestParam("lastName") String lastName,
 			@RequestParam("DNI") String DNI,
 			@RequestParam("zipCode") String zipCode,
+			//@RequestParam("roles") String roles,
 			// @RequestParam String birthDate,
 			//@RequestParam(required=false) String isAdmin,
 			Model m) {

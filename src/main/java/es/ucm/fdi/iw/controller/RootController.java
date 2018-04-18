@@ -85,5 +85,14 @@ public class RootController {
 		return "profile";
 
 	}
-	
+	@GetMapping("/contact")
+	public String contact()
+	{
+		return "contact";
+	}
+	@GetMapping("/anounce")
+	public String anounce()
+	{
+		return "anounce";
+	}
 }

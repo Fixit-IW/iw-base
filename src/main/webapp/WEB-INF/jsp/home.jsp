@@ -10,7 +10,7 @@
 
 
 <section class="probootstrap-cover overflow-hidden relative"
-	style="background-image: url('${s}/images/bg_1.jpg');"
+	style="background-image: ${s}/img/bg_1.jpg"
 	data-stellar-background-ratio="0.5" id="section-home">
 	<div class="overlay"></div>
 
@@ -19,7 +19,7 @@
 			<div class="col-md-10 col-md-offset-5">
 				<div class="probootstrap-home-search probootstrap-animate">
 					<form action="" method="post">
-						<h2 class="text-center">Search your next dream home here</h2>
+						<h2 class="text-center">Search your next dream repair here</h2>
 						
 						<div class="probootstrap-field-group">
 							<div class="probootstrap-fields">

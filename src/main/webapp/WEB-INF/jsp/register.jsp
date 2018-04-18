@@ -26,6 +26,8 @@
 							type="password" name="password" />
 						</label>
 					</div>
+
+
 					<div class="form-group">
 						<label for="firstName">First name </label> <input class="form-control"
 							name="firstName" />
@@ -41,6 +43,19 @@
 					<div class="form-group">
 						<label for="zipCode">Zip code </label> <input class="form-control" 
 							type="text" name="zipCode" />
+							</div>
+					<div class="form-check">
+    				<input type="checkbox" class="form-check-input" id="roles" onclick="myFunction()">
+   						 <label class="form-check-label" >Are you technician?</label>
+  						</div>
+					
+					<div id="tecnico" style= "display:none">
+						<div class="form-group">
+						<label for="zipCode">PatriNoTePiques </label> <input class="form-control" 
+							type="text" placeholder="Sí, sí me pico" name="zipCode" />
+							
+					</div>
+					
 					</div>
 					<div class="form-actions">
 						<button type="submit" class="btn btn-primary">Create user</button>
@@ -58,6 +73,7 @@
 	</div>
 </section>
 
+<script src="${s}/js/ourFunctions.js"></script>
 
 <%@ include file="../jspf/authinfo.jspf"%>
 </div>

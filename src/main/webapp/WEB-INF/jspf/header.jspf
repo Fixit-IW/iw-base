@@ -65,13 +65,12 @@
 							<li class="nav-item"><a class="nav-link" href="/admin">Admin</a></li>
 							<li class="nav-item"><a class="nav-link" href="/upload">Upload</a></li>
 						</sec:authorize>
-						<li class="nav-item"><a class="nav-link" href="/profile">Perfil</a></li>
-						<li class="nav-item"><a class="nav-link" href="/publicar">Publicar
-								anuncio</a></li>
+						<li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
+						<li class="nav-item"><a class="nav-link" href="/anounce">Post Offer</a></li>
+					<li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
 						<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
 					</sec:authorize>
 
-					<li class="nav-item"><a class="nav-link" href="/buscar">Buscar</a></li>
 				</ul>
 			</div>
 		</div>
