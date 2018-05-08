@@ -1,12 +1,17 @@
 package es.ucm.fdi.iw.model;
 
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 @NamedQueries({
 	@NamedQuery(name="userByLogin",
@@ -27,6 +32,11 @@ public class User {
 	private String zipCode;
 	private String birthDate;
 	
+	private List<Offer> offers;
+	
+	private List<Valoracion> salientes;
+	private List<Valoracion> entrantes;
+	
 	@Id
 	@GeneratedValue
 	public long getId() {
@@ -44,6 +54,37 @@ public class User {
 
 	public void setNickName(String login) {
 		this.nickName = login;
+	}
+
+	@OneToMany(targetEntity = Valoracion.class, fetch = FetchType.EAGER)
+	@JoinColumn(name = "origen_id")	
+	public List<Valoracion> getSalientes() {
+		return salientes;
+	}
+
+	public void setSalientes(List<Valoracion> salientes) {
+		this.salientes = salientes;
+	}
+
+	@OneToMany(targetEntity = Valoracion.class, fetch = FetchType.EAGER)
+	@JoinColumn(name = "destino_id")
+	public List<Valoracion> getEntrantes() {
+		return entrantes;
+	}
+
+	
+	@OneToMany(targetEntity = Offer.class)
+	@JoinColumn(name = "publisher_id")
+	public List<Offer> getOffers() {
+		return offers;
+	}
+	
+	public void setOffers(List<Offer> offers) {
+		this.offers = offers;
+	}
+
+	public void setEntrantes(List<Valoracion> entrantes) {
+		this.entrantes = entrantes;
 	}
 
 	public String getPassword() {

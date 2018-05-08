@@ -93,15 +93,6 @@ public class RegisterController {
 	@RequestMapping(value = "/o", method = RequestMethod.POST)
 	@Transactional
 	public String addOferta() {
-		Offer o = new Offer();
-		o.setDate("asda");
-		o.setDescription("hola se me ha roto la pantalla");
-		o.setDeviceType(DeviceType.MOBILE);
-		o.setEnabled((byte) 1);;
-		o.setNPhotos();
-		o.setTitle("hola soy angel");
-		o.setZipCode("212");
-		
 		
 		//u.setRoles("on".equals(isAdmin) ? "ADMIN,USER" : "USER");
 		//entityManager.persist(o);

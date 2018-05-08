@@ -1,6 +1,7 @@
 package es.ucm.fdi.iw.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpSession;
@@ -14,7 +15,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import es.ucm.fdi.iw.model.DeviceType;
+import es.ucm.fdi.iw.model.Offer;
 import es.ucm.fdi.iw.model.User;
+import es.ucm.fdi.iw.model.Valoracion;
 
 @Controller	
 public class RootController {
@@ -31,6 +35,12 @@ public class RootController {
     public void addAttributes(Model model) {
         model.addAttribute("s", "/static");
     }
+    
+    private void refreshUserSession(HttpSession session, Principal principal) {
+    	User u = (User)entityManager.createNamedQuery("userByLogin")
+				.setParameter("loginParam", principal.getName()).getSingleResult();
+			session.setAttribute("user", u);
+    }
 
 	@GetMapping({"/", "/index"})
 	public String root(Model model,HttpSession session, Principal principal) {
@@ -39,11 +49,7 @@ public class RootController {
 			
 		} else {
 			log.info(principal.getName() + " de tipo " + principal.getClass());		
-			if (session.getAttribute("u") == null) {
-				User u = (User)entityManager.createNamedQuery("userByLogin")
-					.setParameter("loginParam", principal.getName()).getSingleResult();
-				session.setAttribute("u", u);
-			}
+			refreshUserSession(session, principal);
 		// org.springframework.security.core.userdetails.User
 		}
 		return "home";
@@ -62,11 +68,49 @@ public class RootController {
 	@GetMapping("/t")
 	@Transactional
 	public String test() {
-		User u = new User();
-		u.setNickName("j");
-		u.setPassword(passwordEncoder.encode("jj"));
-		u.setRoles("USER");
-		entityManager.persist(u);
+		long id1, id2;
+		{
+			User u = new User();
+			u.setNickName("x");
+			u.setPassword(passwordEncoder.encode("x"));
+			u.setRoles("USER");
+			entityManager.persist(u);
+			entityManager.flush();
+			id1 = u.getId();
+		}
+		{
+			User u = new User();
+			u.setNickName("y");
+			u.setPassword(passwordEncoder.encode("y"));
+			u.setRoles("USER");
+			entityManager.persist(u);			
+			entityManager.flush();
+			id2 = u.getId();
+		}
+		{
+			User x = entityManager.find(User.class, id1);
+			User y = entityManager.find(User.class, id2);
+			Valoracion v = new Valoracion();
+			v.setOrigen(x);
+			v.setDestino(y);
+			entityManager.persist(v);			
+			entityManager.flush();
+		
+			Offer o = new Offer();
+			o.setDate("asda");
+			o.setDescription("hola se me ha roto la pantalla");
+			o.setDevice(DeviceType.MOBILE);
+			o.setEnabled((byte) 1);;
+			o.setTitle("hola soy angel");
+			o.setZipCode("212");
+			o.setnPhotos(0);
+			o.setPublisher(x);
+			
+			entityManager.persist(o);
+			entityManager.flush();
+		
+		}
+		
 		return "/";
 	}
 		
@@ -76,12 +120,10 @@ public class RootController {
 	}
 	
 	@GetMapping("/profile")
-	public String profile( HttpSession session, Principal principal) {
-		if (session.getAttribute("u") == null) {
-			User u = (User)entityManager.createNamedQuery("userByLogin")
-				.setParameter("loginParam", principal.getName()).getSingleResult();
-			session.setAttribute("u", u);
-		}
+	public String profile( HttpSession session, Principal principal, Model m) {
+		refreshUserSession(session, principal);
+		m.addAttribute("ofertas", ((User)session.getAttribute("user")).getOffers());
+		
 		return "profile";
 
 	}

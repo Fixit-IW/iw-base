@@ -5,9 +5,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+
 
 @NamedQueries({
 	@NamedQuery(name="offerByDeviceType",
@@ -17,13 +18,8 @@ import javax.persistence.Table;
 			query="select o from Offer o where o.zipCode = :zipCodeParam")
 })
 
-
-
-
-
-//@Entity
-//@Table(name = "Offer")
-public class Offer {
+	@Entity
+	public class Offer {
 	private long id;
 	private String title;
 	private String description;
@@ -32,8 +28,10 @@ public class Offer {
 	private String zipCode;
 	private String date;
 	private int nPhotos;
+
+	private User publisher;
 	
-	public static final int MAX_PHOTOS = 4;
+
 	@Id
 	@GeneratedValue
 	public long getId() {
@@ -42,31 +40,30 @@ public class Offer {
 	
 	public void setId(long id) {
 		this.id = id;
-	}	
+	}
 
-	@Column(unique=true)
 	public String getTitle() {
 		return title;
 	}
 
-	public void setTitle(String t) {
-		this.title = t;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public String getDescrition() {
-		return this.description;
-	}
-	
-	public void setDescription(String d) {
-		this.description = d;
+	public String getDescription() {
+		return description;
 	}
 
-	public DeviceType getDeviceType() {
-		return this.device;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public void setDeviceType(DeviceType dt) {
-		this.device = dt;
+	public DeviceType getDevice() {
+		return device;
+	}
+
+	public void setDevice(DeviceType device) {
+		this.device = device;
 	}
 
 	public byte getEnabled() {
@@ -76,39 +73,38 @@ public class Offer {
 	public void setEnabled(byte enabled) {
 		this.enabled = enabled;
 	}
-	
-	
-	public String getDate() {
-		return date;
-	}
-	
-	public void setDate(String d) {
-		this.date = d;
-	}
-	
+
 	public String getZipCode() {
 		return zipCode;
 	}
-	
-	public void setZipCode(String nzp) {
-		this.zipCode = nzp;
-	}
-	
 
-	public int getNPhotos() {
-		return this.nPhotos;
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
 	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public int getnPhotos() {
+		return nPhotos;
+	}
+
+	public void setnPhotos(int nPhotos) {
+		this.nPhotos = nPhotos;
+	}
+
+	@ManyToOne(targetEntity = User.class)
+	public User getPublisher() {
+		return publisher;
+	}
+	public void setPublisher(User publisher) {
+		this.publisher = publisher;
+	}	
+
 	
-	public void setNPhotos() {
-		this.nPhotos = 0;
-	}
-	
-	public int addPhoto() {
-		if(this.nPhotos < this.MAX_PHOTOS) {
-			this.nPhotos++;
-			return this.nPhotos;
-		}
-		else 
-			return -1;	
-	}
 }

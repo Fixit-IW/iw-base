@@ -49,6 +49,26 @@
 			
 			
 		</div>
+		
+		<ul>
+		<c:forEach items="${user.offers}" var="v">
+			<li>ha ofertado ${v.publisher.id}
+		</c:forEach>
+		</ul>
+		
+		
+		<ul>
+		<c:forEach items="${user.salientes}" var="v">
+			<li>ha valorado a ${v.destino.id}
+		</c:forEach>
+		</ul>
+
+		<ul>
+		<c:forEach items="${user.entrantes}" var="v">
+			<li>ha sido valorado por ${v.origen.id}
+		</c:forEach>
+		</ul>
+
 	
 </section>
 
