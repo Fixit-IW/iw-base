@@ -1,6 +1,9 @@
 package es.ucm.fdi.iw.controller;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
@@ -90,18 +93,31 @@ public class RegisterController {
 		return "login";
 	}
 	
-	@RequestMapping(value = "/o", method = RequestMethod.POST)
+	@RequestMapping(value = "/addOffer", method = RequestMethod.POST)
 	@Transactional
-	public String addOferta() {
+	public String addOferta(HttpServletRequest request,
+			@RequestParam("offerTitle") String offerTitle,
+			@RequestParam("device") int device,
+			@RequestParam("description") String description,
+			@RequestParam("photos") File photos,
+			Model m) {
+		dumpRequest(request);
+		Offer o = new Offer();
 		
+		o.setTitle(offerTitle);
+		o.setDescription(description);
+		o.setDevice(DeviceType.values()[device]);
 		//u.setRoles("on".equals(isAdmin) ? "ADMIN,USER" : "USER");
-		//entityManager.persist(o);
-		
-		/*entityManager.flush();
+		o.setDate(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
+		o.setnPhotos(1);
+		o.setZipCode("28030");
+		entityManager.persist(o);
+		entityManager.flush();
+		/*
 		m.addAttribute("users", entityManager
 				.createQuery("select u from User u").getResultList());*/
 		
-		return "offer";
+		return "home";
 	}
 	
 	

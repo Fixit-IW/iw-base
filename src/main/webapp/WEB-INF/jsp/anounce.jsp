@@ -10,80 +10,65 @@
 		<div class="row justify-content-center">
 			<div class="col-md-10 col-md-offset-2">
 
-				<h1>Poner anuncio</h1>
-				<p class="lead">Información muy confidencial</p>
-
-				<hr />
-
-			
-				<div class="form-actions">
-					<button type="button" class="btn btn-primary" onclick="showClientOffer()">Create offer</button>
-				</div>
+				<h1>Make Offer</h1>
 				
-				<div class="form-actions">
-					<button type="button" class="btn btn-primary" onclick="showTechnicianOffer()">Create user</button>
-				</div>
 					
 					
-					
-						<form action="/register/addUser" method="post">
+					<div >
+						<form action="/register/addOffer" method="post">
 					<div class="form-group">
-						<label for="nickName">User name </label> <input class="form-control"
-							name="nickName" />
+						<label for="offerTitle">Repair title </label> <input class="form-control"
+							name="offerTitle" />
 					</div>
 
-					<div class="form-group">
-						<label for="password">Password <input class="form-control"
-							type="password" name="password" />
-						</label>
-					</div>
-
-
-					<div class="form-group">
-						<label for="firstName">First name </label> <input class="form-control"
-							name="firstName" />
-					</div>
-					<div class="form-group">
-						<label for="lastName">Last name </label> <input class="form-control"
-							name="lastName" />
-					</div>
-					<div class="form-group">
-						<label for="DNI">DNI </label> <input class="form-control" 
-							type="text" name="DNI" />
-					</div>
-					<div class="form-group">
-						<label for="zipCode">Zip code </label> <input class="form-control" 
-							type="text" name="zipCode" />
-							</div>
-					<div class="form-check">
-    				<input type="checkbox" class="form-check-input" id="roles" onclick="myFunction()">
-   						 <label class="form-check-label" >Are you technician?</label>
-  						</div>
 					
-					<div id="tecnico" style= "display:none">
-						<div class="form-group">
-						<label for="zipCode">PatriNoTePiques </label> <input class="form-control" 
-							type="text" placeholder="Sí, sí me pico" name="zipCode" />
-							
+
+
+					<div class="form-group"> <!-- hacer que salga nuestro despegable -->
+						<label for="device" >Type</label> 
+						<select name="device">
+					    <option value="0">Mobile</option>
+					    <option value="1">Iphone</option>
+					    <option value="2">Laptop</option>
+					    <option value="3">PC</option>
+					    <option value="4">Mac</option>
+					    <option value="5">Macbook</option>
+					    <option value="6">Headphones</option>
+					    <option value="7">Monitor</option>
+					    <option value="8">Mouse</option>
+					    <option value="9">Keyboard</option>
+					    <option value="10">Others</option>
+					     </select>
+					</div>
+					
+					<div class="form-group">
+						<label for="description">Description</label>
+						 <textarea class="form-control" name="description"
+						rows="3"></textarea>
+					</div>
+					
+					<div class="form-group">
+					<label for="photos">Photos</label>
+					<input type="file" name="photos"/>
+					<div> <input
+						name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}" />
+					</div>
 					</div>
 					
 					</div>
 					<div class="form-actions">
-						<button type="submit" class="btn btn-primary">Create user</button>
+						<button type="submit" class="btn btn-primary">Post Offer</button>
 					</div>
 					<input
 						type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" />
 				</form>
-
 				<hr />
+				</div>
 
 				
 			</div>
 		</div>
-	</div>
 </section>
-
-</div>
 
 <%@ include file="../jspf/footer.jspf"%>

@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -37,12 +38,24 @@ public class User {
 	private List<Valoracion> salientes;
 	private List<Valoracion> entrantes;
 	
+	private List<Repair> reparaciones;
+	
 	@Id
 	@GeneratedValue
 	public long getId() {
 	return id;
 	}
 	
+	
+	@OneToMany(targetEntity = Repair.class)
+	public List<Repair> getReparaciones() {
+		return reparaciones;
+	}
+
+	public void setReparaciones(List<Repair> reparaciones) {
+		this.reparaciones = reparaciones;
+	}
+
 	public void setId(long id) {
 		this.id = id;
 	}	
