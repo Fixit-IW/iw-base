@@ -1,7 +1,7 @@
 # output folders
 *.class
 /target/
-
+/sts-bundle/
 # STS project files
 .classpath
 .settings/
