@@ -36,6 +36,12 @@ public class RootController {
         model.addAttribute("s", "/static");
     }
     
+    
+    static User getUser(HttpSession session, EntityManager entityManager) {
+    	return entityManager.find(User.class, 
+    			((User)session.getAttribute("user")).getId());
+    }
+    
     private void refreshUserSession(HttpSession session, Principal principal) {
     	User u = (User)entityManager.createNamedQuery("userByLogin")
 				.setParameter("loginParam", principal.getName()).getSingleResult();
@@ -103,7 +109,6 @@ public class RootController {
 			o.setEnabled((byte) 1);;
 			o.setTitle("hola soy angel");
 			o.setZipCode("212");
-			o.setnPhotos(0);
 			o.setPublisher(x);
 			
 			entityManager.persist(o);

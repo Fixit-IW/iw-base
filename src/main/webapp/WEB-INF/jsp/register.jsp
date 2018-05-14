@@ -15,59 +15,81 @@
 
 				<hr />
 
-				<form action="/register/addUser" method="post">
+				<form action="/register/addUser" method="post"
+					data-toggle="validator" role="form">
 					<div class="form-group">
-						<label for="nickName">User name </label> <input class="form-control"
-							name="nickName" />
-					</div>
-
-					<div class="form-group">
-						<label for="password">Password <input class="form-control"
-							type="password" name="password" />
-						</label>
-					</div>
-
-
-					<div class="form-group">
-						<label for="firstName">First name </label> <input class="form-control"
-							name="firstName" />
+						<label for="nickName">User name </label> <input
+							class="form-control" name="nickName" required />
 					</div>
 					<div class="form-group">
-						<label for="lastName">Last name </label> <input class="form-control"
-							name="lastName" />
+						<label for="Email">Email</label> <input id="Email" name="email"
+							placeholder="you@example.com" class="form-input" required=""
+							size="30" type="email" required>
 					</div>
 					<div class="form-group">
-						<label for="DNI">DNI </label> <input class="form-control" 
-							type="text" name="DNI" />
-					</div>
-					<div class="form-group">
-						<label for="zipCode">Zip code </label> <input class="form-control" 
-							type="text" name="zipCode" />
+						<label for="inputPassword" class="control-label">Password</label>
+						<div class="form-inline row">
+							<div class="form-group col-sm-6">
+								<input type="password" data-minlength="6" class="form-control"
+									id="inputPassword" placeholder="Password" required>
+								<div class="help-block">Minimum of 6 characters</div>
 							</div>
-					<div class="form-check">
-    				<input type="checkbox" class="form-check-input" id="roles" onclick="myFunction()">
-   						 <label class="form-check-label" >Are you technician?</label>
-  						</div>
-					
-					<div id="tecnico" style= "display:none">
-						<div class="form-group">
-						<label for="zipCode">PatriNoTePiques </label> <input class="form-control" 
-							type="text" placeholder="Sí, sí me pico" name="zipCode" />
-							
+							<div class="form-group col-sm-6">
+								<input type="password" name="password" class="form-control"
+									id="inputPasswordConfirm" data-match="#inputPassword"
+									data-match-error="Whoops, these don't match"
+									placeholder="Confirm" required>
+								<div class="help-block with-errors"></div>
+							</div>
+						</div>
 					</div>
-					
+
+
+					<div class="form-group">
+						<label for="firstName">First name </label> <input
+							class="form-control" name="firstName" required />
+					</div>
+					<div class="form-group">
+						<label for="lastName">Last name </label> <input
+							class="form-control" name="lastName" required />
+					</div>
+					<div class="form-group">
+						<label for="DNI">DNI </label> <input class="form-control"
+							type="text" name="DNI" required />
+					</div>
+					<div class="form-group">
+						<label for="zipCode">Zip code </label> <input class="form-control"
+							type="text" name="zipCode" />
+					</div>
+					<div class="form-group">
+						<label for="birthDate">Birthdate </label> <input
+							class="form-control" type="date" name="birthDate" />
+					</div>
+					<div class="form-check">
+						<input type="checkbox" class="form-check-input" id="roles"
+							onclick="myFunction()"> <label class="form-check-label">Are
+							you technician?</label>
+					</div>
+
+					<div id="tecnico" style="display: none">
+						<div class="form-group">
+							<label for="zipCode">PatriNoTePiques </label> <input
+								class="form-control" type="text" placeholder="Sí, sí me pico"
+								name="zipCode" />
+
+						</div>
+
 					</div>
 					<div class="form-actions">
 						<button type="submit" class="btn btn-primary">Create user</button>
 					</div>
-					<input
-						type="hidden" name="${_csrf.parameterName}"
+					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" />
 				</form>
 
 				<hr />
 
-				
+
 			</div>
 		</div>
 	</div>

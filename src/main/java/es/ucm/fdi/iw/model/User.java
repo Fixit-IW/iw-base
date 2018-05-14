@@ -14,16 +14,19 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
+import org.hibernate.validator.constraints.Email;
+
 @NamedQueries({
 	@NamedQuery(name="userByLogin",
 			query="select u from User u where u.nickName = :loginParam")
 })
 
-
 @Entity
 public class User {
 	private long id;
 	private String nickName;
+	private String email;
+
 	private String password;
 	private String roles; // split by , to separate roles
 	private byte enabled;
@@ -56,6 +59,15 @@ public class User {
 		this.reparaciones = reparaciones;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+	
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 	public void setId(long id) {
 		this.id = id;
 	}	

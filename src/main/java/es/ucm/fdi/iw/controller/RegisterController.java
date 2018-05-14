@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,22 +66,24 @@ public class RegisterController {
 	public String addUser(HttpServletRequest request,
 			@RequestParam String nickName, 
 			@RequestParam String password,
+			@RequestParam ("email")String email,
 			@RequestParam("firstName") String firstName,
 			@RequestParam("lastName") String lastName,
 			@RequestParam("DNI") String DNI,
 			@RequestParam("zipCode") String zipCode,
 			//@RequestParam("roles") String roles,
-			// @RequestParam String birthDate,
+			@RequestParam ("birthDate")String birthDate,
 			//@RequestParam(required=false) String isAdmin,
 			Model m) {
 		dumpRequest(request);
 		User u = new User();
+		u.setEmail(email);
 		u.setNickName(nickName);
 		u.setPassword(passwordEncoder.encode(password));
 		u.setRealFirstName(firstName);
 		u.setRealLastName(lastName);
 		u.setDni(DNI);
-		u.setBirthDate("0");
+		u.setBirthDate(birthDate);
 		u.setZipCode(zipCode);
 		u.setRoles("USER");
 		//u.setRoles("on".equals(isAdmin) ? "ADMIN,USER" : "USER");
@@ -100,19 +103,22 @@ public class RegisterController {
 			@RequestParam("device") int device,
 			@RequestParam("description") String description,
 			@RequestParam("photos") File photos,
+			HttpSession session,
 			Model m) {
 		dumpRequest(request);
 		Offer o = new Offer();
 		
+		User u = RootController.getUser(session, entityManager);
+		
+		o.setPublisher(u);
+		o.setPhoto(photos);
 		o.setTitle(offerTitle);
 		o.setDescription(description);
 		o.setDevice(DeviceType.values()[device]);
 		//u.setRoles("on".equals(isAdmin) ? "ADMIN,USER" : "USER");
 		o.setDate(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
-		o.setnPhotos(1);
-		o.setZipCode("28030");
+		o.setZipCode(u.getZipCode());
 		entityManager.persist(o);
-		entityManager.flush();
 		/*
 		m.addAttribute("users", entityManager
 				.createQuery("select u from User u").getResultList());*/

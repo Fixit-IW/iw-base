@@ -1,6 +1,8 @@
 package es.ucm.fdi.iw.model;
 
 
+import java.io.File;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,9 +28,16 @@ import javax.persistence.NamedQuery;
 	private DeviceType device;
 	private byte enabled;
 	private String zipCode;
+	private File photo;
 	private String date;
-	private int nPhotos;
 
+	public File getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(File photo) {
+		this.photo = photo;
+	}
 	private User publisher;
 	
 
@@ -88,14 +97,6 @@ import javax.persistence.NamedQuery;
 
 	public void setDate(String date) {
 		this.date = date;
-	}
-
-	public int getnPhotos() {
-		return nPhotos;
-	}
-
-	public void setnPhotos(int nPhotos) {
-		this.nPhotos = nPhotos;
 	}
 
 	@ManyToOne(targetEntity = User.class)

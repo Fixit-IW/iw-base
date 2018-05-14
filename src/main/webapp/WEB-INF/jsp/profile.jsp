@@ -14,7 +14,7 @@
 						<img src="${s}/img/sapo.png" width="127" height="154" />
 					</div>
 					<h1>
-						${u.nickName}
+						${user.nickName}
 					</h1>
 					
 					
@@ -22,14 +22,40 @@
 
 				<ul class="list-group">
 					<li class="list-group-item"><h3>My profile</h3></li>
-					<li class="list-group-item"><label>Name: </label><span> ${u.realFirstName} ${u.realLastName}</span></li>					
-					<li class="list-group-item"><label>Birthdate: </label><span> 01/12/1997</span></li>
-					<li class="list-group-item"><label>DNI: </label><span> ${u.dni}</span></li>
-					<li class="list-group-item"><label>Zipcode: </label><span> ${u.zipCode}</span></li>
+					<li class="list-group-item"><label>Name: </label><span> ${user.realFirstName} ${user.realLastName}</span></li>					
+					<li class="list-group-item"><label>Birthdate: </label><span> ${user.birthDate}</span></li>
+					<li class="list-group-item"><label>DNI: </label><span> ${user.dni}</span></li>
+					<li class="list-group-item"><label>Zipcode: </label><span> ${user.zipCode}</span></li>
 
 				</ul>
 			</div>
-			
+			<section class=" probootstrap-section-half">
+	<div class="container">
+		<div class="row">
+			<c:forEach items="${user.offers}" var="o">
+				<div class="col-md-4 col-sm-6">
+					<div class="probootstrap-card probootstrap-listing">
+						<div class="probootstrap-card-media">
+							 <img src="admin/${u.}" class="img-fluid"> <a
+								href="#" class="probootstrap-love"><i class="icon-heart"></i></a> 
+						</div>
+						<div class="probootstrap-card-text">
+							<h2 class="probootstrap-card-heading">
+								<a href="#">${o.title}</a>
+							</h2>
+							<div class="probootstrap-listing-location">
+								<span>${o.device}</span>
+							</div>
+							<div class="probootstrap-listing-location">
+								<span>${o.date}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+	</div>
+</section>
 			
 				<div class="col-md-10 col-md-offset-5">
 					<div class="skills-section">
