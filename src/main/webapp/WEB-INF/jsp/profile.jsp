@@ -36,7 +36,7 @@
 				<div class="col-md-4 col-sm-6">
 					<div class="probootstrap-card probootstrap-listing">
 						<div class="probootstrap-card-media">
-							 <img src="admin/${u.}" class="img-fluid"> <a
+							 <a
 								href="#" class="probootstrap-love"><i class="icon-heart"></i></a> 
 						</div>
 						<div class="probootstrap-card-text">

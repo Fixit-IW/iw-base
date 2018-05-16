@@ -18,7 +18,7 @@
 		<div class="row justify-content-center">
 			<div class="col-md-10 col-md-offset-5">
 				<div class="probootstrap-home-search probootstrap-animate">
-					<form action="" method="post">
+					<form action="/register/searchOffers" method="post">
 						<h2 class="text-center">Search your next dream repair here</h2>
 						
 						<div class="probootstrap-field-group">
@@ -26,20 +26,24 @@
 								<div class="search-field">
 									<i class="icon icon-location"></i> <input type="text"
 										class="form-control"
+										name="searchParam"
 										placeholder="Introduce dispositivo, avería, ciudad">
 								</div>
 								<div class="search-category">
-									<i class="icon-chevron-down"></i> <select name="#" id=""
+									<i class="icon-chevron-down"></i> <select name="offerType" id=""
 										class="form-control">
-										<option value="">Técnico</option>
-										<option value="">Reparar</option>
+										<option value="Técnico">Técnico</option>
+										<option value="Reparar">Reparar</option>
 									</select>
 								</div>
 							</div>
-							<button class="btn btn-success" type="submit">
+							<button class="btn btn-success" type="submit" >
 								<i class="icon-FA t2"></i> Start Search
 							</button>
 						</div>
+						<input
+						type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
 					</form>
 				</div>
 			</div>

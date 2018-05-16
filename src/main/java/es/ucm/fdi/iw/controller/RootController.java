@@ -70,6 +70,10 @@ public class RootController {
 	public String logout() {
 		return "logout";
 	}
+	@GetMapping("/offerList")
+	public String offerList() {
+		return "offerList";
+	}
 	
 	@GetMapping("/t")
 	@Transactional

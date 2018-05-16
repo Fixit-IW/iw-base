@@ -19,24 +19,27 @@
 
 				<hr />
 
-				<table>
-					<thead>
-						<tr>
-							<th>id
-							<th>login
-							<th>roles
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${users}" var="u">
-							<tr>
-								<td>${u.id}
-								<td>${u.nickName}
-								<td>${u.roles}
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+			<c:forEach items="${offers}" var="o">
+				<div class="col-md-4 col-sm-6">
+					<div class="probootstrap-card probootstrap-listing">
+						<div class="probootstrap-card-media">
+							 <a
+								href="#" class="probootstrap-love"><i class="icon-heart"></i></a> 
+						</div>
+						<div class="probootstrap-card-text">
+							<h2 class="probootstrap-card-heading">
+								<a href="#">${o.title}</a>
+							</h2>
+							<div class="probootstrap-listing-location">
+								<span>${o.device}</span>
+							</div>
+							<div class="probootstrap-listing-location">
+								<span>${o.date}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
 			</div>
 		</div>
 	</div>
@@ -69,29 +72,6 @@
 					</div>
 				</div>
 			</c:forEach>
-			
-			<c:forEach items="${offers}" var="o">
-				<div class="col-md-4 col-sm-6">
-					<div class="probootstrap-card probootstrap-listing">
-						<div class="probootstrap-card-media">
-							 <a
-								href="#" class="probootstrap-love"><i class="icon-heart"></i></a> 
-						</div>
-						<div class="probootstrap-card-text">
-							<h2 class="probootstrap-card-heading">
-								<a href="#">${o.title}</a>
-							</h2>
-							<div class="probootstrap-listing-location">
-								<span>${o.device}</span>
-							</div>
-							<div class="probootstrap-listing-location">
-								<span>${o.date}</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</c:forEach>
-			
 		</div>
 	</div>
 </section>

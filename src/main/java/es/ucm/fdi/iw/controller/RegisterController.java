@@ -85,7 +85,7 @@ public class RegisterController {
 		u.setDni(DNI);
 		u.setBirthDate(birthDate);
 		u.setZipCode(zipCode);
-		u.setRoles("USER");
+		u.setRoles("technician");
 		//u.setRoles("on".equals(isAdmin) ? "ADMIN,USER" : "USER");
 		entityManager.persist(u);
 		
@@ -119,12 +119,36 @@ public class RegisterController {
 		o.setDate(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
 		o.setZipCode(u.getZipCode());
 		entityManager.persist(o);
-		/*
-		m.addAttribute("users", entityManager
-				.createQuery("select u from User u").getResultList());*/
+		
+		entityManager.flush();
+		m.addAttribute("offers", entityManager
+				.createQuery("select o from Offer o").getResultList());
 		
 		return "home";
 	}
 	
+	
+	@RequestMapping(value = "/searchOffers", method = RequestMethod.POST)
+	public String searchOffers(HttpServletRequest request,
+			@RequestParam("offerType") String offerType,
+			@RequestParam("searchParam") String searchParam,
+			HttpSession session,
+			Model m) {
+		dumpRequest(request);
+		
+		User u = RootController.getUser(session, entityManager);
+		if(offerType == "Reparar") {
+			m.addAttribute("offersSearch", entityManager
+					.createQuery("select o from Offer o where o.title<= :searchParam or o.description<= :searchParam").getResultList());
+		}
+		else if (offerType == "Técnico") {
+			m.addAttribute("technician", entityManager
+					.createQuery("select u from User u where roles =technician").getResultList());
+		
+		}
+	
+		
+		return "offerList";
+	}
 	
 }
