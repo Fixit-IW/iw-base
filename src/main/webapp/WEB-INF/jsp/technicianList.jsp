@@ -28,13 +28,16 @@
 						</div>
 						<div class="probootstrap-card-text">
 							<h2 class="probootstrap-card-heading">
-								<a href="#">${o.title}</a>
+								<a href="#">${o.realFirstName}</a>
 							</h2>
 							<div class="probootstrap-listing-location">
-								<span>${o.device}</span>
+								<span>${o.technicalDescription}</span>
 							</div>
 							<div class="probootstrap-listing-location">
-								<span>${o.date}</span>
+								<span>${o.skills}</span>
+							</div>
+							<div class="probootstrap-listing-location">
+								<span>${o.zipCode}</span>
 							</div>
 						</div>
 					</div>

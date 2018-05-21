@@ -38,6 +38,7 @@ public class RootController {
     
     
     static User getUser(HttpSession session, EntityManager entityManager) {
+    	if((User)session.getAttribute("user") == null) return null;
     	return entityManager.find(User.class, 
     			((User)session.getAttribute("user")).getId());
     }
@@ -61,6 +62,7 @@ public class RootController {
 		return "home";
 	}
 	
+	
 	@GetMapping("/login")
 	public String login() {
 		return "login";
@@ -74,6 +76,10 @@ public class RootController {
 	public String offerList() {
 		return "offerList";
 	}
+	@GetMapping("/technicianList")
+	public String technicianList() {
+		return "technicianList";
+	}
 	
 	@GetMapping("/t")
 	@Transactional
@@ -81,9 +87,9 @@ public class RootController {
 		long id1, id2;
 		{
 			User u = new User();
-			u.setNickName("x");
-			u.setPassword(passwordEncoder.encode("x"));
-			u.setRoles("USER");
+			u.setNickName("b");
+			u.setPassword(passwordEncoder.encode("bb"));
+			u.setRoles("TECHNICIAN,USER,ADMIN");			
 			entityManager.persist(u);
 			entityManager.flush();
 			id1 = u.getId();

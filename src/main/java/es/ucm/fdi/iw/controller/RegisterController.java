@@ -6,11 +6,13 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Map;
 
+import javax.management.Query;
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.apache.tomcat.jni.Mmap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import antlr.collections.List;
 import es.ucm.fdi.iw.LocalData;
 import es.ucm.fdi.iw.model.DeviceType;
 import es.ucm.fdi.iw.model.Offer;
@@ -71,9 +74,10 @@ public class RegisterController {
 			@RequestParam("lastName") String lastName,
 			@RequestParam("DNI") String DNI,
 			@RequestParam("zipCode") String zipCode,
-			//@RequestParam("roles") String roles,
+			@RequestParam(value = "checkBox", required = false) String roles,
 			@RequestParam ("birthDate")String birthDate,
-			//@RequestParam(required=false) String isAdmin,
+			@RequestParam(value = "technicalDescription",  required = false) String description,
+			@RequestParam(value = "skills",  required = false) String skills,
 			Model m) {
 		dumpRequest(request);
 		User u = new User();
@@ -85,7 +89,14 @@ public class RegisterController {
 		u.setDni(DNI);
 		u.setBirthDate(birthDate);
 		u.setZipCode(zipCode);
-		u.setRoles("technician");
+		if(roles == null || roles.equals("false")) {
+			u.setRoles("USER");			
+		}else {
+			u.setRoles("TECHNICIAN");
+			u.setSkills(skills);
+			u.setTechnicalDescription(description);			
+		}
+		
 		//u.setRoles("on".equals(isAdmin) ? "ADMIN,USER" : "USER");
 		entityManager.persist(u);
 		
@@ -129,6 +140,7 @@ public class RegisterController {
 	
 	
 	@RequestMapping(value = "/searchOffers", method = RequestMethod.POST)
+	@Transactional
 	public String searchOffers(HttpServletRequest request,
 			@RequestParam("offerType") String offerType,
 			@RequestParam("searchParam") String searchParam,
@@ -136,19 +148,24 @@ public class RegisterController {
 			Model m) {
 		dumpRequest(request);
 		
-		User u = RootController.getUser(session, entityManager);
-		if(offerType == "Reparar") {
-			m.addAttribute("offersSearch", entityManager
-					.createQuery("select o from Offer o where o.title<= :searchParam or o.description<= :searchParam").getResultList());
-		}
-		else if (offerType == "Técnico") {
-			m.addAttribute("technician", entityManager
-					.createQuery("select u from User u where roles =technician").getResultList());
+		User u = RootController.getUser(session, entityManager);		
 		
+		if(offerType.equals("Reparar")) {
+			
+		    String sP = "%" + searchParam + "%";			
+			javax.persistence.Query q = entityManager.createQuery("SELECT o FROM Offer o WHERE o.title LIKE :searchParam or o.description LIKE :searchParam ");
+			q.setParameter("searchParam", sP);
+			m.addAttribute("search", q.getResultList());
+			return "offerList";
 		}
-	
+		else  {
+			String sP = "%" + searchParam + "%";			
+			javax.persistence.Query q = entityManager.createQuery("SELECT t FROM User t WHERE t.roles ='TECHNICIAN' and (t.skills LIKE :searchParam or t.technicalDescription LIKE :searchParam)");
+			q.setParameter("searchParam", sP);
+			m.addAttribute("search", q.getResultList());
+			return "technicianList";
+		}		
 		
-		return "offerList";
 	}
 	
 }

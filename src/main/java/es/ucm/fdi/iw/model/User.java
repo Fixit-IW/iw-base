@@ -36,6 +36,29 @@ public class User {
 	private String zipCode;
 	private String birthDate;
 	
+	private String technicalDescription;
+	private String skills;
+	
+	
+	public String getTechnicalDescription() {
+		return technicalDescription;
+	}
+
+
+	public void setTechnicalDescription(String technicalDescription) {
+		this.technicalDescription = technicalDescription;
+	}
+
+
+	public String getSkills() {
+		return skills;
+	}
+
+
+	public void setSkills(String skills) {
+		this.skills = skills;
+	}
+
 	private List<Offer> offers;
 	
 	private List<Valoracion> salientes;

@@ -67,16 +67,21 @@
 					</div>
 					<div class="form-check">
 						<input type="checkbox" class="form-check-input" id="roles"
-							onclick="myFunction()"> <label class="form-check-label">Are
+							onclick="myFunction()" name= "checkBox"> <label class="form-check-label">Are
 							you technician?</label>
 					</div>
 
 					<div id="tecnico" style="display: none">
 						<div class="form-group">
-							<label for="zipCode">PatriNoTePiques </label> <input
-								class="form-control" type="text" placeholder="Sí, sí me pico"
-								name="zipCode" />
+							<label for="technicalDescription">Description </label> <input
+								class="form-control" type="text" placeholder="Experience details..."
+								name="technicalDescription" />
 
+						</div>
+						<div class="form-group">
+							<label for="skills">Device knowledge </label> <input
+								class="form-control" type="text" placeholder="Iphone, Laptop..."
+								name="skills" />
 						</div>
 
 					</div>
