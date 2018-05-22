@@ -18,7 +18,7 @@
 		<div class="row justify-content-center">
 			<div class="col-md-10 col-md-offset-5">
 				<div class="probootstrap-home-search probootstrap-animate">
-					<form action="/register/searchOffers" method="post">
+					<form action="/searchOffers" method="get">
 						<h2 class="text-center">Search your next dream repair here</h2>
 						
 						<div class="probootstrap-field-group">
