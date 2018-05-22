@@ -15,7 +15,7 @@
 					
 					
 					<div >
-						<form action="/register/addOffer" method="post">
+						<form action="/addOffer" method="post">
 					<div class="form-group">
 						<label for="offerTitle">Repair title </label> <input class="form-control"
 							name="offerTitle" />

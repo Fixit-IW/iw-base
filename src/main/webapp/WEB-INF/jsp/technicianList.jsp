@@ -28,7 +28,7 @@
 						</div>
 						<div class="probootstrap-card-text">
 							<h2 class="probootstrap-card-heading">
-								<a href="#">${o.realFirstName}</a>
+								<a href="technician?id=${o.id}">${o.realFirstName}</a>
 							</h2>
 							<div class="probootstrap-listing-location">
 								<span>${o.technicalDescription}</span>

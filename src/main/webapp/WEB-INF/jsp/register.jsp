@@ -67,15 +67,15 @@
 					</div>
 					<div class="form-check">
 						<input type="checkbox" class="form-check-input" id="roles"
-							onclick="myFunction()" name= "checkBox"> <label class="form-check-label">Are
-							you technician?</label>
+							onclick="myFunction()" name="checkBox"> <label
+							class="form-check-label">Are you technician?</label>
 					</div>
 
 					<div id="tecnico" style="display: none">
 						<div class="form-group">
 							<label for="technicalDescription">Description </label> <input
-								class="form-control" type="text" placeholder="Experience details..."
-								name="technicalDescription" />
+								class="form-control" type="text"
+								placeholder="Experience details..." name="technicalDescription" />
 
 						</div>
 						<div class="form-group">

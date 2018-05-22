@@ -28,7 +28,7 @@
 						</div>
 						<div class="probootstrap-card-text">
 							<h2 class="probootstrap-card-heading">
-								<a href="#">${o.title}</a>
+								<a href="offer?id=${o.id}">${o.title}</a>
 							</h2>
 							<div class="probootstrap-listing-location">
 								<span>${o.device}</span>

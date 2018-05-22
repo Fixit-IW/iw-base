@@ -1,9 +1,15 @@
 package es.ucm.fdi.iw.controller;
 
+import java.io.File;
 import java.security.Principal;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -14,6 +20,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import es.ucm.fdi.iw.model.DeviceType;
 import es.ucm.fdi.iw.model.Offer;
@@ -151,5 +160,87 @@ public class RootController {
 	public String anounce()
 	{
 		return "anounce";
+	}
+	@RequestMapping(value = "/addOffer", method = RequestMethod.POST)
+	@Transactional
+	public String addOferta(HttpServletRequest request,
+			@RequestParam("offerTitle") String offerTitle,
+			@RequestParam("device") int device,
+			@RequestParam("description") String description,
+			@RequestParam("photos") File photos,
+			HttpSession session,
+			Model m) {
+		dumpRequest(request);
+		Offer o = new Offer();
+		
+		User u = RootController.getUser(session, entityManager);
+		
+		o.setPublisher(u);
+		o.setPhoto(photos);
+		o.setTitle(offerTitle);
+		o.setDescription(description);
+		o.setDevice(DeviceType.values()[device]);
+		//u.setRoles("on".equals(isAdmin) ? "ADMIN,USER" : "USER");
+		o.setDate(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
+		o.setZipCode(u.getZipCode());
+		entityManager.persist(o);
+		
+		entityManager.flush();
+		m.addAttribute("offers", entityManager
+				.createQuery("select o from Offer o").getResultList());
+		
+		return "home";
+	}
+	
+	private void dumpRequest(HttpServletRequest request) {
+		for (Map.Entry<String, String[]> e : request.getParameterMap().entrySet()) {
+			log.info("\t" + e.getKey() + ": " + Arrays.toString(e.getValue()));
+		}
+	}
+	
+	@GetMapping("/offer")
+	public String showOffer(
+			@RequestParam long id,
+			HttpSession session,
+			Model m) {
+		m.addAttribute("offer", entityManager.find(Offer.class, id));
+		return "offer";
+	}
+	
+	@GetMapping("/technician")
+	public String showTech(
+			@RequestParam long id,
+			HttpSession session,
+			Model m) {
+		m.addAttribute("technician", entityManager.find(User.class, id));
+		return "technician";
+	}
+	
+	@GetMapping(value = "/searchOffers")
+	public String searchOffers(HttpServletRequest request,
+			@RequestParam("offerType") String offerType,
+			@RequestParam("searchParam") String searchParam,
+			HttpSession session,
+			Model m) {
+		dumpRequest(request);
+		
+		User u = RootController.getUser(session, entityManager);		
+		
+		if(offerType.equals("Reparar")) {
+			
+		    String sP = "%" + searchParam + "%";			
+			javax.persistence.Query q = entityManager.createQuery("SELECT o FROM Offer o WHERE o.title LIKE :searchParam or o.description LIKE :searchParam ");
+			q.setParameter("searchParam", sP);
+			m.addAttribute("search", q.getResultList());
+			return "offerList";
+		}
+		else  {
+			String sP = "%" + searchParam + "%";			
+			javax.persistence.Query q = entityManager.createQuery("SELECT t FROM User t WHERE t.roles ='TECHNICIAN' and (t.skills LIKE :searchParam or t.technicalDescription LIKE :searchParam)");
+			q.setParameter("searchParam", sP);
+			m.addAttribute("search", q.getResultList());
+			return "technicianList";
+		}		
+		
 	}
 }
