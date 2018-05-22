@@ -110,7 +110,9 @@ public class RootController {
 			User u = new User();
 			u.setNickName("y");
 			u.setPassword(passwordEncoder.encode("y"));
-			u.setRoles("USER");
+			u.setRoles("TECHNICIAN");
+			u.setSkills("Ipoone, mac");
+			u.setTechnicalDescription("Se hacer muchas cosas");		
 			entityManager.persist(u);			
 			entityManager.flush();
 			id2 = u.getId();

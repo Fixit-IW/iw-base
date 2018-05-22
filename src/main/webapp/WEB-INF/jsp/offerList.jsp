@@ -15,31 +15,31 @@
 
 				<hr />
 
-				
+
 
 				<hr />
 
-			<c:forEach items="${search}" var="o">
-				<div class="col-md-4 col-sm-6">
-					<div class="probootstrap-card probootstrap-listing">
-						<div class="probootstrap-card-media">
-							 <a
-								href="#" class="probootstrap-love"><i class="icon-heart"></i></a> 
-						</div>
-						<div class="probootstrap-card-text">
-							<h2 class="probootstrap-card-heading">
-								<a href="offer?id=${o.id}">${o.title}</a>
-							</h2>
-							<div class="probootstrap-listing-location">
-								<span>${o.device}</span>
+				<c:forEach items="${search}" var="o">
+					<a href="offer?id=${o.id}">
+						<div class="col-md-4 col-sm-6">
+							<div class="probootstrap-card probootstrap-listing">
+								<div class="probootstrap-card-media">
+								</div>
+								<div class="probootstrap-card-text">
+									<h2 class="probootstrap-card-heading">
+										<span>${o.title}</span>
+									</h2>
+									<div class="probootstrap-listing-location">
+										<span>${o.device}</span>
+									</div>
+									<div class="probootstrap-listing-location">
+										<span>${o.date}</span>
+									</div>
+								</div>
 							</div>
-							<div class="probootstrap-listing-location">
-								<span>${o.date}</span>
-							</div>
 						</div>
-					</div>
-				</div>
-			</c:forEach>
+					</a>
+				</c:forEach>
 			</div>
 		</div>
 	</div>

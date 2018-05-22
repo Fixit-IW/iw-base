@@ -20,7 +20,7 @@
 				<hr />
 
 				<c:forEach items="${search}" var="o">
-					<a href="home">
+					<a href="technician?id=${o.id}">
 						<div class="col-md-4 col-sm-6">
 							<div class="probootstrap-card probootstrap-listing">
 								<div class="probootstrap-card-media">
