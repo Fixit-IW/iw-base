@@ -25,7 +25,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import es.ucm.fdi.iw.model.DeviceType;
+import es.ucm.fdi.iw.model.Negociacion;
 import es.ucm.fdi.iw.model.Offer;
+import es.ucm.fdi.iw.model.Repair;
+import es.ucm.fdi.iw.model.RepairStates;
 import es.ucm.fdi.iw.model.User;
 import es.ucm.fdi.iw.model.Valoracion;
 
