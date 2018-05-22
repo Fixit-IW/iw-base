@@ -9,6 +9,8 @@ import javax.persistence.ManyToOne;
 public class Valoracion {
 	
 	private long id;
+	private float nota;
+	private String fecha;
 	private User origen;
 	private User destino;
 	
@@ -39,6 +41,21 @@ public class Valoracion {
 	public void setDestino(User destino) {
 		this.destino = destino;
 	}	
+	
+	public float getNota() {
+		return nota;
+	}
 
+	public void setNota(float nota) {
+		this.nota = nota;
+	}
+
+	public String getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
 	
 }

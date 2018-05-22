@@ -1,29 +1,33 @@
 package es.ucm.fdi.iw.model;
 
 
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 
 	@Entity
-	public class Repair {
+	public class Negociacion {
 	private long id;
 	private User publisher;
 	private User technician;
-	private Offer offer;
-	private RepairStates state;
+	private String duration;
 	private float price;
-	private String initDate;
-	private String estimatedTime;
+	private Offer offer;
+
+	@Id
+	@GeneratedValue
+	public long getId() {
+	return id;
+	}
 	
-
-
+	public void setId(long id) {
+		this.id = id;
+	}
+	
 	@ManyToOne(targetEntity = User.class)
 	public User getPublisher() {
 		return publisher;
@@ -53,13 +57,6 @@ import javax.persistence.OneToOne;
 		this.offer = offer;
 	}
 
-	public RepairStates getState() {
-		return state;
-	}
-
-	public void setState(RepairStates state) {
-		this.state = state;
-	}
 
 	public float getPrice() {
 		return price;
@@ -69,36 +66,12 @@ import javax.persistence.OneToOne;
 		this.price = price;
 	}
 
-	@Id
-	@GeneratedValue
-	public long getId() {
-	return id;
-	}
-	
-	public void setId(long id) {
-		this.id = id;
+	public String getDuration() {
+		return duration;
 	}
 
-	
-
-	public String getEstimatedTime() {
-		return estimatedTime;
+	public void setDuration(String duration) {
+		this.duration = duration;
 	}
 
-	public void setEstimatedTime(String estimatedTime) {
-		this.estimatedTime = estimatedTime;
-	}
-	
-	public String getInitDate() {
-		return initDate;
-	}
-
-	public void setInitDate(String initDate) {
-		this.initDate = initDate;
-	}
-
-
-	
-
-	
 }

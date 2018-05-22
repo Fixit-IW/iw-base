@@ -15,34 +15,35 @@
 
 				<hr />
 
-				
+
 
 				<hr />
 
-			<c:forEach items="${search}" var="o">
-				<div class="col-md-4 col-sm-6">
-					<div class="probootstrap-card probootstrap-listing">
-						<div class="probootstrap-card-media">
-							 <a
-								href="#" class="probootstrap-love"><i class="icon-heart"></i></a> 
+				<c:forEach items="${search}" var="o">
+					<a href="home">
+						<div class="col-md-4 col-sm-6">
+							<div class="probootstrap-card probootstrap-listing">
+								<div class="probootstrap-card-media">
+									<i class="icon-heart"></i>
+								</div>
+								<div class="probootstrap-card-text">
+									<h2 class="probootstrap-card-heading">
+										<span>${o.realFirstName}</span>
+									</h2>
+									<div class="probootstrap-listing-location">
+										<span>${o.technicalDescription}</span>
+									</div>
+									<div class="probootstrap-listing-location">
+										<span>${o.skills}</span>
+									</div>
+									<div class="probootstrap-listing-location">
+										<span>${o.zipCode}</span>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="probootstrap-card-text">
-							<h2 class="probootstrap-card-heading">
-								<a href="#">${o.realFirstName}</a>
-							</h2>
-							<div class="probootstrap-listing-location">
-								<span>${o.technicalDescription}</span>
-							</div>
-							<div class="probootstrap-listing-location">
-								<span>${o.skills}</span>
-							</div>
-							<div class="probootstrap-listing-location">
-								<span>${o.zipCode}</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</c:forEach>
+					</a>
+				</c:forEach>
 			</div>
 		</div>
 	</div>

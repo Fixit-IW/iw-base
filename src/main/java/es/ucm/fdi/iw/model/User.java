@@ -39,6 +39,16 @@ public class User {
 	private String technicalDescription;
 	private String skills;
 	
+	private List<Offer> offers;
+	
+	private List<Valoracion> salientes;
+	private List<Valoracion> entrantes;
+	
+	private List<Repair> reparaciones;
+	
+	private List<Negociacion> negociaciones;
+	
+	
 	
 	public String getTechnicalDescription() {
 		return technicalDescription;
@@ -59,12 +69,7 @@ public class User {
 		this.skills = skills;
 	}
 
-	private List<Offer> offers;
-	
-	private List<Valoracion> salientes;
-	private List<Valoracion> entrantes;
-	
-	private List<Repair> reparaciones;
+
 	
 	@Id
 	@GeneratedValue
@@ -197,4 +202,17 @@ public class User {
 	public void setZipCode(String nzp) {
 		this.zipCode = nzp;
 	}
+
+	@OneToMany(targetEntity = Negociacion.class)
+	public List<Negociacion> getNegociaciones() {
+		return negociaciones;
+	}
+
+	
+	public void setNegociaciones(List<Negociacion> negociaciones) {
+		this.negociaciones = negociaciones;
+	}
+	
+	
+	
 }
