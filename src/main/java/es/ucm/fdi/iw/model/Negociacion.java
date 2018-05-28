@@ -48,7 +48,7 @@ import javax.persistence.OneToOne;
 	}
 
 	
-	@OneToOne(targetEntity = User.class)
+	@OneToOne(targetEntity = Offer.class)
 	public Offer getOffer() {
 		return offer;
 	}

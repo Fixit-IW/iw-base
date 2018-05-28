@@ -204,6 +204,7 @@ public class User {
 	}
 
 	@OneToMany(targetEntity = Negociacion.class)
+	@JoinColumn(name = "publisher_id")
 	public List<Negociacion> getNegociaciones() {
 		return negociaciones;
 	}

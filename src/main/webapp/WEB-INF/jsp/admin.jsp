@@ -70,7 +70,7 @@
 				</div>
 			</c:forEach>
 			
-			<c:forEach items="${offers}" var="o">
+			<c:forEach items="${negociaciones}" var="o">
 				<div class="col-md-4 col-sm-6">
 					<div class="probootstrap-card probootstrap-listing">
 						<div class="probootstrap-card-media">
@@ -79,13 +79,13 @@
 						</div>
 						<div class="probootstrap-card-text">
 							<h2 class="probootstrap-card-heading">
-								<a href="#">${o.title}</a>
+								<a href="#">${o.id}</a>
 							</h2>
 							<div class="probootstrap-listing-location">
-								<span>${o.device}</span>
+								<span>${o.offer.title}</span>
 							</div>
 							<div class="probootstrap-listing-location">
-								<span>${o.date}</span>
+								<span>${o.offer.description}</span>
 							</div>
 						</div>
 					</div>

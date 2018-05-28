@@ -26,7 +26,7 @@
 								<div class="probootstrap-card-media">
 								</div>
 								<div class="probootstrap-card-text">
-									<h2 class="probootstrap-card-heading">
+									<h2 id ="tituloLista" class="probootstrap-card-heading">
 										<span>${o.title}</span>
 									</h2>
 									<div class="probootstrap-listing-location">

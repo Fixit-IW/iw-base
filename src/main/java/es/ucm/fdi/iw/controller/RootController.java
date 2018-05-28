@@ -298,6 +298,22 @@ public class RootController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "/dennyReparacion", method = RequestMethod.POST)
+	@Transactional
+	public String denyReparacion(HttpServletRequest request,
+			@RequestParam long idNegociacion,
+			HttpSession session,
+			Model m) {
+		dumpRequest(request);
+		
+		
+		Negociacion n = entityManager.find(Negociacion.class, idNegociacion);
+		
+		entityManager.remove(n);
+		
+		return "home";
+	}
+	
 	@RequestMapping(value = "/addNegociacion", method = RequestMethod.POST)
 	@Transactional
 	public String addNegociacion(HttpServletRequest request,
@@ -317,6 +333,7 @@ public class RootController {
 		n.setPublisher(o.getPublisher());
 		n.setTechnician(origen);
 		entityManager.persist(n);
+		entityManager.flush();
 		
 		return "home";
 	}

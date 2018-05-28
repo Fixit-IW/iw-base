@@ -36,3 +36,11 @@ function showTechnicianOffer() {
 	    text.style.display = "block";
 	 
 }
+function showOfferForm(){
+	var button = document.getElementById("offer_button");
+	button.style.display = "none";
+
+	
+	var form = document.getElementById("offer_form");
+	form.style.display = "block";
+}
