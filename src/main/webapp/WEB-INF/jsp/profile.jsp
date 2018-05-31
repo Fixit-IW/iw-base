@@ -57,6 +57,9 @@
 					</div>
 				</div>
 			</section>
+			<div class="container">
+				<span>Negociaciones Activas</span>
+			</div>
 			<section class=" probootstrap-section-half">
 				<div class="container">
 					<div class="row">
@@ -76,19 +79,19 @@
 										</div>
 										<div class="probootstrap-listing-location">
 											<span>Price: ${o.price}€ / Duration: ${o.duration	}</span>
-											
+
 										</div>
 										<form action="/addReparacion" method="post">
-								
+
 											<input type="hidden" name="idNegociacion" value="${o.id}" />
 
 											<button type="submit" class="btn btn-success">✔</button>
 											<button formaction="/dennyReparacion" type="submit"
 												class="btn btn-danger">X</button>
-														<input
-								type="hidden" name="${_csrf.parameterName}"
-								value="${_csrf.token}" />
+											<input type="hidden" name="${_csrf.parameterName}"
+												value="${_csrf.token}" />
 										</form>
+
 									</div>
 								</div>
 							</div>
@@ -96,18 +99,70 @@
 					</div>
 				</div>
 			</section>
+			<div class="container">
+				<span>Reparaciones Cliente</span>
+			</div>
+			<sec:authorize access="isAuthenticated()">
+				<sec:authorize access="hasRole('USER')">
+					<section class=" probootstrap-section-half">
+						<div class="container">
+							<div class="row">
+								<c:forEach items="${user.reparacionesPublisher}" var="r">
+									<a href="repair?id=${r.id}">
+										<div class="probootstrap-card probootstrap-listing">
+											<div class="probootstrap-card-text">
+												<h2 class="probootstrap-card-heading">
+													<span>${r.offer.title}</span>
+												</h2>
+												<div class="probootstrap-listing-location">
+													<span>${r.technician.nickName}</span>
+												</div>
+												<div class="probootstrap-listing-location">
+													<span>Date: ${r.initDate} </span>
+												</div>
+											</div>
+										</div>
 
+									</a>
+								</c:forEach>
+							</div>
+						</div>
+					</section>
+				</sec:authorize>
+			</sec:authorize>
+			<div class="container">
+				<span>Reparaciones Tecnico</span>
+			</div>
+			<sec:authorize access="isAuthenticated()">
+				<sec:authorize access="hasRole('TECHNICIAN')">
+					<section class=" probootstrap-section-half">
+						<div class="container">
+							<div class="row">
+								<c:forEach items="${user.reparacionesTechnician}" var="r">
+									<a href="repair?id=${r.id}">
+										<div class="probootstrap-card probootstrap-listing">
+											<div class="probootstrap-card-text">
+												<h2 class="probootstrap-card-heading">
+													<span>${r.offer.title}</span>
+												</h2>
+												<div class="probootstrap-listing-location">
+													<span>${r.publisher.nickName}</span>
+												</div>
+												<div class="probootstrap-listing-location">
+													<span>Date: ${r.initDate} </span>
+												</div>
+											</div>
+										</div>
 
-
-
+									</a>
+								</c:forEach>
+							</div>
+						</div>
+					</section>
+				</sec:authorize>
+			</sec:authorize>
 		</div>
-
-
 	</div>
-
-
-
-
 </section>
 
 <%@ include file="../jspf/footer.jspf"%>

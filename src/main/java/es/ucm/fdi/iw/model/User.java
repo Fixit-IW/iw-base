@@ -44,7 +44,9 @@ public class User {
 	private List<Valoracion> salientes;
 	private List<Valoracion> entrantes;
 	
-	private List<Repair> reparaciones;
+	private List<Repair> reparacionesPublisher;
+	private List<Repair> reparacionesTechnician;
+	
 	
 	private List<Negociacion> negociaciones;
 	
@@ -79,13 +81,27 @@ public class User {
 	
 	
 	@OneToMany(targetEntity = Repair.class)
-	public List<Repair> getReparaciones() {
-		return reparaciones;
+	@JoinColumn(name = "publisher_id")
+	public List<Repair> getReparacionesPublisher() {
+		return reparacionesPublisher;
 	}
 
-	public void setReparaciones(List<Repair> reparaciones) {
-		this.reparaciones = reparaciones;
+
+	public void setReparacionesPublisher(List<Repair> reparacionesPublisher) {
+		this.reparacionesPublisher = reparacionesPublisher;
 	}
+
+	@OneToMany(targetEntity = Repair.class)
+	@JoinColumn(name = "technician_id")
+	public List<Repair> getReparacionesTechnician() {
+		return reparacionesTechnician;
+	}
+
+
+	public void setReparacionesTechnician(List<Repair> reparacionesTecnico) {
+		this.reparacionesTechnician = reparacionesTecnico;
+	}
+
 
 	public String getEmail() {
 		return email;

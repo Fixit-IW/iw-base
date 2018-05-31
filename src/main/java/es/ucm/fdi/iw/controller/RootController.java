@@ -151,8 +151,6 @@ public class RootController {
 	@GetMapping("/profile")
 	public String profile( HttpSession session, Principal principal, Model m) {
 		refreshUserSession(session, principal);
-		m.addAttribute("ofertas", ((User)session.getAttribute("user")).getOffers());
-		
 		return "profile";
 
 	}
@@ -294,8 +292,9 @@ public class RootController {
 		r.setInitDate(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));	
 		
 		entityManager.persist(r);
+		entityManager.remove(n);
 		
-		return "home";
+		return "profile";
 	}
 	
 	@RequestMapping(value = "/dennyReparacion", method = RequestMethod.POST)
@@ -311,7 +310,7 @@ public class RootController {
 		
 		entityManager.remove(n);
 		
-		return "home";
+		return "profile";
 	}
 	
 	@RequestMapping(value = "/addNegociacion", method = RequestMethod.POST)
@@ -336,5 +335,14 @@ public class RootController {
 		entityManager.flush();
 		
 		return "home";
+	}
+	
+	@GetMapping("/repair")
+	public String showRepair(
+			@RequestParam long id,
+			HttpSession session,
+			Model m) {
+		m.addAttribute("repair", entityManager.find(Repair.class, id));
+		return "repair";
 	}
 }
