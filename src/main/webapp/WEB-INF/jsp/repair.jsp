@@ -5,8 +5,11 @@
 	uri="http://www.springframework.org/security/tags"%>
 
 <%@ include file="../jspf/header.jspf"%>
+<script src="${s}/js/ourFunctions.js"></script>
+
+
 <section class="probootstrap-cover">
-	<div class="container"">
+	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-10 col-md-offset-5">
 				<div class="about">
@@ -28,10 +31,37 @@
 							${user.zipCode}</span></li>
 
 				</ul>
-					
+				<div>Change State</div>
+				<form action="/changeState" method="post">
+					<input type="hidden" name="idRepair" value="${repair.id}" />
+					<sec:authorize access="isAuthenticated()">
+						<sec:authorize access="hasRole('TECHNICIAN')">
+							<div  class="form-check" id="in_proccess">
+								<button type="submit" class="btn btn-success">In
+									process</button>
+							</div>
+							<div class="form-check" id="finished">
+								<button type="submit" class="btn btn-success">Finished</button>
+							</div>
+							<div class="form-check" id="delivered">
+								<button type="submit" class="btn btn-success">Delivered</button>
+							</div>
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+						</sec:authorize>
+					</sec:authorize>
+				</form>
 			</div>
 		</div>
 	</div>
 </section>
+<body>
+<script>
+alert("hola");
+var value = "${stringState}";
+changeState(value);
+</script>
+</body>
+
 
 <%@ include file="../jspf/footer.jspf"%>

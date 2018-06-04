@@ -11,6 +11,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 
+
 	@Entity
 	public class Repair {
 	private long id;
@@ -22,8 +23,7 @@ import javax.persistence.OneToOne;
 	private String initDate;
 	private String estimatedTime;
 	
-
-
+	
 	@ManyToOne(targetEntity = User.class)
 	public User getPublisher() {
 		return publisher;
