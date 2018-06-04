@@ -5,45 +5,46 @@
 	uri="http://www.springframework.org/security/tags"%>
 
 <%@ include file="../jspf/header.jspf"%>
-<section class=" probootstrap-cover ">
+<section class="probootstrap-cover" style="background-color: #F7F7F7;">
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-10 col-md-offset-2">
-
-				<h1></h1>
-				<p class="lead"></p>
-
-				<c:forEach items="${search}" var="o">
-					<a href="offer?id=${o.id}">
-						<div class="col-md-4 col-sm-6">
-							<div class="probootstrap-card probootstrap-listing">
-								<div class="probootstrap-card-media">
-									<img src="img/slider_2.jpg" class="img-responsive">
-									<a class="probootstrap-love"><i class="ion-heart"></i></a>
-								</div>
-								<div class="probootstrap-card-text">
-									<h1 id="tituloLista" class="probootstrap-card-heading">
-										${o.title}</h1>
-									<div class="probootstrap-listing-location">
-										<span>${o.description}</span>
+				<section class=" probootstrap-section-half">
+					<div class="container">
+						<div class="row">
+							<c:forEach items="${search}" var="o">
+								<a href="offer?id=${o.id}">
+									<div class="col-md-4 col-sm-6">
+										<div class="probootstrap-card probootstrap-listing">
+											<div class="probootstrap-card-media">
+												<img src="photo/offer/${o.id}" class="img-responsive">
+												<a class="probootstrap-love"><i class="ion-heart"></i></a>
+											</div>
+											<div class="probootstrap-card-text">
+												<h1 id="tituloLista" class="probootstrap-card-heading">
+													${o.title}</h1>
+												<div class="probootstrap-listing-location">
+													<span>${o.description}</span>
+												</div>
+												<div class="probootstrap-listing-category for-sale">
+													<span>${o.device}</span>
+												</div>
+											</div>
+											<div class="probootstrap-card-extra">
+												<ul>
+													<li><i class="ion-ios-locationLocation"></i>Location <span>${o.zipCode}</span>
+													</li>
+													<li>Date <span>${o.date}</span>
+													</li>
+												</ul>
+											</div>
+										</div>
 									</div>
-									<div class="probootstrap-listing-category for-sale">
-										<span>${o.device}</span>
-									</div>
-								</div>
-								<div class="probootstrap-card-extra">
-									<ul>
-										<li><i class="ion-ios-locationLocation"></i>Location <span>${o.zipCode}</span>
-										</li>
-										<li>Date <span>${o.date}</span>
-										</li>
-									</ul>
-								</div>
-							</div>
+								</a>
+							</c:forEach>
 						</div>
-					</a>
-				</c:forEach>
-				
+					</div>
+				</section>
 			</div>
 		</div>
 	</div>

@@ -43,4 +43,10 @@ body.preloader-site {
 	background: linear-gradient(145deg, rgba(0, 202, 76, 1) 38%,
 		rgba(0, 255, 216, 0.5) 100%);
 }
+
+.img-responsive{
+	object-fit: cover;
+  	height: 200px;
+	width:100%;
+}
 /*----------*/

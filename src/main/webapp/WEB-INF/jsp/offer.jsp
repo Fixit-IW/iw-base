@@ -14,16 +14,15 @@
 						<img src="${s}/img/sapo.png" width="127" height="154" />
 					</div>
 					<h1>${offer.title}</h1>
-					<img class="photo" src="photo/offer/${offer.id}"/>
+					<img class="photo" src="photo/offer/${offer.id}" />
 					<sec:authorize access="isAuthenticated()">
 						<sec:authorize access="hasRole('TECHNICIAN')">
-					<div class="form-check">
-						<button type="button" class="btn btn-success" id="offer_button"
-							onclick="showOfferForm()">Accept?</button>
-					</div>
+							<div class="form-check">
+								<button type="button" class="btn btn-success" id="offer_button"
+									onclick="showOfferForm()">Accept?</button>
+							</div>
+						</sec:authorize>
 					</sec:authorize>
-					</sec:authorize>
-					
 
 					<div id="offer_form" style="display: none">
 						<form action="/addNegociacion" method="post">
@@ -48,16 +47,10 @@
 							</div>
 						</form>
 					</div>
-
-
-
-
-
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
 <script src="${s}/js/ourFunctions.js"></script>
-
 <%@ include file="../jspf/footer.jspf"%>
