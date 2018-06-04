@@ -9,31 +9,30 @@
 </div>
 
 
-<section class="probootstrap-cover overflow-hidden cover-home">
+<section class="probootstrap-cover overflow-hidden cover-home1">
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-10 col-md-offset-5">
-			<h2 class="text-center probootstrap_m-1">Search your next dream repair here</h2>
+			<h2 class="text-center probootstrap_m-1 probootstrap_font-40">Search your next dream repair here</h2>
 				<div class="probootstrap-home-search probootstrap-animate">
 					<form action="/searchOffers" method="get">	
 						<div class="probootstrap-field-group">
 							<div class="probootstrap-fields">
 								<div class="search-field">
-									<i class="icon icon-location"></i> <input type="text"
+									<i class="ion-settings probootstrap_px-8"></i><input type="text"
 										class="form-control"
 										name="searchParam"
 										placeholder="Introduce dispositivo, avería, ciudad">
 								</div>
 								<div class="search-category">
-									<i class="ion-ios-arrow-down"></i>
-									 <select name="offerType">
-										<option value="Técnico">Técnico</option>
+									 <select class="custom-select" name="offerType">
+										<option value="Técnico">Técnico </option>
 										<option value="Reparar">Reparar</option>
 									</select>
 								</div>
 							</div>
 							<button class="btn btn-success" type="submit" >
-								<i class="icon-FA t2"></i> Start Search
+								<i class="ion-ios-search-strong t2"></i> Start Search
 							</button>
 						</div>
 						<input

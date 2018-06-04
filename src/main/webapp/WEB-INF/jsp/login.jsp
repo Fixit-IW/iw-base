@@ -10,14 +10,13 @@
 		<div class="row justify-content-center">
 			<div class="col-md-4">
 				<h1>Registro</h1>
-				<form action="/login" method="post" class>
-
-					<legend>Please Login</legend>
+				<form action="/login" method="post">
+					<label>Please Login</label>
 					<fieldset>
 						<div class="form-group">
 							<label for="username"> Username </label>
-							<input type="text"
-								class="form-control" id="username" name="username"
+							<input type="text" class="form-control"
+								id="username" name="username"
 								placeholder="Username" />
 						</div>
 						<div class="form-group">
@@ -37,8 +36,4 @@
 		</div>
 	</div>
 </section>
-
-<%@ include file="../jspf/authinfo.jspf"%>
-</div>
-
 <%@ include file="../jspf/footer.jspf"%>
