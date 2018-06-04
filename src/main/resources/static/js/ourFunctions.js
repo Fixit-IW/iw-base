@@ -44,3 +44,30 @@ function showOfferForm(){
 	var form = document.getElementById("offer_form");
 	form.style.display = "block";
 }
+
+function changeState(id){
+	var divInProccess = document.getElementById("in_proccess");
+	var divFinished = document.getElementById("finished");
+	var divDelivered = document.getElementById("delivered");
+	
+	if (id == "ACCEPTED"){
+		
+		divInProccess.style.display ="block";
+		divFinished.style.display ="none";
+		divDelivered.style.display ="none";
+		
+	}else if(id == "INPROCCESS"){
+		divFinished.style.display ="block";
+		divInProccess.style.display ="none";
+		divDelivered.style.display ="none";
+	}
+	else{
+		
+		divDelivered.style.display ="block";
+		divInProccess.style.display ="none";
+		divFinished.style.display ="none";
+	}
+	
+	
+	
+}
