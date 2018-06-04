@@ -1,10 +1,8 @@
 function myFunction() {
   // Get the checkbox
   var checkBox = document.getElementById("roles");
-  
   // Get the output text
   var text = document.getElementById("tecnico");
-
   // If the checkbox is checked, display the output text
   if (checkBox.checked == true){
     text.style.display = "block";
@@ -14,33 +12,21 @@ function myFunction() {
 }
 
 function showClientOffer() {
-	 
-	  
-	  // Get the output text
-	  var text = document.getElementById("client_offer");
+  // Get the output text
+	  var text = document.getElementById("client_offer"); 
+	  text.style.display = "block";
 
-	  
-	  
-	    text.style.display = "block";
-	 
 }
 
 function showTechnicianOffer() {
-	 
-	  
-	  // Get the output text
+// Get the output text
 	  var text = document.getElementById("technician_offer");
-
-	  
-	  
 	    text.style.display = "block";
 	 
 }
 function showOfferForm(){
 	var button = document.getElementById("offer_button");
 	button.style.display = "none";
-
-	
 	var form = document.getElementById("offer_form");
 	form.style.display = "block";
 }
