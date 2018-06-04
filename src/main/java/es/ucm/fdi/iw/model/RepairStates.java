@@ -1,5 +1,5 @@
 package es.ucm.fdi.iw.model;
 
 public enum RepairStates {
-  ACCEPTED, INPROCCES, FINISHED, DELIVERED, VALORATED
+  ACCEPTED, INPROCCESS, FINISHED, DELIVERED, VALORATED
 }

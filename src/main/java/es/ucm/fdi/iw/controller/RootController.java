@@ -339,8 +339,8 @@ public class RootController {
 		Repair r = entityManager.find(Repair.class, idRepair);
 		RepairStates currState = r.getState();
 		if (currState == RepairStates.ACCEPTED) {
-			r.setState(RepairStates.INPROCCES);
-		} else if (currState == RepairStates.INPROCCES) {
+			r.setState(RepairStates.INPROCCESS);
+		} else if (currState == RepairStates.INPROCCESS) {
 			r.setState(RepairStates.FINISHED);
 		} else if (currState == RepairStates.FINISHED) {
 			r.setState(RepairStates.DELIVERED);

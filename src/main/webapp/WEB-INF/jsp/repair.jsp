@@ -57,7 +57,6 @@
 </section>
 <body>
 <script>
-alert("hola");
 var value = "${stringState}";
 changeState(value);
 </script>
