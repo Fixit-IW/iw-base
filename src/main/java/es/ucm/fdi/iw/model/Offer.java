@@ -28,16 +28,9 @@ import javax.persistence.NamedQuery;
 	private DeviceType device;
 	private byte enabled;
 	private String zipCode;
-	private File photo;
 	private String date;
 
-	public File getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(File photo) {
-		this.photo = photo;
-	}
+	
 	private User publisher;
 	
 

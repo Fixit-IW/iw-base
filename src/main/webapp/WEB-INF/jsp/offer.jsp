@@ -14,7 +14,7 @@
 						<img src="${s}/img/sapo.png" width="127" height="154" />
 					</div>
 					<h1>${offer.title}</h1>
-					
+					<img class="photo" src="photo/offer/${offer.id}"/>
 					<sec:authorize access="isAuthenticated()">
 						<sec:authorize access="hasRole('TECHNICIAN')">
 					<div class="form-check">
