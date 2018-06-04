@@ -11,13 +11,14 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Fixit &mdash; Damos una segunda oportunidad a tus
 	aparatos tecnológicos</title>
-	<link rel="icon" type="image/png"  href = "${s}/img/sapo.png" >
-	
+<link rel="icon" type="image/png" href="${s}/img/sapo.png">
+
 <meta name="description" content="Fixit we fix your tech">
 <meta name="keywords" content="fix phone tech pc mac">
 
 
-<link	href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700"
+<link
+	href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700"
 	rel="stylesheet">
 
 <link rel="stylesheet" href="${s}/css/bootstrap/bootstrap.css">
@@ -25,13 +26,7 @@
 <link rel="stylesheet" href="${s}/fonts/ionicons/css/ionicons.min.css">
 
 <link rel="stylesheet" href="${s}/css/owl.carousel.min.css">
-
-<link rel="stylesheet" href="${s}/fonts/flaticon/font/flaticon.css">
-
-<link rel="stylesheet"
-	href="${s}/fonts/fontawesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="${s}/css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="${s}/css/select2.css">
 <link rel="stylesheet" href="${s}/css/helpers.css">
 <link rel="stylesheet" href="${s}/css/style.css">
 <link rel="stylesheet" href="${s}/css/custom.css">
@@ -39,7 +34,7 @@
 
 </head>
 <body>
-	 <div class="preloader-wrapper">
+	<div class="preloader-wrapper">
 		<div class="preloader">
 			<img src="${s}/img/preloader.gif" alt="NILA">
 		</div>
@@ -57,7 +52,8 @@
 					<li class="nav-item active"><a class="nav-link" href="/#">Home</a></li>
 					<sec:authorize access="isAnonymous()">
 						<li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
-						<li class="nav-item"><a class="nav-link" href="/register">Sing Up</a></li>
+						<li class="nav-item"><a class="nav-link" href="/register">Sing
+								Up</a></li>
 					</sec:authorize>
 
 					<sec:authorize access="isAuthenticated()">
@@ -66,8 +62,9 @@
 							<li class="nav-item"><a class="nav-link" href="/upload">Upload</a></li>
 						</sec:authorize>
 						<li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
-						<li class="nav-item"><a class="nav-link" href="/anounce">Post Offer</a></li>
-					<li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+						<li class="nav-item"><a class="nav-link" href="/anounce">Post
+								Offer</a></li>
+						<li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
 						<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
 					</sec:authorize>
 

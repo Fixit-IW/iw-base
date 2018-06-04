@@ -9,21 +9,13 @@
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-10 col-md-offset-2">
-
-				<h1>Make Offer</h1>
-				
-					
-					
+				<h1>Make Offer</h1>					
 					<div >
 						<form action="/addOffer" method="post">
 					<div class="form-group">
 						<label for="offerTitle">Repair title </label> <input class="form-control"
 							name="offerTitle" />
 					</div>
-
-					
-
-
 					<div class="form-group"> <!-- hacer que salga nuestro despegable -->
 						<label for="device" >Type</label> 
 						<select name="device">

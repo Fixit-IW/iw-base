@@ -9,18 +9,13 @@
 </div>
 
 
-<section class="probootstrap-cover overflow-hidden relative"
-	style="background-image: ${s}/img/bg_1.jpg"
-	data-stellar-background-ratio="0.5" id="section-home">
-	<div class="overlay"></div>
-
-	<div class="container" style="height:100%;">
+<section class="probootstrap-cover overflow-hidden cover-home">
+	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-10 col-md-offset-5">
+			<h2 class="text-center probootstrap_m-1">Search your next dream repair here</h2>
 				<div class="probootstrap-home-search probootstrap-animate">
-					<form action="/searchOffers" method="get">
-						<h2 class="text-center">Search your next dream repair here</h2>
-						
+					<form action="/searchOffers" method="get">	
 						<div class="probootstrap-field-group">
 							<div class="probootstrap-fields">
 								<div class="search-field">
@@ -30,8 +25,8 @@
 										placeholder="Introduce dispositivo, avería, ciudad">
 								</div>
 								<div class="search-category">
-									<i class="icon-chevron-down"></i> <select name="offerType" id=""
-										class="form-control">
+									<i class="ion-ios-arrow-down"></i>
+									 <select name="offerType">
 										<option value="Técnico">Técnico</option>
 										<option value="Reparar">Reparar</option>
 									</select>
@@ -50,6 +45,4 @@
 		</div>
 	</div>
 </section>
-<%@ include file="../jspf/authinfo.jspf"%>
-
 <%@ include file="../jspf/footer.jspf"%>
