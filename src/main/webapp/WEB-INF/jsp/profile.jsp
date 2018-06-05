@@ -35,25 +35,35 @@
 				<div class="container">
 					<div class="row">
 						<c:forEach items="${user.offers}" var="o">
-							<a href="offer?id=${o.id}">
-								<div class="col-md-4 col-sm-6">
-									<div class="probootstrap-card probootstrap-listing">
-										<div class="probootstrap-card-media"></div>
-										<div class="probootstrap-card-text">
-											<h2 id="tituloLista" class="probootstrap-card-heading">
-												<span>${o.title}</span>
-											</h2>
-											<div class="probootstrap-listing-location">
-												<span>${o.device}</span>
+								<a href="offer?id=${o.id}">
+									<div class="col-md-4 col-sm-6">
+										<div class="probootstrap-card probootstrap-listing">
+											<div class="probootstrap-card-media">
+												<img src="photo/offer/${o.id}" class="img-responsive">
+												<a class="probootstrap-love"><i class="ion-heart"></i></a>
 											</div>
-											<div class="probootstrap-listing-location">
-												<span>${o.date}</span>
+											<div class="probootstrap-card-text">
+												<h1 id="tituloLista" class="probootstrap-card-heading">
+													${o.title}</h1>
+												<div class="probootstrap-listing-location">
+													<span>${o.description}</span>
+												</div>
+												<div class="probootstrap-listing-category for-sale">
+													<span>${o.device}</span>
+												</div>
+											</div>
+											<div class="probootstrap-card-extra">
+												<ul>
+													<li><i class="ion-ios-locationLocation"></i>Location <span>${o.zipCode}</span>
+													</li>
+													<li>Date <span>${o.date}</span>
+													</li>
+												</ul>
 											</div>
 										</div>
 									</div>
-								</div>
-							</a>
-						</c:forEach>
+								</a>
+							</c:forEach>
 					</div>
 				</div>
 			</section>
