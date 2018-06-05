@@ -73,15 +73,15 @@ public class RegisterController {
 	public String addUser(HttpServletRequest request,
 			@RequestParam String nickName, 
 			@RequestParam String password,
-			@RequestParam ("email")String email,
-			@RequestParam("firstName") String firstName,
-			@RequestParam("lastName") String lastName,
-			@RequestParam("DNI") String DNI,
-			@RequestParam("zipCode") String zipCode,
+			@RequestParam String email,
+			@RequestParam String firstName,
+			@RequestParam String lastName,
+			@RequestParam String DNI,
+			@RequestParam String zipCode,
 			@RequestParam(value = "checkBox", required = false) String roles,
-			@RequestParam ("birthDate")String birthDate,
+			@RequestParam String birthDate,
 			@RequestParam(value = "technicalDescription",  required = false) String description,
-			@RequestParam(value = "skills",  required = false) String skills,
+			@RequestParam(value = "skills",  required = false) String skills, 
 			Model m) {
 		dumpRequest(request);
 		User u = new User();

@@ -14,9 +14,6 @@
 				<p class="lead">Información muy confidencial</p>
 
 				<hr />
-
-				
-
 				<hr />
 
 				<table>
@@ -44,6 +41,7 @@
 <section class=" probootstrap-section-half">
 	<div class="container">
 		<div class="row">
+		<label>Users</label>
 			<c:forEach items="${users}" var="u">
 				<div class="col-md-4 col-sm-6">
 					<div class="probootstrap-card probootstrap-listing">
@@ -61,37 +59,41 @@
 							<div class="probootstrap-listing-category for-sale">
 								<span>${u.roles}</span>
 							</div>
-							<div class="probootstrap-listing-price">
-								<strong>$1,121,000</strong>
-								<p>/ month</p>
-							</div>
 						</div>
 					</div>
 				</div>
 			</c:forEach>
-			
-			<c:forEach items="${negociaciones}" var="o">
+		</div>
+	</div>
+</section>
+
+<section class=" probootstrap-section-half">
+	<div class="container">
+		<div class="row">
+			<label>Recieved Messages</label>
+			<c:forEach items="${messages}" var="m">
 				<div class="col-md-4 col-sm-6">
 					<div class="probootstrap-card probootstrap-listing">
 						<div class="probootstrap-card-media">
-							 <a
-								href="#" class="probootstrap-love"><i class="icon-heart"></i></a> 
+							<a href="#" class="probootstrap-love"></a>
 						</div>
 						<div class="probootstrap-card-text">
 							<h2 class="probootstrap-card-heading">
-								<a href="#">${o.id}</a>
+								<a href="#">${m.origen.realFirstName}</a>
 							</h2>
 							<div class="probootstrap-listing-location">
-								<span>${o.offer.title}</span>
+								<span>${m.fecha}</span>
 							</div>
 							<div class="probootstrap-listing-location">
-								<span>${o.offer.description}</span>
+								<span>${m.email}</span>
+							</div>
+							<div class="probootstrap-listing-location">
+								<span>${m.descripcion}</span>
 							</div>
 						</div>
 					</div>
 				</div>
 			</c:forEach>
-			
 		</div>
 	</div>
 </section>

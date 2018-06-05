@@ -38,6 +38,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import es.ucm.fdi.iw.LocalData;
 import es.ucm.fdi.iw.model.DeviceType;
+import es.ucm.fdi.iw.model.Mensaje;
 import es.ucm.fdi.iw.model.Negociacion;
 import es.ucm.fdi.iw.model.Offer;
 import es.ucm.fdi.iw.model.Repair;
@@ -414,4 +415,30 @@ public class RootController {
 
 		return "profile";
 	}
+	
+	
+	@RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
+	@Transactional
+	public String sendMSG(HttpServletRequest request, @RequestParam String text, HttpSession session, Model m) {
+		dumpRequest(request);
+
+		User origen = RootController.getUser(session, entityManager);
+		
+		Mensaje msg = new Mensaje();
+		msg.setDescripcion(text);
+		msg.setEmail(origen.getEmail());
+		msg.setFecha(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
+		msg.setOrigen(origen);
+		
+		
+		entityManager.persist(msg);
+		entityManager.flush();
+
+		return "home";
+	}
+	
+	
+	
+	
+	
 }

@@ -57,8 +57,8 @@ public class AdminController {
 		m.addAttribute("users", entityManager
 				.createQuery("select u from User u").getResultList());
 		
-		m.addAttribute("negociaciones", entityManager
-				.createQuery("select n from Negociacion n").getResultList());
+		m.addAttribute("messages", entityManager
+				.createQuery("select m from Mensaje m").getResultList());
 		return "admin";	
 	}
 

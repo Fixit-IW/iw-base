@@ -8,21 +8,16 @@
 <section class="probootstrap-cover">
 	<div class="container">
 		<div class="col-md-10 col-md-offset-5">
-		<legend>Contact With Us</legend>
-			<form>
-				<div class="form-group">
-					<label for="exampleFormControlInput1">Email address</label> <input
-						type="email" class="form-control" id="exampleFormControlInput1"
-						placeholder="name@example.com">
-				</div>
-
+			<legend>Contact With Us</legend>
+			<form action="/sendMessage" method="post">
 				<div class="form-group">
 					<label for="exampleFormControlTextarea1">Example text area</label>
-					<textarea class="form-control" id="exampleFormControlTextarea1"
+					<textarea class="form-control" name="text" id="exampleFormControlTextarea1"
 						rows="3"></textarea>
 				</div>
 				<input type="submit" name="submit" value="Send Now"
-								class="submit btn btn-success">
+					class="submit btn btn-success"> 
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			</form>
 		</div>
 	</div>
