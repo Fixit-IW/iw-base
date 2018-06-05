@@ -5,7 +5,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 
 <%@ include file="../jspf/header.jspf"%>
-<section class=" probootstrap-cover ">
+<section class=" probootstrap-cover probootstrap_p-0 ">
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-10 col-md-offset-2">
@@ -18,11 +18,11 @@
 									<div class="col-md-4 col-sm-6">
 										<div class="probootstrap-card probootstrap-listing">
 											<div class="probootstrap-card-media">
-												<img src="photo/offer/${t.id}" class="img-responsive">
+												<img src="admin/photo/${t.id}" class="img-responsive">
 												<a class="probootstrap-love"><i class="ion-heart"></i></a>
 											</div>
 											<div class="probootstrap-card-text">
-												<h1 id="tituloLista" class="probootstrap-card-heading">
+												<h1 id="tituloLista" class="probootstrap_font-20 probootstrap_font-regular probootstrap-card-heading">
 													${t.realFirstName}</h1>
 												<div class="row probootstrap_mx-4"
 													style="color: #00CA4D">

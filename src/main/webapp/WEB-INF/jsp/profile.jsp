@@ -5,7 +5,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 
 <%@ include file="../jspf/header.jspf"%>
-<section class="probootstrap-cover">
+<section class="probootstrap-cover overflow-hidden">
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-10 col-md-offset-5">
@@ -14,10 +14,7 @@
 						<img src="${s}/img/sapo.png" width="127" height="154" />
 					</div>
 					<h1>${user.nickName}</h1>
-
-
 				</div>
-
 				<ul class="list-group">
 					<li class="list-group-item"><h3>My profile</h3></li>
 					<li class="list-group-item"><label>Name: </label><span>

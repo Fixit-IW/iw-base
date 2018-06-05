@@ -41,7 +41,7 @@ body.preloader-site {
 	height: 100vh;
 	background: rgb(0, 202, 76);
 	background: linear-gradient(145deg, rgba(0, 202, 76, 1) 38%,
-		rgba(0, 255, 216, 0.5) 100%);
+	rgba(0, 255, 216, 0.5) 100%);
 }
 
 .img-responsive{
@@ -49,4 +49,19 @@ body.preloader-site {
   	height: 200px;
 	width:100%;
 }
+
+.box{
+	padding: 3em;
+    border-color: #f3f3f3;
+    background-color: rgba(255, 255, 255, 0.93);
+    border-style: solid;
+    border-width: medium;
+    border-radius: 15px
+}
+.gradient {
+	background: #92FE9D;
+	padding:1em;
+	background: linear-gradient(150deg, #00C9FF 0%, #92FE9D 100%);
+}
+
 /*----------*/

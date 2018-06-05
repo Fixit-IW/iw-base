@@ -17,7 +17,9 @@ html {
   font-size: 1em; }
 
 body {
-  font-family: "Work Sans", Arial, sans-serif; }
+  font-family: "Work Sans", Arial, sans-serif;
+  background-color: #f9f9f9;
+}
 
 input, textarea, p {
   font-weight: 300; }
@@ -294,6 +296,10 @@ a {
   padding: 7em 0;
   float: left;
   width: 100%; }
+  .footer{
+  	padding-top: 2em !important;
+    padding-bottom: 1em !important;
+  }
   .probootstrap_section.bg-light {
     background: #ECECEC !important; }
 
@@ -813,7 +819,7 @@ a {
 
 .probootstrap-card.probootstrap-listing .probootstrap-card-extra ul li span {
   display: block;
-  color: #bdbdbd;
+  color: #868D96;
 }
 
 .probootstrap-card.probootstrap-listing:focus, .probootstrap-card.probootstrap-listing:hover {
