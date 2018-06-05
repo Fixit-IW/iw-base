@@ -31,36 +31,72 @@
 							${user.zipCode}</span></li>
 
 				</ul>
-				<div>Change State</div>
+
 				<form action="/changeState" method="post">
 					<input type="hidden" name="idRepair" value="${repair.id}" />
 					<sec:authorize access="isAuthenticated()">
 						<sec:authorize access="hasRole('TECHNICIAN')">
-							<div  class="form-check" id="in_proccess">
+							<div>Change State</div>
+							<div class="form-check" id="in_proccess">
 								<button type="submit" class="btn btn-success">In
 									process</button>
 							</div>
 							<div class="form-check" id="finished">
-								<button type="submit" class="btn btn-success">Finished</button>
+								<button type="submit" class="btn btn-success">Finish</button>
 							</div>
 							<div class="form-check" id="delivered">
-								<button type="submit" class="btn btn-success">Delivered</button>
+								<button type="submit" class="btn btn-success">Deliver</button>
 							</div>
 							<input type="hidden" name="${_csrf.parameterName}"
 								value="${_csrf.token}" />
+							<body>
+								<script>
+									var value = "${stringState}";
+									showTechnicianButtons(value);
+								</script>
+							</body>
 						</sec:authorize>
 					</sec:authorize>
 				</form>
 			</div>
+			<form action="/confirmDelivery" method="post">
+				<input type="hidden" name="idRepair" value="${repair.id}" />
+				<sec:authorize access="isAuthenticated()">
+					<sec:authorize access="hasRole('USER')">
+						<div>Delivery State</div>
+						<div class="form-check" id="confirm" style="display: none">
+							<button type="button" onClick="showRatingForm()"
+								class="btn btn-success">Delivered?</button>
+						</div>
+						<div id="ratingForm" style="display: none">
+							<label for="device">Valorate</label> <select name="rate">
+								<option value="0">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
+							<div class="form-actions">
+								<button type="submit" class="btn btn-primary">Confirm
+									Delivery</button>
+							</div>
+						</div>
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
+						<body>
+							<script>
+								var value = "${stringState}";
+								showUserButtons(value);
+							</script>
+						</body>
+					</sec:authorize>
+				</sec:authorize>
+			</form>
 		</div>
 	</div>
 </section>
-<body>
-<script>
-var value = "${stringState}";
-changeState(value);
-</script>
-</body>
+
 
 
 <%@ include file="../jspf/footer.jspf"%>

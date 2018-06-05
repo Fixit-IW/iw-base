@@ -266,25 +266,6 @@ public class RootController {
 
 	}
 
-	@RequestMapping(value = "/addValoracion", method = RequestMethod.POST)
-	@Transactional
-	public String addValoracion(HttpServletRequest request, @RequestParam long idReparacion, @RequestParam float nota,
-			HttpSession session, Model m) {
-		dumpRequest(request);
-
-		Valoracion v = new Valoracion();
-
-		User origen = RootController.getUser(session, entityManager);
-		User destino = entityManager.find(User.class, idReparacion);
-		v.setFecha(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
-		v.setOrigen(origen);
-		v.setNota(nota);
-		v.setDestino(destino);
-		entityManager.persist(v);
-
-		return "home";
-	}
-
 	@RequestMapping(value = "/addReparacion", method = RequestMethod.POST)
 	@Transactional
 	public String addReparacion(HttpServletRequest request, @RequestParam long idNegociacion, HttpSession session,
@@ -412,5 +393,25 @@ public class RootController {
         // exit with error, blame user
     	response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         return error;
+	}
+	
+	@RequestMapping(value = "/confirmDelivery", method = RequestMethod.POST)
+	@Transactional
+	public String changeState(HttpServletRequest request, @RequestParam long idRepair, @RequestParam int rate, HttpSession session, Model m) {
+		dumpRequest(request);
+
+		Repair r = entityManager.find(Repair.class, idRepair);
+		r.setState(RepairStates.VALORATED);
+		
+		Valoracion v = new Valoracion();
+		v.setFecha(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
+		v.setOrigen(r.getPublisher());
+		v.setDestino(r.getTechnician());
+		v.setNota((float)rate);
+		
+		entityManager.persist(v);
+		entityManager.flush();
+
+		return "profile";
 	}
 }

@@ -29,10 +29,11 @@ function showOfferForm(){
 	form.style.display = "block";
 }
 
-function changeState(id){
+function showTechnicianButtons(id){
 	var divInProccess = document.getElementById("in_proccess");
 	var divFinished = document.getElementById("finished");
 	var divDelivered = document.getElementById("delivered");
+	
 	
 	if (id == "ACCEPTED"){
 		
@@ -45,12 +46,40 @@ function changeState(id){
 		divInProccess.style.display ="none";
 		divDelivered.style.display ="none";
 	}
-	else{
+	else if (id == "FINISHED"){
 		
 		divDelivered.style.display ="block";
 		divInProccess.style.display ="none";
 		divFinished.style.display ="none";
 	}
+	else {
+		divDelivered.style.display ="none";
+		divInProccess.style.display ="none";
+		divFinished.style.display ="none";
+	}
+}
+
+function showUserButtons(id){
+	var divRatingButton = document.getElementById("confirm");
+	
+	if (id == "DELIVERED"){
+		divRatingButton.style.display ="block";
+	}
+	else{
+		divRatingButton.style.display ="none";
+	}
+	
+	
+	
+}
+
+function showRatingForm(){
+	var divButton = document.getElementById("confirm");
+	var divForm = document.getElementById("ratingForm");
+	
+	divButton.style.display ="none";
+	divForm.style.display ="block";
+	
 }
 
 /*-----------------------FUNCIONES ESTRELLAS--------------------*/

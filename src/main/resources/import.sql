@@ -8,3 +8,4 @@ INSERT INTO OFFER VALUES(1,'04/06/2018','Pantalla IphoneX rota, no funciona tact
 INSERT INTO OFFER VALUES(2,'03/06/2018','Zuckerberg lo sabe todo de mi vida', 10 , 1, 'Webcam hackeada', '28032', 5 )
 INSERT INTO OFFER VALUES(3,'02/06/2018','se ha convertido en una cabra furiosa, necesito ayuda urgente', 2 , 1, 'Mi pc esta cabron', '28033', 5 )
 
+INSERT INTO REPAIR VALUES(1,'10','04/06/2018', 99, 0, 1,4,3)

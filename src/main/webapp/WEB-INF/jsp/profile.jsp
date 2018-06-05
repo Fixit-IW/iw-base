@@ -6,7 +6,7 @@
 
 <%@ include file="../jspf/header.jspf"%>
 <section class="probootstrap-cover">
-	<div class="container"">
+	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-10 col-md-offset-5">
 				<div class="about">
