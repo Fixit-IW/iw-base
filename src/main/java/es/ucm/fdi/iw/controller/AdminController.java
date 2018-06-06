@@ -13,12 +13,14 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +33,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import es.ucm.fdi.iw.LocalData;
+import es.ucm.fdi.iw.model.Negociacion;
+import es.ucm.fdi.iw.model.Offer;
 
 @Controller	
 @RequestMapping("admin")
@@ -59,7 +63,25 @@ public class AdminController {
 		
 		m.addAttribute("messages", entityManager
 				.createQuery("select m from Mensaje m").getResultList());
+		
+		m.addAttribute("offers", entityManager
+				.createQuery("select o from Offer o WHERE o.enabled = 1").getResultList());
+		
 		return "admin";	
+	}
+	
+	
+	@RequestMapping(value = "/deleteOffer", method = RequestMethod.POST)
+	@Transactional
+	public String deleteOffer(HttpServletRequest request, @RequestParam long idOffer, HttpSession session,
+			Model m) {
+		dumpRequest(request);
+
+		Offer o = entityManager.find(Offer.class, idOffer);
+
+		entityManager.remove(o);
+
+		return "home";
 	}
 
 	private void dumpRequest(HttpServletRequest request) {

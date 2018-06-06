@@ -252,7 +252,7 @@ public class RootController {
 
 			String sP = "%" + searchParam + "%";
 			javax.persistence.Query q = entityManager.createQuery(
-					"SELECT o FROM Offer o WHERE o.title LIKE :searchParam or o.description LIKE :searchParam ");
+					"SELECT o FROM Offer o WHERE o.enabled = 1 and (o.title LIKE :searchParam or o.description LIKE :searchParam)");
 			q.setParameter("searchParam", sP);
 			m.addAttribute("search", q.getResultList());
 			return "offerList";
@@ -275,6 +275,9 @@ public class RootController {
 
 		Repair r = new Repair();
 		Negociacion n = entityManager.find(Negociacion.class, idNegociacion);
+		Offer o = n.getOffer();
+
+		
 
 		r.setPublisher(n.getPublisher());
 		r.setTechnician(n.getTechnician());
@@ -285,6 +288,7 @@ public class RootController {
 		r.setInitDate(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
 
 		entityManager.persist(r);
+		o.setEnabled(0);
 		entityManager.remove(n);
 		entityManager.flush();
 
@@ -298,10 +302,11 @@ public class RootController {
 		dumpRequest(request);
 
 		Negociacion n = entityManager.find(Negociacion.class, idNegociacion);
+		n.getOffer().setEnabled(1);
 
 		entityManager.remove(n);
 
-		return "profile";
+		return "home";
 	}
 
 	@RequestMapping(value = "/addNegociacion", method = RequestMethod.POST)
@@ -313,6 +318,7 @@ public class RootController {
 		Negociacion n = new Negociacion();
 		User origen = RootController.getUser(session, entityManager);
 		Offer o = entityManager.find(Offer.class, idOffer);
+		o.setEnabled(0);
 		n.setDuration(duration);
 		n.setOffer(o);
 		n.setPrice(price);

@@ -26,7 +26,7 @@ import javax.persistence.NamedQuery;
 	private String title;
 	private String description;
 	private DeviceType device;
-	private byte enabled;
+	private int enabled;
 	private String zipCode;
 	private String date;
 
@@ -68,11 +68,11 @@ import javax.persistence.NamedQuery;
 		this.device = device;
 	}
 
-	public byte getEnabled() {
+	public int getEnabled() {
 		return enabled;
 	}
 
-	public void setEnabled(byte enabled) {
+	public void setEnabled(int enabled) {
 		this.enabled = enabled;
 	}
 
