@@ -81,7 +81,6 @@ public class RootController {
 	public String root(Model model, HttpSession session, Principal principal) {
 		if (principal == null) {
 			log.info("Ha entrado uno nuevo!");
-
 		} else {
 			log.info(principal.getName() + " de tipo " + principal.getClass());
 			refreshUserSession(session, principal);
@@ -148,7 +147,7 @@ public class RootController {
 			o.setDescription("hola se me ha roto la pantalla");
 			o.setDevice(DeviceType.MOBILE);
 			o.setEnabled((byte) 1);
-			;
+			
 			o.setTitle("hola soy angel");
 			o.setZipCode("212");
 			o.setPublisher(x);
@@ -169,7 +168,6 @@ public class RootController {
 			entityManager.persist(r);
 			entityManager.flush();
 		}
-
 		return "/";
 	}
 
@@ -182,7 +180,6 @@ public class RootController {
 	public String profile(HttpSession session, Principal principal, Model m) {
 		refreshUserSession(session, principal);
 		return "profile";
-
 	}
 
 	@GetMapping("/contact")
@@ -242,11 +239,9 @@ public class RootController {
 	}
 
 	@GetMapping(value = "/searchOffers")
-	public String searchOffers(HttpServletRequest request, @RequestParam("offerType") String offerType,
-			@RequestParam("searchParam") String searchParam, HttpSession session, Model m) {
+	public String searchOffers(HttpServletRequest request, @RequestParam String offerType,
+			@RequestParam String searchParam, HttpSession session, Model m) {
 		dumpRequest(request);
-
-		User u = RootController.getUser(session, entityManager);
 
 		if (offerType.equals("Reparar")) {
 
@@ -277,8 +272,6 @@ public class RootController {
 		Negociacion n = entityManager.find(Negociacion.class, idNegociacion);
 		Offer o = n.getOffer();
 
-		
-
 		r.setPublisher(n.getPublisher());
 		r.setTechnician(n.getTechnician());
 		r.setOffer(n.getOffer());
@@ -297,8 +290,8 @@ public class RootController {
 
 	@RequestMapping(value = "/dennyReparacion", method = RequestMethod.POST)
 	@Transactional
-	public String denyReparacion(HttpServletRequest request, @RequestParam long idNegociacion, HttpSession session,
-			Model m) {
+	public String denyReparacion(HttpServletRequest request, @RequestParam long idNegociacion, 
+			HttpSession session, Model m) {
 		dumpRequest(request);
 
 		Negociacion n = entityManager.find(Negociacion.class, idNegociacion);
@@ -425,17 +418,24 @@ public class RootController {
 	
 	@RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
 	@Transactional
-	public String sendMSG(HttpServletRequest request, @RequestParam String text, HttpSession session, Model m) {
+	public String sendMSG(HttpServletRequest request, @RequestParam String text, 
+			@RequestParam(required = false) String email, @RequestParam(required = false) String name,
+			HttpSession session, Model m) {
 		dumpRequest(request);
-
+		log.info("_________________________holaaaaaa");
 		User origen = RootController.getUser(session, entityManager);
 		
 		Mensaje msg = new Mensaje();
 		msg.setDescripcion(text);
-		msg.setEmail(origen.getEmail());
 		msg.setFecha(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
-		msg.setOrigen(origen);
-		
+		if(origen != null) {		
+			msg.setEmail(origen.getEmail());
+			msg.setName(origen.getRealFirstName());
+			msg.setOrigen(origen);
+		}else {
+			msg.setName(name);
+			msg.setEmail(email);
+		}
 		
 		entityManager.persist(msg);
 		entityManager.flush();

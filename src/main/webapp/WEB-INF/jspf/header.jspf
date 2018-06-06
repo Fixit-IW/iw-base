@@ -64,10 +64,11 @@
 						<li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
 						<li class="nav-item"><a class="nav-link" href="/anounce">Post
 								Offer</a></li>
+					</sec:authorize>
 						<li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+					<sec:authorize access="isAuthenticated()">
 						<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
 					</sec:authorize>
-
 				</ul>
 			</div>
 		</div>

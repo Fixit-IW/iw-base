@@ -58,10 +58,22 @@ body.preloader-site {
     border-width: medium;
     border-radius: 15px
 }
+.tableBox{
+	margin:0.5em;
+	padding: 1em;
+    border-color: #00CA4D;
+    background-color: rgba(255, 255, 255, 0.93);
+    border-style: solid;
+    border-width: thin;
+    border-radius: 15px
+}
 .gradient {
 	background: #92FE9D;
 	padding:1em;
 	background: linear-gradient(150deg, #00C9FF 0%, #92FE9D 100%);
+}
+.hide{
+	visibility: hidden;
 }
 
 /*----------*/

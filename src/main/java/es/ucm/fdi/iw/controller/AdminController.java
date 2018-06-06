@@ -33,8 +33,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import es.ucm.fdi.iw.LocalData;
+import es.ucm.fdi.iw.model.Mensaje;
 import es.ucm.fdi.iw.model.Negociacion;
 import es.ucm.fdi.iw.model.Offer;
+import es.ucm.fdi.iw.model.Repair;
+import es.ucm.fdi.iw.model.User;
+import es.ucm.fdi.iw.model.Valoracion;
 
 @Controller	
 @RequestMapping("admin")
@@ -66,7 +70,6 @@ public class AdminController {
 		
 		m.addAttribute("offers", entityManager
 				.createQuery("select o from Offer o WHERE o.enabled = 1").getResultList());
-		
 		return "admin";	
 	}
 	
@@ -78,10 +81,43 @@ public class AdminController {
 		dumpRequest(request);
 
 		Offer o = entityManager.find(Offer.class, idOffer);
-
 		entityManager.remove(o);
 
 		return "home";
+	}
+	
+	@RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
+	@Transactional
+	public String deleteUser(HttpServletRequest request,
+			@RequestParam long idUser, HttpSession session,
+			Model m) {
+		dumpRequest(request);
+
+		User u = entityManager.find(User.class, idUser);
+		for( Negociacion uN : u.getNegociaciones()) {
+			entityManager.remove(uN);
+		}
+		for( Valoracion uV : u.getEntrantes()) {
+			entityManager.remove(uV);
+		}
+		for( Valoracion uV : u.getSalientes()) {
+			entityManager.remove(uV);
+		}
+		for( Offer uO : u.getOffers()) {
+			entityManager.remove(uO);
+		}
+		for (Mensaje uM: u.getMensajes()) {
+			entityManager.remove(uM);
+		}
+		for (Repair uRP: u.getReparacionesPublisher()) {
+			entityManager.remove(uRP);
+		}
+		for (Repair uRT: u.getReparacionesTechnician()) {
+			entityManager.remove(uRT);
+		}
+		entityManager.remove(u);
+		
+		return "admin";
 	}
 
 	private void dumpRequest(HttpServletRequest request) {

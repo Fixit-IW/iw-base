@@ -9,11 +9,11 @@ import javax.persistence.ManyToOne;
 public class Mensaje {
 	
 	private long id;
+	private String name;
 	private String descripcion;
 	private String fecha;
 	private String email;
 	private User origen;
-	
 	
 	@Id
 	@GeneratedValue
@@ -57,8 +57,12 @@ public class Mensaje {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
-	
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 }

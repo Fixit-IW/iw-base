@@ -47,6 +47,8 @@ public class User {
 	private List<Repair> reparacionesPublisher;
 	private List<Repair> reparacionesTechnician;
 	
+	private List<Mensaje> mensajes;
+	
 	
 	private List<Negociacion> negociaciones;
 	
@@ -228,6 +230,16 @@ public class User {
 	
 	public void setNegociaciones(List<Negociacion> negociaciones) {
 		this.negociaciones = negociaciones;
+	}
+
+	@OneToMany(targetEntity = Mensaje.class)
+	@JoinColumn(name = "origen_id")
+	public List<Mensaje> getMensajes() {
+		return mensajes;
+	}
+
+	public void setMensajes(List<Mensaje> mensajes) {
+		this.mensajes = mensajes;
 	}
 	
 	

@@ -11,13 +11,25 @@
 			<legend>Contact With Us</legend>
 			<form action="/sendMessage" method="post">
 				<div class="form-group">
+					<sec:authorize access="isAnonymous()">
+					<div class="form-group">
+							<label for="exampleFormControlInput1">Name</label> <input
+								type="text" class="form-control" name="name" id="exampleFormControlInput1"
+								placeholder="Zangano">
+						</div>
+						<div class="form-group">
+							<label for="exampleFormControlInput1">Email address</label> <input
+								type="email" class="form-control" name="email"
+								placeholder="name@example.com">
+						</div>
+					</sec:authorize>
 					<label for="exampleFormControlTextarea1">Example text area</label>
-					<textarea class="form-control" name="text" id="exampleFormControlTextarea1"
-						rows="3"></textarea>
+					<textarea class="form-control" name="text"
+						id="exampleFormControlTextarea1" rows="3"></textarea>
 				</div>
 				<input type="submit" name="submit" value="Send Now"
-					class="submit btn btn-success"> 
-				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+					class="submit btn btn-success"> <input type="hidden"
+					name="${_csrf.parameterName}" value="${_csrf.token}" />
 			</form>
 		</div>
 	</div>

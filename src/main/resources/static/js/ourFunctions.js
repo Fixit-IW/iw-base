@@ -75,3 +75,12 @@ function showRatingForm() {
 	divForm.style.display = "block";
 
 }
+function show(id){
+	var div = document.getElementById(id);
+	if(div.style.display =="none"){
+		div.style.display = "table";
+	} else {
+		div.style.display = "none";
+	}
+	
+}

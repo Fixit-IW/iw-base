@@ -5,139 +5,111 @@
 	uri="http://www.springframework.org/security/tags"%>
 
 <%@ include file="../jspf/header.jspf"%>
-<section class=" probootstrap-cover ">
+<section class=" probootstrap-section overflow-hidden probootstrap_pb-1">
 	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-md-10 col-md-offset-2">
-
-				<h1>Admin</h1>
-				<p class="lead">Información muy confidencial</p>
-
-				<hr />
-				<hr />
-
-				<table>
-					<thead>
+		<h1>Admin</h1>
+		<p class="lead">Confidential Information</p>
+		<div class="table-responsive tableBox" >
+			<div class="probootstrap_font-20 probootstrap_p-2" onclick="show('userT')">Users</div>
+			<table id="userT" class="table table-hover">
+				<thead>
+					<tr>
+						<th>Id
+						<th>Login
+						<th>Roles
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${users}" var="u">
 						<tr>
-							<th>id
-							<th>login
-							<th>roles
+							<td>${u.id}
+							<td>${u.nickName}
+							<td>${u.roles}
+							<td>${u.realFirstName}</td>
+							<td>
+								<form action="/admin/deleteUser" method="post">
+									<input type="hidden" name="idUser" value="${u.id}" />
+									<button type="submit" class="btn btn-danger">Delete</button>
+									<input type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" />
+								</form>
+							</td>
 						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${users}" var="u">
-							<tr>
-								<td>${u.id}
-								<td>${u.nickName}
-								<td>${u.roles}
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-</section>
-<section class=" probootstrap-section-half">
-	<div class="container">
-		<div class="row">
-			<label>Users</label>
-			<c:forEach items="${users}" var="u">
-				<div class="col-md-4 col-sm-6">
-					<div class="probootstrap-card probootstrap-listing">
-						<div class="probootstrap-card-media">
-							<img src="admin/photo/${u.nickName}" class="img-fluid"> <a
-								href="#" class="probootstrap-love"><i class="icon-heart"></i></a>
-						</div>
-						<div class="probootstrap-card-text">
-							<h2 class="probootstrap-card-heading">
-								<a href="#">${u.nickName }</a>
-							</h2>
-							<div class="probootstrap-listing-location">
-								<span>${u.id}</span>
-							</div>
-							<div class="probootstrap-listing-category for-sale">
-								<span>${u.roles}</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</c:forEach>
+					</c:forEach>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </section>
 
-<section class=" probootstrap-section-half">
+<section class=" probootstrap-section-half probootstrap_p-0">
 	<div class="container">
-		<div class="row">
-			<label>Recieved Messages</label>
-			<c:forEach items="${messages}" var="m">
-				<div class="col-md-4 col-sm-6">
-					<div class="probootstrap-card probootstrap-listing">
-						<div class="probootstrap-card-media">
-							<a href="#" class="probootstrap-love"></a>
-						</div>
-						<div class="probootstrap-card-text">
-							<h2 class="probootstrap-card-heading">
-								<a href="#">${m.origen.realFirstName}</a>
-							</h2>
-							<div class="probootstrap-listing-location">
-								<span>${m.fecha}</span>
-							</div>
-							<div class="probootstrap-listing-location">
-								<span>${m.email}</span>
-							</div>
-							<div class="probootstrap-listing-location">
-								<span>${m.descripcion}</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</c:forEach>
+		<div class="table-responsive tableBox">
+			<div class="probootstrap_font-20 probootstrap_p-2" onclick="show('offersT')">Active Offers</div>
+			<table id="offersT" class="table table-hover">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Title</th>
+						<th>Description</th>
+						<th>Name</th>
+						<th>Device</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${offers}" var="o">
+						<tr>
+							<td>${o.id}</td>
+							<td><a href="offer?id=${o.id}">${o.title}</a></td>
+							<td>${o.description}</td>
+							<td>${o.publisher.realFirstName}</td>
+							<td>${o.device}</td>
+							<td>
+								<form action="/admin/deleteOffer" method="post">
+									<input type="hidden" name="idOffer" value="${o.id}" />
+									<button type="submit" class="btn btn-danger">Delete</button>
+									<input type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" />
+								</form>
+							</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </section>
-<section class=" probootstrap-section-half">
+
+<section class=" probootstrap-section-half probootstrap_p-0">
 	<div class="container">
-		<div class="row">
-			<label>Active Offers</label>
-			<c:forEach items="${offers}" var="o">
-				<div class="col-md-4 col-sm-6">
-					<div class="probootstrap-card probootstrap-listing">
-						<div class="probootstrap-card-media">
-							<a href="#" class="probootstrap-love"></a>
-						</div>
-						<div class="probootstrap-card-text">
-							<h2 class="probootstrap-card-heading">
-								<a href="offer?id=${o.id}">${o.title}</a>
-							</h2>
-							<div class="probootstrap-listing-location">
-								<span>${o.description}</span>
-							</div>
-							<div class="probootstrap-listing-location">
-								<span>${o.publisher.realFirstName}</span>
-							</div>
-							<div class="probootstrap-listing-category for-sale">
-								<span>${o.device}</span>
-							</div>
-							<form action="/admin/deleteOffer" method="post">
-
-								<input type="hidden" name="idOffer" value="${o.id}" />						
-								<button type="submit"
-									class="btn btn-danger">Delete</button>
-								<input type="hidden" name="${_csrf.parameterName}"
-									value="${_csrf.token}" />
-							</form>
-
-						</div>
-					</div>
-				</div>
-			</c:forEach>
+		<div class="table-responsive tableBox" >
+			<div class="probootstrap_font-20 probootstrap_p-2" onclick="show('messageT')">Received Messages</div>
+			<table id="messageT" class="table table-hover">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Date</th>
+						<th>Email</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${messages}" var="m">
+						<tr>
+							<td>${m.name}</td>
+							<td>${m.fecha}</td>
+							<td>${m.email}</td>
+							<td>${m.descripcion}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </section>
+
+<script src="${s}/js/ourFunctions.js"></script>
 
 <%@ include file="../jspf/authinfo.jspf"%>
-</div>
-
 <%@ include file="../jspf/footer.jspf"%>

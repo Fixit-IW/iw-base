@@ -11,10 +11,6 @@
 			<div class="col-md-10 col-md-offset-2">
 
 				<h1>Sign Up</h1>
-				<p class="lead">Información muy confidencial</p>
-
-				<hr />
-
 				<form action="/register/addUser" method="post"
 					data-toggle="validator" role="form">
 					<div class="form-group">
@@ -23,7 +19,7 @@
 					</div>
 					<div class="form-group">
 						<label for="Email">Email</label> <input id="Email" name="email"
-							placeholder="you@example.com" class="form-input" required=""
+							placeholder="you@example.com" class="form-input" 
 							size="30" type="email" required>
 					</div>
 					<div class="form-group">

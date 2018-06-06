@@ -10,8 +10,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
-
-
 	@Entity
 	public class Repair {
 	private long id;
