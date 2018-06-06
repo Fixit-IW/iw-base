@@ -130,8 +130,8 @@ public class RegisterController {
 	@RequestMapping(value="/photo/user/{id}", method=RequestMethod.POST)
     public @ResponseBody String handleFileUpload(
     		HttpServletResponse response,
-    		@RequestParam("photo") MultipartFile photo,
-    		@PathVariable("id") String id){
+    		 MultipartFile photo,
+    		 String id){
 
 		String error = "";
         if (photo.isEmpty()) {

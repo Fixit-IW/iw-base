@@ -206,6 +206,7 @@ public class RootController {
 		o.setPublisher(u);
 		o.setTitle(offerTitle);
 		o.setDescription(description);
+		o.setEnabled(1);
 		o.setDevice(DeviceType.values()[device]);
 		// u.setRoles("on".equals(isAdmin) ? "ADMIN,USER" : "USER");
 		o.setDate(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
