@@ -195,9 +195,9 @@ public class RootController {
 	@RequestMapping(value = "/addOffer", method = RequestMethod.POST)
 	@Transactional
 	public String addOferta(HttpServletRequest request, HttpServletResponse response,
- @RequestParam("offerTitle") String offerTitle,
-			@RequestParam("device") int device, @RequestParam("description") String description,
-			@RequestParam("photos") MultipartFile photos, HttpSession session, Model m) {
+ @RequestParam String offerTitle,
+			@RequestParam int device, @RequestParam String description,
+			@RequestParam MultipartFile photos, HttpSession session, Model m) {
 		dumpRequest(request);
 		Offer o = new Offer();
 
@@ -366,6 +366,23 @@ public class RootController {
 	    	log.info("Error retrieving file: " + f + " -- " + ioe.getMessage());
 	    }
 	}
+
+	@RequestMapping(value="/photo/user/{id}", 
+			method = RequestMethod.GET, 
+			produces = MediaType.IMAGE_JPEG_VALUE)
+	public void userPhoto(@PathVariable("id") String id, 
+			HttpServletResponse response) {
+	    File f = localData.getFile("user/user", id);
+	    try (InputStream in = f.exists() ? 
+		    	new BufferedInputStream(new FileInputStream(f)) :
+		    	new BufferedInputStream(this.getClass().getClassLoader()
+		    			.getResourceAsStream("unknown-user.jpg"))) {
+	    	FileCopyUtils.copy(in, response.getOutputStream());
+	    } catch (IOException ioe) {
+	    	response.setStatus(HttpServletResponse.SC_NOT_FOUND); // 404
+	    	log.info("Error retrieving file: " + f + " -- " + ioe.getMessage());
+	    }
+	}
 	
 	@RequestMapping(value="/photo/offer/{id}", method=RequestMethod.POST)
     public @ResponseBody String handleFileUpload(
@@ -394,6 +411,8 @@ public class RootController {
     	response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         return error;
 	}
+	
+
 	
 	@RequestMapping(value = "/confirmDelivery", method = RequestMethod.POST)
 	@Transactional

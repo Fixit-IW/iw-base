@@ -13,6 +13,7 @@
 					<div class="profile-photo">
 						<img src="${s}/img/sapo.png" width="127" height="154" />
 					</div>
+					<img class="photo" src="photo/user/${technician.id}" />
 					<h1>${technician.realFirstName}</h1>
 				</div>
 			</div>

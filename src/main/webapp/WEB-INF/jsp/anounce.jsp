@@ -40,7 +40,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="photos">Photos</label> <input type="file"
+							<label for="photos">Photo</label> <input type="file"
 								name="photos" />
 							<div>
 								<input name="${_csrf.parameterName}" type="hidden"

@@ -26,6 +26,7 @@
 							<td>${u.nickName}
 							<td>${u.roles}
 							<td>${u.realFirstName}</td>
+							<td><img src="photo/user/${u.id}" class="img-mini hor" /></td>
 							<td>
 								<form action="/admin/deleteUser" method="post">
 									<input type="hidden" name="idUser" value="${u.id}" />

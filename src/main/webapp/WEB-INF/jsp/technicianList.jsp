@@ -18,7 +18,7 @@
 									<div class="col-md-4 col-sm-6">
 										<div class="probootstrap-card probootstrap-listing">
 											<div class="probootstrap-card-media">
-												<img src="admin/photo/${t.id}" class="img-responsive">
+												<img src="photo/user/${t.id}" class="img-responsive">
 												<a class="probootstrap-love hide"></a>
 											</div>
 											<div class="probootstrap-card-text">
