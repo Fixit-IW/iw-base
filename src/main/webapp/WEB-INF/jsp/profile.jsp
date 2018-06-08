@@ -10,10 +10,10 @@
 		<div class="row justify-content-center">
 			<div class="col-md-10 col-md-offset-5">
 				<div class="about">
-				<div class ="gradient-profile ">
-					<div  >
-						<img class="img-profile-responsive" src="photo/user/${user.id}" />
-					</div>
+					<div class="gradient-profile ">
+						<div>
+							<img class="img-profile-responsive" src="photo/user/${user.id}" />
+						</div>
 					</div>
 					<div class="probootstrap_md_py-30">
 
@@ -29,6 +29,12 @@
 									${user.dni}</span></li>
 							<li class="list-group-item"><label>Zipcode: </label><span>
 									${user.zipCode}</span></li>
+							<sec:authorize access="isAuthenticated()">
+								<sec:authorize access="hasRole('TECHNICIAN')">
+									<li class="list-group-item"><label>Average Rate: </label><span>
+											${user.nota}</span></li>
+								</sec:authorize>
+							</sec:authorize>
 
 						</ul>
 					</div>

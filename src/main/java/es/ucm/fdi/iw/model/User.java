@@ -35,7 +35,10 @@ public class User {
 	private String dni;
 	private String zipCode;
 	private String birthDate;
+	private float nota;
 	
+
+
 	private String technicalDescription;
 	private String skills;
 	
@@ -52,6 +55,34 @@ public class User {
 	
 	private List<Negociacion> negociaciones;
 	
+	
+	
+	public void calculaNota(float nota) {
+		
+		List<Valoracion> v = this.getEntrantes();
+		int n = v.size();
+		
+		
+		float sum = nota;
+		
+		for(int i = 0; i < n; i++) {
+			
+			sum += v.get(i).getNota();
+			
+		}
+		
+		float notaFinal = sum / (n + 1);		
+		this.setNota(notaFinal);
+		
+	}
+	
+	public float getNota() {
+		return nota;
+	}	
+
+	public void setNota(float nota) {
+		this.nota = nota;
+	}
 	
 	
 	public String getTechnicalDescription() {

@@ -427,10 +427,13 @@ public class RootController {
 		v.setFecha(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
 		v.setOrigen(r.getPublisher());
 		v.setDestino(r.getTechnician());
-		v.setNota((float)rate);
-		
-		entityManager.persist(v);
+		v.setNota((float)rate);		
+		entityManager.persist(v);		
 		entityManager.flush();
+		
+		int n = r.getTechnician().getEntrantes().size();
+		log.info("TAMAÑOOO = " + n);
+		r.getTechnician().calculaNota((float)rate);
 
 		return "profile";
 	}
