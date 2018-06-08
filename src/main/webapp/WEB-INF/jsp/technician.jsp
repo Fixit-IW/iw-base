@@ -15,6 +15,7 @@
 					</div>
 					<img class="photo" src="photo/user/${technician.id}" />
 					<h1>${technician.realFirstName}</h1>
+					<h1>${technician.nota}</h1>
 				</div>
 			</div>
 		</div>

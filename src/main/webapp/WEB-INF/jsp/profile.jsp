@@ -27,6 +27,12 @@
 									${user.dni}</span></li>
 							<li class="list-group-item"><label>Zipcode: </label><span>
 									${user.zipCode}</span></li>
+							<sec:authorize access="isAuthenticated()">
+								<sec:authorize access="hasRole('TECHNICIAN')">
+									<li class="list-group-item"><label>Average Rate: </label><span>
+											${user.nota}</span></li>
+								</sec:authorize>
+							</sec:authorize>
 
 						</ul>
 					</div>
@@ -130,8 +136,7 @@
 													<div class="probootstrap-card probootstrap-listing">
 														<div class="probootstrap-card-media">
 															<img src="photo/offer/${r.offer.id}"
-																class="img-responsive"> <a
-																class="probootstrap-love hide"></a>
+																class="img-responsive"> <a class="probootstrap-love hide"></a>
 														</div>
 														<div class="probootstrap-card-text">
 															<h1 id="tituloLista" class="probootstrap-card-heading">
@@ -167,8 +172,7 @@
 													<div class="probootstrap-card probootstrap-listing">
 														<div class="probootstrap-card-media">
 															<img src="photo/offer/${r.offer.id}"
-																class="img-responsive"> <a
-																class="probootstrap-love hide"></a>
+																class="img-responsive"> <a class="probootstrap-love hide"></a>
 														</div>
 														<div class="probootstrap-card-text">
 															<h1 id="tituloLista" class="probootstrap-card-heading">
