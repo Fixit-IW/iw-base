@@ -50,28 +50,21 @@ body.preloader-site {
 	width:100%;
 }
 .img-profile-responsive{
-		object-fit: cover;
-  	height: 250px;
-	width:22%;
+    object-fit: cover;
+    height: 10em;
+    width: 10em;
+    border-radius: 50%;
 }
 .img-mini {
+	object-fit: cover;
+	width:45px;
     border-radius: 50%;
     position: relative;
     height: 45px;
-    width: 45px;
     overflow: hidden;
-   
     float: left;
     margin-right: 10px;
 }
-
-.img-mini.hor img {
-    position: absolute;
-    left: 50%;
-    width: auto;
-    height: 45px;
-    transform: translateX(-50%);
- }
 
 .box{
 	padding: 3em;
@@ -83,7 +76,7 @@ body.preloader-site {
 }
 .tableBox{
 	margin:0.5em;
-	padding: 1em;
+	padding: 1em 3em 1em 3em;
     border-color: #00CA4D;
     background-color: rgba(255, 255, 255, 0.93);
     border-style: solid;
@@ -100,7 +93,6 @@ body.preloader-site {
 	background: #92FE9D;
 	padding-top:1em;
 	padding-right:1em;
-	
 	background: linear-gradient(45deg, #92FE9D 0%, #00C9FF 100%);
 }
 .hide{

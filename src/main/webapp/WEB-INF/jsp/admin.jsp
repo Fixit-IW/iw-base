@@ -6,7 +6,7 @@
 
 <%@ include file="../jspf/header.jspf"%>
 <section class=" probootstrap-section overflow-hidden probootstrap_pb-1">
-	<div class="container">
+	<div class="collapse container">
 		<h1>Admin</h1>
 		<p class="lead">Confidential Information</p>
 		<div class="table-responsive tableBox" >
@@ -14,9 +14,12 @@
 			<table id="userT" class="table table-hover">
 				<thead>
 					<tr>
-						<th>Id
-						<th>Login
-						<th>Roles
+						<th class = "th-lg">Id
+						<th class = "th-lg">Login
+						<th class = "th-lg">Roles
+						<th class = "th-lg">Photo
+						<th class = "th-lg">Name</th>
+						<th class = "th-lg">Delete
 					</tr>
 				</thead>
 				<tbody>
@@ -26,7 +29,7 @@
 							<td>${u.nickName}
 							<td>${u.roles}
 							<td>${u.realFirstName}</td>
-							<td><img src="photo/user/${u.id}" class="img-mini hor" /></td>
+							<td><img src="photo/user/${u.id}" class="img-mini" /></td>
 							<td>
 								<form action="/admin/deleteUser" method="post">
 									<input type="hidden" name="idUser" value="${u.id}" />
@@ -69,7 +72,7 @@
 							<td>
 								<form action="/admin/deleteOffer" method="post">
 									<input type="hidden" name="idOffer" value="${o.id}" />
-									<button type="submit" class="btn btn-danger">Delete</button>
+									<button type="submit" class="btn btn-danger">X</button>
 									<input type="hidden" name="${_csrf.parameterName}"
 										value="${_csrf.token}" />
 								</form>

@@ -8,12 +8,10 @@
 <section class="probootstrap-cover overflow-hidden">
 	<div class="container">
 		<div class="row justify-content-center">
-			<div class="col-md-10 col-md-offset-5">
+			<div class="col-md-12 col-md-offset-5">
 				<div class="about">
-				<div class ="gradient-profile ">
-					<div  >
+					<div class="justify-content-center gradient-profile ">
 						<img class="img-profile-responsive" src="photo/user/${user.id}" />
-					</div>
 					</div>
 					<div class="probootstrap_md_py-30">
 
@@ -32,10 +30,9 @@
 
 						</ul>
 					</div>
-					<div class="container">
-						<span>Ofertas Activas</span>
-					</div>
-					<section class=" probootstrap-section-half">
+
+					<section class=" probootstrap-section-half tableBox">
+						<h4>Ofertas Activas</h4>
 						<div class="container">
 							<div class="row">
 								<c:forEach items="${user.offers}" var="o">
@@ -71,10 +68,9 @@
 							</div>
 						</div>
 					</section>
-					<div class="container">
-						<span>Negociaciones Activas</span>
-					</div>
+
 					<section class=" probootstrap-section-half">
+						<h4>Negociaciones Activas</h4>
 						<div class="container">
 							<div class="row">
 								<c:forEach items="${user.negociaciones}" var="o">
