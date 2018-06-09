@@ -74,6 +74,7 @@ public class AdminController {
 	}
 	
 	
+	
 	@RequestMapping(value = "/deleteOffer", method = RequestMethod.POST)
 	@Transactional
 	public String deleteOffer(HttpServletRequest request, @RequestParam long idOffer, HttpSession session,
@@ -83,7 +84,7 @@ public class AdminController {
 		Offer o = entityManager.find(Offer.class, idOffer);
 		entityManager.remove(o);
 
-		return "admin";
+		return "home";
 	}
 	
 	@RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
@@ -117,7 +118,7 @@ public class AdminController {
 		}
 		entityManager.remove(u);
 		
-		return "admin";
+		return "home";
 	}
 
 	private void dumpRequest(HttpServletRequest request) {

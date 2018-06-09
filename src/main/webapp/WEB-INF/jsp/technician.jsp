@@ -4,18 +4,41 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 
+<script src="${s}/js/ourFunctions.js"></script>
+
 <%@ include file="../jspf/header.jspf"%>
-<section class="probootstrap-cover">
-	<div class="container"">
+<section class="probootstrap-cover overflow-hidden">
+	<div class="container">
 		<div class="row justify-content-center">
-			<div class="col-md-10 col-md-offset-5">
+			<div class="col-md-12 col-md-offset-5">
 				<div class="about">
-					<div class="profile-photo">
-						<img src="${s}/img/sapo.png" width="127" height="154" />
+					<div class="justify-content-center gradient-profile ">
+						<img class="img-profile-responsive"
+							src="photo/user/${technician.id}" />
 					</div>
-					<img class="photo" src="photo/user/${technician.id}" />
-					<h1>${technician.realFirstName}</h1>
-					<h1>${technician.nota}</h1>
+					<div class="probootstrap_md_py-30">
+
+						<ul class="list-group">
+							<li class="list-group-item"><h3>${technician.nickName}'s profile</h3></li>
+							
+							<li class="list-group-item"><label>Name: </label><span>
+									${technician.realFirstName} ${technician.realLastName}</span></li>
+							<li class="list-group-item"><label>Zipcode: </label><span>
+									${technician.zipCode}</span></li>
+							<li class="list-group-item"><label>Skills: </label><span>
+									${technician.skills}</span></li>
+									<li class="list-group-item"><label>Description: </label><span>
+									${technician.technicalDescription}</span></li>
+									<li class="list-group-item"><label>Average Rate: </label>
+										<body>
+											<script>
+													var value = "${technician.nota}";
+													showStars(value);
+													</script>
+										</body></li>
+					
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
