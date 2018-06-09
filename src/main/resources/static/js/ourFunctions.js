@@ -89,6 +89,12 @@ function compareTech(id1, id2, div_){
 	if(id1 == id2)
 		div.style.display = "none";
 }
+function showEditForm(){
+	var profile = document.getElementById("profile");
+	var editForm = document.getElementById("editForm");	
+	profile.style.display = "none";
+	editForm.style.display = "block";
+}
 function showStars(nota){
 	var i;
 	for ( i = 0 ; i < 5 ; i++){

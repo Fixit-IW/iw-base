@@ -21,6 +21,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.http.MediaType;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -214,8 +215,8 @@ public class RootController {
 		entityManager.persist(o);
 
 		entityManager.flush();
-		handleFileUpload(response,photos,Long.toString(o.getId()));
-		log.info("*______________________________*"+Long.toString(o.getId()));
+		handleFileUpload(response,photos,Long.toString(o.getId()), "user/offer");
+		
 		m.addAttribute("offers", entityManager.createQuery("select o from Offer o").getResultList());
 
 		return "home";
@@ -330,7 +331,7 @@ public class RootController {
 
 	@GetMapping("/repair")
 	public String showRepair(@RequestParam long id, HttpSession session, Model m) {
-		m.addAttribute("repair", entityManager.find(Repair.class, id));
+		m.addAttribute("repair", entityManager.find(Repair.class, id));		
 		m.addAttribute("stringState", entityManager.find(Repair.class, id).getState().toString());
 		return "repair";
 	}
@@ -393,14 +394,15 @@ public class RootController {
     public @ResponseBody String handleFileUpload(
     		HttpServletResponse response,
     		@RequestParam("photo") MultipartFile photo,
-    		@PathVariable("id") String id){
+    		@PathVariable("id") String id,
+    		String ruta){
 
 		String error = "";
         if (photo.isEmpty()) {
         	error = "You failed to upload a photo for " 
                 + id + " because the file was empty.";        
         } else {
-	        File f = localData.getFile("user/offer", id);
+	        File f = localData.getFile(ruta, id);
 	        try (BufferedOutputStream stream =
 	                new BufferedOutputStream(
 	                    new FileOutputStream(f))) {
@@ -449,7 +451,7 @@ public class RootController {
 			@RequestParam(required = false) String email, @RequestParam(required = false) String name,
 			HttpSession session, Model m) {
 		dumpRequest(request);
-		log.info("_________________________holaaaaaa");
+		
 		User origen = RootController.getUser(session, entityManager);
 		
 		Mensaje msg = new Mensaje();
@@ -467,6 +469,67 @@ public class RootController {
 		entityManager.persist(msg);
 		entityManager.flush();
 
+		return "home";
+	}
+	
+	
+	@RequestMapping(value = "/editProfile", method = RequestMethod.POST)
+	@Transactional
+	@Modifying
+	public String editProfile(HttpServletRequest request,
+			HttpServletResponse response,
+			@RequestParam long idUser, 
+			@RequestParam(required = false, defaultValue = " ") String email,
+			@RequestParam(required = false, defaultValue = " ") String realFirstName,
+			@RequestParam(required = false, defaultValue = " ") String realLastName,
+			@RequestParam(required = false, defaultValue = " ") String DNI,
+			@RequestParam(required = false, defaultValue = " ") String zipCode,
+			@RequestParam(required = false) MultipartFile photo,		
+			@RequestParam(required = false, defaultValue = " ") String birthDate,
+			@RequestParam(required = false, defaultValue = " ") String technicalDescription,
+			@RequestParam(required = false, defaultValue = " ") String skills, 
+			Model m) {
+		dumpRequest(request);
+		User u = entityManager.find(User.class, idUser);
+	
+		if(!email.equals(" ")) {
+			u.setEmail(email);
+		}
+		
+		if(!realFirstName.equals(" ")) {			
+			u.setRealFirstName(realFirstName);
+		}
+		
+		if(!realLastName.equals(" ")) {
+			u.setRealLastName(realLastName);			
+		}
+		if(!DNI.equals(" ")) {
+			u.setDni(DNI);
+		}
+		
+		if(!zipCode.equals(" ")) {
+			u.setZipCode(zipCode);
+		}		
+		if(!birthDate.equals(" ")) {
+			u.setBirthDate(birthDate);
+		}
+		if(!technicalDescription.equals(" ")) {
+			u.setTechnicalDescription(technicalDescription);
+		}
+		
+		if(!skills.equals(" ")) {
+			u.setSkills(skills);
+		}
+		
+		entityManager.merge(u);
+		
+		
+		
+		entityManager.flush();
+	
+		handleFileUpload(response, photo, Long.toString(u.getId()), "user/user");
+	
+		
 		return "home";
 	}
 	
