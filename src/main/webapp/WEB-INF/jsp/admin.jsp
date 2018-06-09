@@ -6,7 +6,7 @@
 
 <%@ include file="../jspf/header.jspf"%>
 <section class=" probootstrap-section overflow-hidden probootstrap_pb-1">
-	<div class="container">
+	<div class="container ">
 		<h1>Admin</h1>
 		<p class="lead">Confidential Information</p>
 		<div class="table-responsive tableBox" >

@@ -30,7 +30,6 @@ import javax.persistence.NamedQuery;
 	private String zipCode;
 	private String date;
 
-	
 	private User publisher;
 	
 

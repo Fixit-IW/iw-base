@@ -8,21 +8,54 @@
 <section class="probootstrap-cover">
 	<div class="container">
 		<div class="row justify-content-center">
-			<div class="col-md-10 col-md-offset-5">
-				<div class="about">
-					<div class="profile-photo">
-						<img src="${s}/img/sapo.png" width="127" height="154" />
+			<sec:authorize access="isAuthenticated()">
+				<sec:authorize access="hasRole('TECHNICIAN')">
+					<div class="col-md-8">
+				</sec:authorize>
+				<sec:authorize access="hasRole('USER')">
+					<div class="col-md-10">
+				</sec:authorize>
+			</sec:authorize>
+			<sec:authorize access="isAnonymous()">
+				<div class="col-md-10">
+			</sec:authorize>
+
+			<div class="panel panel-default panel--styled">
+				<div class="panel-body">
+					<div class="row panelTop">
+						<div class="col-md-4">
+							<img class="img-responsive" src="photo/offer/${offer.id}" alt="" />
+						</div>
+						<div class="col-md-8 probootstrap_p-15">
+							<h3>${offer.title}</h3>
+							<div class="probootstrap-listing-category for-sale">
+								${offer.device}</div>
+							<p class="probootstrap_text-gray-400">${offer.description}</p>
+						</div>
 					</div>
-					<h1>${offer.title}</h1>
-					<img class="photo" src="photo/offer/${offer.id}" />
-					<sec:authorize access="isAuthenticated()">
-						<sec:authorize access="hasRole('TECHNICIAN')">
-							<div class="form-check">
-								<button type="button" class="btn btn-success" id="offer_button"
-									onclick="showOfferForm()">Accept?</button>
+					<div class="col-md-4 panelBottom">
+						<div class="col-md-4 text-left">
+							<h5>
+								Date <span class="itemPrice">${offer.date}</span>
+							</h5>
+						</div>
+						<div class="col-md-4">
+							<div class="stars">
+								<div id="stars" class="starrr"></div>
 							</div>
-						</sec:authorize>
-					</sec:authorize>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<sec:authorize access="isAuthenticated()">
+			<sec:authorize access="hasRole('TECHNICIAN')">
+				<div class="col-md-3 text-center">
+					<div class="form-check">
+						<button type="button" class="btn btn-success" id="offer_button"
+							onclick="showOfferForm()">Accept?</button>
+					</div>
 
 					<div id="offer_form" style="display: none">
 						<form action="/addNegociacion" method="post">
@@ -30,16 +63,13 @@
 							<div class="form-group">
 								<label for="technicalDescription">Estimated Price </label> <input
 									class="form-control" type="number"
-									placeholder="Estimated price €" name="price" />
-
+									placeholder="Estimated price €" name="price" required />
 							</div>
 							<div class="form-group">
 								<label for="skills">Estimated Time </label> <input
 									class="form-control" type="text" placeholder="Estimated time"
-									name="duration" />
+									name="duration" required />
 							</div>
-
-
 							<input type="hidden" name="${_csrf.parameterName}"
 								value="${_csrf.token}" />
 							<div class="form-actions">
@@ -48,8 +78,9 @@
 						</form>
 					</div>
 				</div>
-			</div>
-		</div>
+			</sec:authorize>
+		</sec:authorize>
+	</div>
 	</div>
 </section>
 <script src="${s}/js/ourFunctions.js"></script>
