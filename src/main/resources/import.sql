@@ -1,4 +1,4 @@
-INSERT INTO USER VALUES(1,'00/00/0000','1654196A','bartolo@admin.ucm.es',1,'Dios',0,'$2a$04$NwYuA6rd/UbCs3H8mntvPuqyFuUsX8sTKI1WDYwqrXhncXWIklscW','Patricia','Dueña del mundo','ADMIN','','','42')
+INSERT INTO USER VALUES(1,'00/00/0000','1654196A','iw@admin.ucm.es',1,'manuel',0,'$2a$04$NwYuA6rd/UbCs3H8mntvPuqyFuUsX8sTKI1WDYwqrXhncXWIklscW','Manuel','Freire','ADMIN','','','42')
 INSERT INTO USER VALUES(2,'00/00/0000','1654196A','bartolo@admin.ucm.es',1,'b',0,'$2a$04$NwYuA6rd/UbCs3H8mntvPuqyFuUsX8sTKI1WDYwqrXhncXWIklscW','Bartolo','Muñoz','ADMIN','','','42')
 
 INSERT INTO USER VALUES(3,'02/07/1993','8885156G','pacosol@ucm.es',1,'p',4,'$2a$04$NwYuA6rd/UbCs3H8mntvPuqyFuUsX8sTKI1WDYwqrXhncXWIklscW','Paco','Solano','TECHNICIAN','Iphone','Reparo todo tipo de Iphone','28030')
