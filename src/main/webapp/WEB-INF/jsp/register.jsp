@@ -11,20 +11,19 @@
 			<div class="col-md-10 col-md-offset-2">
 
 				<h1>Sign Up</h1>
-				<form action="/register/addUser"  enctype="multipart/form-data" method="post"
-					data-toggle="validator" role="form">
+				<form action="/register/addUser" enctype="multipart/form-data"
+					method="post" data-toggle="validator" role="form">
 					<div class="form-group">
 						<label for="nickName">User name </label> <input
 							class="form-control" name="nickName" required />
 					</div>
-						<div class="form-group">
-							<label for="photos">Photo</label> <input type="file"
-								name="photo" />
-								</div>
+					<div class="form-group">
+						<label for="photos">Photo</label> <input type="file" name="photo" />
+					</div>
 					<div class="form-group">
 						<label for="Email">Email</label> <input id="Email" name="email"
-							placeholder="you@example.com" class="form-input" 
-							size="30" type="email" required>
+							placeholder="you@example.com" class="form-input" size="30"
+							type="email" required>
 					</div>
 					<div class="form-group">
 						<label for="inputPassword" class="control-label">Password</label>

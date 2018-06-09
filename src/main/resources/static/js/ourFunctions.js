@@ -84,3 +84,12 @@ function show(id){
 	}
 	
 }
+function showEditForm(){
+	var profile = document.getElementById("profile");
+	var editForm = document.getElementById("editForm");	
+	profile.style.display = "none";
+	editForm.style.display = "block";
+}
+
+
+
