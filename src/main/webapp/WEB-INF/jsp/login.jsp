@@ -10,9 +10,9 @@
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-5 box">
-				<h1>Registro</h1>
+				<h1 style="text-align: center;"> Login</h1>
 				<form action="/login" method="post">
-					<label>Please Login</label>
+					<div style="text-align: center; padding-bottom: 5px" >Please enter your username and password</div>
 					<fieldset>
 						<div class="form-group">
 							<label for="username"> Username </label> <input type="text"

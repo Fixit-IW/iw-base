@@ -36,8 +36,6 @@ public class User {
 	private String zipCode;
 	private String birthDate;
 	private float nota;
-	
-
 
 	private String technicalDescription;
 	private String skills;

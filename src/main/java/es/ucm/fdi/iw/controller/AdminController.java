@@ -83,7 +83,7 @@ public class AdminController {
 		Offer o = entityManager.find(Offer.class, idOffer);
 		entityManager.remove(o);
 
-		return "home";
+		return "admin";
 	}
 	
 	@RequestMapping(value = "/deleteUser", method = RequestMethod.POST)

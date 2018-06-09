@@ -81,7 +81,7 @@ body.preloader-site {
     background-color: rgba(255, 255, 255, 0.93);
     border-style: solid;
     border-width: thin;
-    border-radius: 15px
+    border-radius: 15p;
 }
 .gradient {
 	background: #92FE9D;
