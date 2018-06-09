@@ -7,31 +7,80 @@
 <%@ include file="../jspf/header.jspf"%>
 <script src="${s}/js/ourFunctions.js"></script>
 
+<div class="container justify-content-center"
+	style="padding: 4em; align-items: center; margin-top: 7em;">
+	<div class="col-md-12">
+		<div class="progress" style="height: 20px;">
+			<div class="progress-bar bg-success" role="progressbar"
+				style="height: 20px; width: 20%" aria-valuenow="15"
+				aria-valuemin="0" aria-valuemax="100">Accepted</div>
+			<div class="progress-bar" id="in_proccessP" role="progressbar"
+				style="height: 20px; width: 20%" aria-valuenow="0" aria-valuemin="0"
+				aria-valuemax="100">In process</div>
+			<div class="progress-bar" id="finishedP" role="progressbar"
+				style="height: 20px; width: 20%" aria-valuenow="0" aria-valuemin="0"
+				aria-valuemax="100">Finished</div>
+			<div class="progress-bar" id="deliveredP" role="progressbar"
+				style="height: 20px; width: 20%" aria-valuenow="0" aria-valuemin="0"
+				aria-valuemax="100">Sent</div>
+			<div class="progress-bar" id="sent" role="progressbar"
+				style="height: 20px; width: 20%" aria-valuenow="0" aria-valuemin="0"
+				aria-valuemax="100">Delivered</div>
 
-<section class="probootstrap-cover">
+		</div>
+	</div>
+</div>
+<section class="probootstrap-cover probootstrap_p-0">
 	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-md-10 col-md-offset-5">
-				<div class="about">
-					<div class="profile-photo">
-						<img src="${s}/img/sapo.png" width="127" height="154" />
+		<div class="probootstrap_p-0 row justify-content-center">
+			<div id="panel1" class="col-md-8">
+				<div class="panel panel-default panel--styled">
+					<div class="panel-body">
+						<div class="row panelTop">
+							<div class="col-md-4">
+								<img class="img-responsive" src="photo/offer/${repair.offer.id}"
+									alt="" />
+							</div>
+							<div class="col-md-8 probootstrap_p-15">
+								<h3 class="probootstrap_text-green">${repair.offer.title}</h3>
+								<div class="probootstrap-listing-category for-sale">
+									${repair.offer.device}</div>
+								<p class="probootstrap_text-gray-400">${repair.offer.description}</p>
+							</div>
+						</div>
+						<div class="row panelBottom probootstrap_m-0">
+							<div class="col-md-4 text-left">
+								<h5 class="probootstrap_m-0">
+									Price <span class="itemPrice">${repair.price}</span>
+								</h5>
+								Date: ${repair.initDate}
+							</div>
+							<div class="col-md-4 justify-content-center">
+								Client: <img src="photo/user/${repair.publisher.id}"
+									class="img-mini" />
+								<h3
+									class="probootstrap_font-14 probootstrap_font-regular probootstrap-card-heading">${repair.publisher.realFirstName}
+									${repair.publisher.realLastName}</h3>
+							</div>
+							<div class="col-md-4 justify-content-center">
+								Technician <img src="photo/user/${repair.technician.id}"
+									class="img-mini" />
+								<h3
+									class="probootstrap_font-14 probootstrap_font-regular probootstrap-card-heading">${repair.technician.realFirstName}
+									${repair.technician.realLastName}</h3>
+							</div>
+							<div class="col-md-4">
+								<div class="stars">
+									<div id="stars" class="starrr"></div>
+								</div>
+							</div>
+						</div>
 					</div>
-					<h1>${repair.offer.title}</h1>
 				</div>
+			</div>
 
-				<ul class="list-group">
-					<li class="list-group-item"><h3>My repair</h3></li>
-					<li class="list-group-item"><label>Name: </label><span>
-							${user.realFirstName} ${user.realLastName}</span></li>
-					<li class="list-group-item"><label>Birthdate: </label><span>
-							${user.birthDate}</span></li>
-					<li class="list-group-item"><label>DNI: </label><span>
-							${user.dni}</span></li>
-					<li class="list-group-item"><label>Zipcode: </label><span>
-							${user.zipCode}</span></li>
-
-				</ul>
-
+			<div id="Tech"
+				class="col-md-3 text-center justify-content-center panel panel-default panel--styled">
 				<form action="/changeState" method="post">
 					<input type="hidden" name="idRepair" value="${repair.id}" />
 					<sec:authorize access="isAuthenticated()">
@@ -51,51 +100,53 @@
 								value="${_csrf.token}" />
 							<body>
 								<script>
+										var value = "${stringState}";
+										showTechnicianButtons(value);
+									</script>
+							</body>
+						</sec:authorize>
+					</sec:authorize>
+				</form>
+
+				<form action="/confirmDelivery" method="post">
+					<input type="hidden" name="idRepair" value="${repair.id}" />
+					<sec:authorize access="isAuthenticated()">
+						<sec:authorize access="hasRole('USER')">
+							<div>Delivery State</div>
+							<div class="form-check" id="confirm" style="display: none">
+								<button type="button" onClick="showRatingForm()"
+									class="btn btn-success">Delivered?</button>
+							</div>
+							<div id="ratingForm" style="display: none">
+								<label for="device">Valorate</label> <select name="rate">
+									<option value="0">0</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+								<div class="form-actions">
+									<button type="submit" class="btn btn-primary">Confirm
+										Delivery</button>
+								</div>
+							</div>
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+							<body>
+								<script>
 									var value = "${stringState}";
-									showTechnicianButtons(value);
+									showUserButtons(value);
 								</script>
 							</body>
 						</sec:authorize>
 					</sec:authorize>
 				</form>
 			</div>
-			<form action="/confirmDelivery" method="post">
-				<input type="hidden" name="idRepair" value="${repair.id}" />
-				<sec:authorize access="isAuthenticated()">
-					<sec:authorize access="hasRole('USER')">
-						<div>Delivery State</div>
-						<div class="form-check" id="confirm" style="display: none">
-							<button type="button" onClick="showRatingForm()"
-								class="btn btn-success">Delivered?</button>
-						</div>
-						<div id="ratingForm" style="display: none">
-							<label for="device">Valorate</label> <select name="rate">
-								<option value="0">0</option>
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
-							</select>
-							<div class="form-actions">
-								<button type="submit" class="btn btn-primary">Confirm
-									Delivery</button>
-							</div>
-						</div>
-						<input type="hidden" name="${_csrf.parameterName}"
-							value="${_csrf.token}" />
-						<body>
-							<script>
-								var value = "${stringState}";
-								showUserButtons(value);
-							</script>
-						</body>
-					</sec:authorize>
-				</sec:authorize>
-			</form>
 		</div>
 	</div>
 </section>
+
 
 
 

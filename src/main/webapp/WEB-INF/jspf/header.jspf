@@ -25,7 +25,6 @@
 <link rel="stylesheet" href="${s}/css/animate.css">
 <link rel="stylesheet" href="${s}/fonts/ionicons/css/ionicons.min.css">
 
-<link rel="stylesheet" href="${s}/css/owl.carousel.min.css">
 <link rel="stylesheet" href="${s}/css/bootstrap-datepicker.css">
 <link rel="stylesheet" href="${s}/css/helpers.css">
 <link rel="stylesheet" href="${s}/css/style.css">

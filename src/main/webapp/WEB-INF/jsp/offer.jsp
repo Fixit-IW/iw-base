@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
-	<script src="${s}/js/ourFunctions.js"></script>
+<script src="${s}/js/ourFunctions.js"></script>
 
 <%@ include file="../jspf/header.jspf"%>
 <section class="probootstrap-cover">
@@ -96,5 +96,4 @@
 	</div>
 	</div>
 </section>
-
 <%@ include file="../jspf/footer.jspf"%>

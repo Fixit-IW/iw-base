@@ -15,7 +15,7 @@ INSERT INTO OFFER VALUES(4,'27/06/2018','creo que se me ha fundido la fuente de 
 INSERT INTO OFFER VALUES(5,'15/04/2018','No se enciende mi portatil, sale una pantalla azul', 2 , 1, 'Portatil HP estropeado', '28033', 7 )
 INSERT INTO OFFER VALUES(6,'15/04/2018','nomefuncionalabarraespaciadora', 9 , 1, 'TecladoRoto', '28013', 7 )
 
-INSERT INTO REPAIR VALUES(1,'10','04/06/2018', 99, 3, 1,4,0)
+INSERT INTO REPAIR VALUES(1,'10','04/06/2018', 99, 0, 1,4,3)
 
 INSERT INTO MENSAJE VALUES(1,'Error al registrarme, me da error por X motivo', 'nuriasan@ucm.es', '02/07/2017', 'Nuria', 6)
 INSERT INTO MENSAJE VALUES(2,'Por favor, me podeis decir mi contraseña? se me ha olvidado', 'ceciliog@ucm.es', '03/07/2017', 'Cecilio',4)

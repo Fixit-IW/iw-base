@@ -33,19 +33,18 @@ function showTechnicianButtons(id) {
 	var divInProccess = document.getElementById("in_proccess");
 	var divFinished = document.getElementById("finished");
 	var divDelivered = document.getElementById("delivered");
+	
+	botones(id);
 
 	if (id == "ACCEPTED") {
-
 		divInProccess.style.display = "block";
 		divFinished.style.display = "none";
 		divDelivered.style.display = "none";
-
 	} else if (id == "INPROCCESS") {
 		divFinished.style.display = "block";
 		divInProccess.style.display = "none";
 		divDelivered.style.display = "none";
 	} else if (id == "FINISHED") {
-
 		divDelivered.style.display = "block";
 		divInProccess.style.display = "none";
 		divFinished.style.display = "none";
@@ -58,13 +57,44 @@ function showTechnicianButtons(id) {
 
 function showUserButtons(id) {
 	var divRatingButton = document.getElementById("confirm");
-
+	botones(id);
 	if (id == "DELIVERED") {
 		divRatingButton.style.display = "block";
 	} else {
 		divRatingButton.style.display = "none";
 	}
 
+}
+function botones(id){
+
+	var InProccess = document.getElementById("in_proccessP");
+	var Finished = document.getElementById("finishedP");
+	var Delivered = document.getElementById("deliveredP");
+	var sent= document.getElementById("sent");
+	var tech = document.getElementById("Tech");
+	var div = document.getElementById("panel1");
+	if(id=="ACCEPTED"){
+		
+	}
+	else if (id == "INPROCCESS") {
+		InProccess.classList.add("bg-success");
+	} else if (id == "FINISHED") {
+		InProccess.classList.add("bg-success");
+		Finished.classList.add("bg-success");
+	}else if (id == "DELIVERED"){
+		InProccess.classList.add("bg-success");
+		Finished.classList.add("bg-success");
+		Delivered.classList.add("bg-success");
+	}
+	else{
+		tech.style.display="none";
+		div.classList.remove("col-md-8");
+		div.classList.add("col-md-10");
+		InProccess.classList.add("bg-success");
+		Finished.classList.add("bg-success");
+		sent.classList.add("bg-success");
+		Delivered.classList.add("bg-success");
+	}
 }
 
 function showRatingForm() {

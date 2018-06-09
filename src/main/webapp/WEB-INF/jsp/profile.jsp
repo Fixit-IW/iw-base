@@ -8,11 +8,27 @@
 <%@ include file="../jspf/header.jspf"%>
 <section class="probootstrap-cover overflow-hidden">
 	<div class="container">
-		<div class="row justify-content-center">
+		<nav class="nav nav-pills nav-fill">
+			<a class="nav-item nav-link" style="padding:0.5em" href="#ActiveOffers">Active
+				Offers</a> <a class="nav-item nav-link" style="padding:0.5em"  href="#ActiveNego">Active
+				Negotiations</a> <a class="nav-item nav-link" style="padding:0.5em"  href="#CustomerRepair">Customer
+				Repair</a>
+			<sec:authorize access="isAuthenticated()">
+				<sec:authorize access="hasRole('TECHNICIAN')">
+					<a class="nav-item nav-link" style="padding:0.5em"  href="#TechRepairs">Technician
+						Repairs</a>
+				</sec:authorize>
+			</sec:authorize>
+		</nav>
+		<div class="row probootstrap_p-0 justify-content-center">
 			<div class="col-md-12 col-md-offset-5">
 				<div class="about">
 					<div class="justify-content-center gradient-profile ">
 						<img class="img-profile-responsive" src="photo/user/${user.id}" />
+						<div class="float-right form-check">
+							<button type="button" class="btn btn-success" id="editButton"
+								onclick="showEditForm()">Edit</button>
+						</div>
 					</div>
 					<div class="probootstrap_md_py-30" id="profile">
 
@@ -45,10 +61,6 @@
 								</sec:authorize>
 							</sec:authorize>
 						</ul>
-						<div class="form-check">
-							<button type="button" class="btn btn-success" id="editButton"
-								onclick="showEditForm()">Edit</button>
-						</div>
 					</div>
 
 
@@ -115,7 +127,7 @@
 					</div>
 
 
-					<section class="probootstrap-section-half">
+					<section id="ActiveOffers" class="probootstrap-section-half">
 						<h4>Active Offers</h4>
 						<div class="container">
 							<div class="row">
@@ -153,7 +165,7 @@
 						</div>
 					</section>
 
-					<section class="probootstrap-section-half">
+					<section id="ActiveNego" class="probootstrap-section-half">
 						<h4>Active Negotiations</h4>
 						<div class="container">
 							<div class="row">
@@ -202,7 +214,7 @@
 					</section>
 
 
-					<section class=" probootstrap-section-half">
+					<section id="CustomerRepair" class=" probootstrap-section-half">
 						<h4>Customer Repairs</h4>
 						<div class="container">
 							<div class="row">
@@ -235,7 +247,7 @@
 
 					<sec:authorize access="isAuthenticated()">
 						<sec:authorize access="hasRole('TECHNICIAN')">
-							<section class=" probootstrap-section-half">
+							<section id="TechRepairs" class=" probootstrap-section-half">
 								<h4>Technician Repairs</h4>
 								<div class="container">
 									<div class="row">

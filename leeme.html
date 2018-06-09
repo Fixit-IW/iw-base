@@ -6,7 +6,7 @@
 <body>
 <h1>FixIt</h1>
 
-FixIt es una aplicación web en la que clientes y reparadores pueden ponerse en contacto de diferentes formas para solucionar y arreglar todo tipo de averías y fallos en
+FixIt es una aplicación web en la que clientes y técnicos pueden ponerse en contacto  para solucionar y arreglar todo tipo de averías y fallos en
 una amplia gama de dispositivos tecnológicos, cómo móviles u ordenadores.
 
 <h2>Integrantes</h2>
@@ -24,42 +24,63 @@ una amplia gama de dispositivos tecnológicos, cómo móviles u ordenadores.
 <a href="https://github.com/Fixit-IW/iw-base">Fix It</a>        
 <h2>Comentarios al profesor</h2>
     
-    Para poder usar la pagina, debes acceder al /t. Alli se crearan dos nuevos usuarios, uno admin cuyo nick es 'b' y su contraseña 'bb'
-    y otro de tipo user con usuario 'y' y contraseña 'y'
+    El import.sql te creará los siguientes usuarios; </br>
+
+    Admin: b - bb</br></br>
+
+    Técnicos: p - bb</br>
+................pp - bb</br></br>
+
+    Usuarios: a - bb</br>
+................c - bb</br>
+................r - bb  </br></br>
     
-    La pagina no esta en su estado final ni mucho menos, las vistas son ultra simples y hay que retocarlas para dejarlas en su version final.
-    En cuanto a funcionalidad, solo quedaria añadir un par de cosas. La negociacion entre cliente y tecnico y ver el estado de la reparacion.
+    También te creará 6 ofertas, 1 de ellas (del usuario c) ya en proceso de reparación por el técnico p y además añadirá 6 mensajes simulando un mensaje desde la vista Contact.</br></br>
+
     
-    Ya puedes registrarte como tecnico o cliente y poder hacer busquedas de ofertas y tecnicos, en funcion de los parametros de busqueda.
-    Tambien puedes publicar ofertas nuevas y acceder a la vista de tecnico u oferta.
+    Puedes registrarte como técnico o cliente y poder hacer búsquedas de ofertas y técnicos, en función de los parámetros de búsqueda.
+    También puedes publicar ofertas nuevas y acceder a la vista de técnico u oferta.
+    Si eres técnico, puedes aceptar una oferta y negociar con el cliente, mandándole un presupuesto. Este tiene que ser aceptado por el cliente y entonces comenzará el proceso de reparación.</br></br>
+    Una vez el técnico actualice el estado de la reparación a enviado, el cliente deberá confirmar la recepción y valorar al técnico.
     
-    Nos gustaria saber, de lo que llevamos, sabiendo que hay que dejar bonitas las vistas, si vamos decentemente en cuanto a funcionalidad...
+
 
 
 <h2>Vistas</h2>
 
-Detalla aquí tus vistas. Usa enlaces a localhost:8080/ (SIN nombre de proyecto; correspondientes a arrancar la aplicación en modo spring-boot desde STS) para enlazar cada vista.
+
 <ul>
     <li><a href="localhost:8080/">Home</a> - Pantalla principal con una barra de búsqueda, en la que no se requiere login.
-    <li><a href="localhost:8080/contact">Contacto</a> - Vista en la que se ofrecen vías de contacto al usuario.
-    <li><a href="localhost:8080/admin">Administrador</a> - Vista para administradores.
-    <li><a href="localhost:8080/anounce">Publicar anuncio</a> - Vista que sirve para la descripción de un anuncio.
-    <li><a href="localhost:8080/register">Registrarse</a> - Página que permite crear nuevos usuarios en la base de datos.
-    <li><a href="localhost:8080/login">Iniciar sesión</a> - Vista que permite al usuario ingresar en la página con sus credenciales.
-    <li><a href="localhost:8080/logout">Salir</a> - Vista para cerrar sesión.
-    <li><a href="localhost:8080/profile">Perfil</a> - En esta vista se podrán ver todos los datos personales del usuario.
-    
+    <li><a href="localhost:8080/contact">Contact</a> - Vista en la que se ofrecen vías de contacto al usuario. Dichos mensajes se podrán ver siendo admin en la vista Admin.
+    <li><a href="localhost:8080/admin">Admin</a> - Vista para administrar usuarios y ofertas, además, podrás leer los mensajes recibidos desde Contact.
+    <li><a href="localhost:8080/anounce">Post Offer</a> - Vista que sirve para la publicar un anuncio.
+    <li><a href="localhost:8080/register">Register</a> - Página que permite crearte un nuevo usuario, eligiendo entre cliente o técnico.
+    <li><a href="localhost:8080/login">Log In</a> - Vista que permite al usuario ingresar en la página con sus credenciales.
+    <li><a href="localhost:8080/logout">Log out</a> - Vista para cerrar sesión.
+    <li><a href="localhost:8080/profile">Profile</a> - En esta vista se podrán ver todos los datos personales del usuario, ofertas/negociaciones/reparaciones activas, y además, proporciona un botón que te permite cambiar los datos personales.
+    <li><a href="localhost:8080/offerList">OfferList</a> - Vista en la que te llevará el home si buscas ofertas, te saldrá una lista de ofertas según el filtro que hayas escrito en el home.
+    <li><a href="localhost:8080/offer">Offer</a> - Aquí se podrá ver con más detalle una oferta, además, si eres un técnico, puedes mandar un presupuesto por la reparación al cliente. 
+    <li><a href="localhost:8080/technicianList">TechnicianList</a> - Vista en la que te llevará el home si buscas técnicos, te saldrá una lista de técnicos según el filtro que hayas escrito en el home.
+    <li><a href="localhost:8080/technician">Technician</a> - Aquí se podrá ver el perfil de un técnico, para ver con más detalle sus datos y valoraciones.
+    <li><a href="localhost:8080/repair">Repair</a> - Vista para ver el estado de la reparación, y donde el técnico irá actualizandola. Cuando la reparación se haya entregado al cliente, éste deberá valorar al técnico.
+
 
 </ul>
 
 <h2>Recursos</h2>
 
-Esto es un listado de todos los recursos externos utilizados (es decir: no escritos por los desarrolladors ni incluidos en la plantilla del profesor).
+Esto es un listado de todos los recursos externos utilizados (es decir: no escritos por los desarrolladores ni incluidos en la plantilla del profesor).
 
 <ul>
     <li><a href="localhost:8080/spring.jpg">imagen de primavera</a> (<a href="https://en.wikipedia.org/wiki/Spring_(season)#/media/File:Camino_entre_el_bosque_de_cerezos_en_flor.jpg">
             CC-BY-SA</a>) - usada para logotipo
     <li><a href="https://code.jquery.com/jquery-3.1.1.min.js">JQuery</a> (<a href="https://jquery.org/license/">MIT/Apache</a>) - librería js para simplificar la aplicación de comportamientos		
+     <li><a href="https://getbootstrap.com/">Bootstrap</a> - Usada para el diseño de la página
+      <li><a href="https://w3schools.com/">W3Schools</a>  - Usada para aprender funcionalidades de HTML.
+     <li><a href=" https://images.google.com">Google imágenes</a> - para sacar las fotos usadas de ejemplo.
+  <li><a href=" https:// uicookies.com">UI cookies</a> - De aquí sacamos una plantilla y nos basamos en ella.
+
+
 </ul>
 </body>
 </html>
