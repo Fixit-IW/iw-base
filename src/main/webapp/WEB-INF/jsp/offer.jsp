@@ -35,7 +35,7 @@
 							</div>
 							<div class="form-group">
 								<label for="skills">Estimated Time </label> <input
-									class="form-control" type="text" placeholder="Estimated time"
+									class="form-control" type="text" placeholder="Estimated time (days)"
 									name="duration" />
 							</div>
 

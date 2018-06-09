@@ -90,6 +90,12 @@ function showEditForm(){
 	profile.style.display = "none";
 	editForm.style.display = "block";
 }
-
-
-
+function showStars(nota){
+	var i;
+	for ( i = 0 ; i < 5 ; i++){
+		if(nota > i)
+			document.write('<i  class="ion-android-star"></i>' );
+		else
+			document.write('<i  class="ion-android-star-outline"></i>');
+	}
+}
