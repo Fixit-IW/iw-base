@@ -327,7 +327,7 @@ public class RootController {
 
 	@GetMapping("/repair")
 	public String showRepair(@RequestParam long id, HttpSession session, Model m) {
-		m.addAttribute("repair", entityManager.find(Repair.class, id));
+		m.addAttribute("repair", entityManager.find(Repair.class, id));		
 		m.addAttribute("stringState", entityManager.find(Repair.class, id).getState().toString());
 		return "repair";
 	}
