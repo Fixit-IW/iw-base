@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+<script src="${s}/js/ourFunctions.js"></script>
 
 <%@ include file="../jspf/header.jspf"%>
 <section class="probootstrap-cover overflow-hidden">
@@ -29,8 +30,14 @@
 									${user.zipCode}</span></li>
 							<sec:authorize access="isAuthenticated()">
 								<sec:authorize access="hasRole('TECHNICIAN')">
-									<li class="list-group-item"><label>Average Rate: </label><span>
-											${user.nota}</span></li>
+									<li class="list-group-item"><label>Average Rate: </label>
+											<body>
+														<script>
+													var value = "${user.nota}";
+													showStars(value);
+													</script>
+													</body>
+													</li>
 								</sec:authorize>
 							</sec:authorize>
 

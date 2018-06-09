@@ -22,12 +22,12 @@
 									<i class="ion-settings probootstrap_px-8"></i><input type="text"
 										class="form-control"
 										name="searchParam"
-										placeholder="Introduce dispositivo, avería, ciudad">
+										placeholder="Type device or trouble...">
 								</div>
 								<div class="search-category">
 									 <select class="custom-select" name="offerType">
-										<option value="Técnico">Técnico </option>
-										<option value="Reparar">Reparar</option>
+										<option value="Técnico">Technician </option>
+										<option value="Reparar">Repair</option>
 									</select>
 								</div>
 							</div>

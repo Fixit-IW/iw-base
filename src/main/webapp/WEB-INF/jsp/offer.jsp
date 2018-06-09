@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+	<script src="${s}/js/ourFunctions.js"></script>
 
 <%@ include file="../jspf/header.jspf"%>
 <section class="probootstrap-cover">
@@ -27,17 +28,22 @@
 							<img class="img-responsive" src="photo/offer/${offer.id}" alt="" />
 						</div>
 						<div class="col-md-8 probootstrap_p-15">
-							<h3>${offer.title}</h3>
+							<h3 class="probootstrap_text-green">${offer.title}</h3>
 							<div class="probootstrap-listing-category for-sale">
 								${offer.device}</div>
 							<p class="probootstrap_text-gray-400">${offer.description}</p>
 						</div>
 					</div>
-					<div class="col-md-4 panelBottom">
+					<div class="row panelBottom probootstrap_m-0">
 						<div class="col-md-4 text-left">
 							<h5>
 								Date <span class="itemPrice">${offer.date}</span>
 							</h5>
+						</div>
+						<div class="col-md-8 justify-content-center">
+							<img src="photo/user/${offer.publisher.id}" class="img-mini" />
+							<h3
+								class="probootstrap_font-14 probootstrap_font-regular probootstrap-card-heading">${offer.publisher.realFirstName}</h3>
 						</div>
 						<div class="col-md-4">
 							<div class="stars">
@@ -51,10 +57,12 @@
 
 		<sec:authorize access="isAuthenticated()">
 			<sec:authorize access="hasRole('TECHNICIAN')">
-				<div class="col-md-3 text-center">
+				<div id="Tech"
+					class="col-md-3 text-center justify-content-center panel panel-default panel--styled">
 					<div class="form-check">
+						<label> Do you want to repair this device?</label>
 						<button type="button" class="btn btn-success" id="offer_button"
-							onclick="showOfferForm()">Accept?</button>
+							onclick="showOfferForm()">Accept</button>
 					</div>
 
 					<div id="offer_form" style="display: none">
@@ -67,8 +75,8 @@
 							</div>
 							<div class="form-group">
 								<label for="skills">Estimated Time </label> <input
-									class="form-control" type="text" placeholder="Estimated time"
-									name="duration" required />
+									class="form-control" type="number"
+									placeholder="Estimated time (days)" name="duration" required />
 							</div>
 							<input type="hidden" name="${_csrf.parameterName}"
 								value="${_csrf.token}" />
@@ -77,11 +85,16 @@
 							</div>
 						</form>
 					</div>
+					<script>
+						var offerOwner = ${offer.publisher.id};
+						var rootId = ${rootID};
+						compareTech(offerOwner, rootId, "Tech");
+					</script>
 				</div>
 			</sec:authorize>
 		</sec:authorize>
 	</div>
 	</div>
 </section>
-<script src="${s}/js/ourFunctions.js"></script>
+
 <%@ include file="../jspf/footer.jspf"%>

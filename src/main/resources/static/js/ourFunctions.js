@@ -82,5 +82,19 @@ function show(id){
 	} else {
 		div.style.display = "none";
 	}
-	
+}
+function compareTech(id1, id2, div_){
+	console.log(id1 + "  " + id2);
+	var div = document.getElementById(div_);
+	if(id1 == id2)
+		div.style.display = "none";
+}
+function showStars(nota){
+	var i;
+	for ( i = 0 ; i < 5 ; i++){
+		if(nota > i)
+			document.write('<i  class="ion-android-star"></i>' );
+		else
+			document.write('<i  class="ion-android-star-outline"></i>');
+	}
 }

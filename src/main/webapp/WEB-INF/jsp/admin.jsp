@@ -15,15 +15,16 @@
 				<thead>
 					<tr>
 						<th class = "th-lg">Id
-						<th class = "th-lg">Login
+						<th class = "th-lg">Nickname
 						<th class = "th-lg">Roles
+						<th class = "th-lg">Name
 						<th class = "th-lg">Photo
-						<th class = "th-lg">Name</th>
 						<th class = "th-lg">Delete
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${users}" var="u">
+					
 						<tr>
 							<td>${u.id}
 							<td>${u.nickName}

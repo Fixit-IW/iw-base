@@ -230,6 +230,10 @@ public class RootController {
 	@GetMapping("/offer")
 	public String showOffer(@RequestParam long id, HttpSession session, Model m) {
 		m.addAttribute("offer", entityManager.find(Offer.class, id));
+		User origen = RootController.getUser(session, entityManager);
+		if(origen != null) {
+			m.addAttribute("rootID", Long.toString(origen.getId()));
+		}
 		return "offer";
 	}
 
@@ -255,7 +259,7 @@ public class RootController {
 		} else {
 			String sP = "%" + searchParam + "%";
 			javax.persistence.Query q = entityManager.createQuery(
-					"SELECT t FROM User t WHERE t.roles ='TECHNICIAN' and (t.skills LIKE :searchParam or t.technicalDescription LIKE :searchParam)");
+					"SELECT t FROM User t WHERE t.roles ='TECHNICIAN' and (t.realFirstName LIKE :searchParam or t.realLastName LIKE :searchParam or t.skills LIKE :searchParam or t.technicalDescription LIKE :searchParam)");
 			q.setParameter("searchParam", sP);
 			m.addAttribute("search", q.getResultList());
 			return "technicianList";

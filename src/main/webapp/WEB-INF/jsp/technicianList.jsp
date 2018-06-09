@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+<script src="${s}/js/ourFunctions.js"></script>
 
 <%@ include file="../jspf/header.jspf"%>
 <section class=" probootstrap-cover probootstrap_p-0 ">
@@ -22,15 +23,17 @@
 												<a class="probootstrap-love hide"></a>
 											</div>
 											<div class="probootstrap-card-text">
-												<h1 id="tituloLista" class="probootstrap_font-20 probootstrap_font-regular probootstrap-card-heading">
+												<h1 id="tituloLista"
+													class="probootstrap_font-20 probootstrap_font-regular probootstrap-card-heading">
 													${t.realFirstName}</h1>
-												<div class="row probootstrap_mx-4"
-													style="color: #00CA4D">
-													<i id="star1" class="ion-android-star"></i> <i id="star2"
-														class="ion-android-star"></i> <i id="star3"
-														class="ion-android-star"></i> <i id="star4"
-														class="ion-android-star"></i> <i id="star5"
-														class="ion-android-star-outline"></i>
+												<div class="row probootstrap_mx-4" style="color: #00CA4D">
+													<body>
+														<script>
+													var value = "${t.nota}";
+													showStars(value);
+													</script>
+													</body>
+
 												</div>
 												<div class="probootstrap-listing-location">
 													<span>${t.technicalDescription}</span>
@@ -57,5 +60,4 @@
 		</div>
 	</div>
 </section>
-<script src="${s}/js/ourFunctions.js"></script>
 <%@ include file="../jspf/footer.jspf"%>

@@ -61,9 +61,11 @@ public class AdminController {
     }
 
 	@GetMapping({"", "/"})
-	public String root(Model m) {
+	public String root(Model m, HttpSession session) {
+		User origen = RootController.getUser(session, entityManager);
+		
 		m.addAttribute("users", entityManager
-				.createQuery("select u from User u").getResultList());
+				.createQuery("select u from User u WHERE u.id !='" +  origen.getId() + "'").getResultList());
 		
 		m.addAttribute("messages", entityManager
 				.createQuery("select m from Mensaje m").getResultList());
@@ -72,6 +74,7 @@ public class AdminController {
 				.createQuery("select o from Offer o WHERE o.enabled = 1").getResultList());
 		return "admin";	
 	}
+	
 	
 	
 	@RequestMapping(value = "/deleteOffer", method = RequestMethod.POST)
@@ -83,7 +86,7 @@ public class AdminController {
 		Offer o = entityManager.find(Offer.class, idOffer);
 		entityManager.remove(o);
 
-		return "admin";
+		return "home";
 	}
 	
 	@RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
@@ -117,7 +120,7 @@ public class AdminController {
 		}
 		entityManager.remove(u);
 		
-		return "admin";
+		return "home";
 	}
 
 	private void dumpRequest(HttpServletRequest request) {
